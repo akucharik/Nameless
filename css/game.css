@@ -1,0 +1,333 @@
+@font-face {
+    font-family: 'GraphicPixel';
+    src: url('../fonts/graphicpixel-webfont.eot');
+    src: url('../fonts/graphicpixel-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/graphicpixel-webfont.woff') format('woff'),
+         url('../fonts/graphicpixel-webfont.ttf') format('truetype'),
+         url('../fonts/graphicpixel-webfont.svg#GraphicPixelRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+	font-family: 'MiniSet2';
+	src: url('../fonts/miniset2-webfont.eot');
+	src: url('../fonts/miniset2-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/miniset2-webfont.woff') format('woff'),
+		 url('../fonts/miniset2-webfont.ttf') format('truetype'),
+		 url('../fonts/miniset2-webfont.svg#MiniSet2') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Volter';
+	src: url('../fonts/volter__28goldfish-webfont.eot');
+	src: url('../fonts/volter__28goldfish-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/volter__28goldfish-webfont.woff') format('woff'),
+		 url('../fonts/volter__28goldfish-webfont.ttf') format('truetype'),
+		 url('../fonts/volter__28goldfish-webfont.svg#VolterGoldfishRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: rgb(50,50,50);
+    color: rgb(255,255,255);
+    font-family: 'ubuntu-mono', 'Volter', 'MiniSet2', 'GraphicPixel', 'Titillium Web', sans-serif;
+    font-size: 0.85em;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.canvas {
+     margin: 0 auto;
+     position: relative;
+     width: 720px;
+}
+
+.canvas-background {
+     background-color: rgb(255,255,255);
+}
+
+.canvas-foreground {
+     left: 0;
+     position: absolute;
+     top: 0;
+     z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.spritesheet {
+    display: none;
+}
+
+
+/* Menu */
+.menu,
+.menu-horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-horizontal > li {
+    display: inline;
+}
+
+.menu > li > button {
+    text-align: center;
+}
+
+/* Character actions */
+.character-actions-menu {
+    left: 1.0em;
+    position: absolute;
+    top: 1.0em;
+}
+
+.character-actions-menu > li > button {
+    width: 7.0em
+}
+
+/* Game menu */
+.in-game-menu {
+    position: absolute;
+    right: 0.5em;
+    top: 8.0em;
+}
+
+.in-game-menu > li > button {
+    width: 7.0em
+}
+
+/* Game utilities */
+.statistic {
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 0.5em;
+    color: white;
+    padding: 1.0em;
+    position: absolute;
+    right: 0.5em;
+    text-align: right;
+    top: 0.5em;
+    width: 6.0em;
+    z-index: 10;
+ }
+ 
+ .time {
+    top: 4.0em;
+ }
+
+
+
+/* Scrolling Table */
+.scrollable-table-container {
+    height: 100%;
+}
+
+.scrollable-table > tbody,
+.scrollable-table > thead {
+    display: block;
+}
+
+.scrollable-table > thead > tr {
+    display: block;
+    position: relative;
+}
+
+.scrollable-table > tbody {
+    height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*.scrollable-table > tbody::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+}
+
+.scrollable-table > tbody::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    background-color: rgba(255,255,255,.3);
+}*/
+
+
+/* Table */
+table-container {
+    border: 1px solid rgb(30,30,30);
+}
+
+table {
+	background: rgba(0,0,0,0.8);
+	border-collapse: collapse;
+    box-shadow: 0 0 1.0em rgba(0,0,0,0.5);
+	color: #fff;
+    line-height: 1.2;
+	text-align: left;
+}	
+
+th, td {
+    padding: 1.0em 1.5em;
+}
+
+th {
+	background-color: rgb(0,0,0);
+    font-weight: bold;
+	padding-top: 1.2em;
+    padding-bottom: 1.2em;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.2));
+	content: '';
+	display: block;
+	height: 50%;
+	left: 0;
+	position: absolute;
+	top: 0%;
+	width: 100%;
+}
+
+tbody > tr {
+	background-color: rgba(255,255,255,0.05);
+}
+
+tbody > tr:nth-child(odd) {
+	background-color: rgba(255,255,255,0.1);
+}	
+
+tbody > tr:hover {
+	background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+td {
+	position: relative;
+	transition: all 300ms;
+}
+
+
+/* Home */
+.home-container {
+    display: table;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
+    width: 800px;
+}
+
+.home-container-header,
+.home-container-body,
+.home-container-footer {
+    display: table-row;
+}
+
+.home-container-body {
+    height: 100%;
+}
+
+.home-container-footer {
+    height: 4.0em;
+}
+
+.home {
+    
+}
+
+/* Home: Character list */
+.characters-view {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.characters-header,
+.characters-body {
+    display: table-row;
+}
+
+.characters-body {
+    height: 100%;
+}
+
+.character-list {
+    /*margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    top: 7.0em;
+    right: 2.0em;
+    bottom: 2.0em;
+    left: 2.0em;
+    height: 200px;
+    max-width: 1000px;*/
+    height: 100%;
+    width: 100%;
+}
+
+.character-list th:nth-child(1),
+.character-list td:nth-child(1) {
+    min-width: 15em;
+}
+
+.character-list th:nth-child(2),
+.character-list td:nth-child(2),
+.character-list th:nth-child(3),
+.character-list td:nth-child(3) {
+    text-align: right;
+    min-width: 3em;
+}
+
+.character-list th:last-child,
+.character-list td:last-child {
+    width: 50em;
+}
+
+/* Event log */
+.event-log {
+    background-color: rgba(0,0,0,0.5);
+    bottom: 1.0em;
+    height: 12.2em;
+    left: 1.0em;
+    overflow-y: scroll;
+    padding: 0.5em 1.0em;
+    position: fixed;
+    width: 40em;
+    z-index: 100;
+}
+
+.event-log::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+}
+
+.event-log::-webkit-scrollbar-thumb {
+    border-radius: 14px;
+    background-color: rgba(255,255,255,.3);
+}
+
+.event-log > p {
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0.5em 0;
+    text-shadow: 0 1px 2px black;
+}
+
+.log-item-default {
+    color: yellow;
+}

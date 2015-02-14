@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Nameless</title>
+	<link type="text/css" media="screen" rel="stylesheet" href="css/game.css">
+</head>
+<body>
+	<div class="home-container">
+        <div class="home-container-header">
+            <h1>Nameless</h1>
+        </div>
+        <div id="homeBody" class="home-container-body">
+            <div id="mainMenuView" class="main-menu-view hidden"></div>
+            <div id="charactersView" class="characters-view hidden"></div>
+        </div>
+        <div class="home-container-footer"></div>
+    </div>
+        
+    <script id="mainMenuTemplate" type="text/template">
+        <ul class="menu main-menu">
+            <li><button id="continueGame">Continue Game</button></li>
+            <li><button id="newGame">New Game</button></li>
+            <li><button id="editCharacter">Edit Character</button></li>
+            <li><button id="newCharacter">New Character</button></li>
+        </ul>
+    </script>
+    
+    <script id="charactersTemplate" type="text/template">
+        <div class="characters-header">
+            <ul class="menu-horizontal">
+                <li><button id="mainMenu">Main Menu</button></li>
+                <li><button id="newCharacter">New Character</button></li>
+            </ul>
+        </div>
+        <div class="characters-body">
+            <div class="scrollable-table-container">
+                <table id="characterList" class="scrollable-table character-list">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Str</th>
+                            <th>Int</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </script>
+    
+    <script id="characterListItemTemplate" type="text/template">
+        <td><%= name %></td>
+        <td><%= strength %></td>
+        <td><%= intelligence %></td>
+        <td></td>
+    </script>
+    
+	<script src="javascript/libraries/require-2.1.14.js" data-main="javascript/main.js"></script>
+</body>
+</html>
