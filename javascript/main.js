@@ -4,6 +4,6 @@ require([
     config
 ) {
     require([
-        'game','phaser'
+        'game'
     ]);
 });

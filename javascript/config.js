@@ -6,5 +6,10 @@ requirejs.config({
         phaser: '../libraries/phaser.min', // v2.2.2
         underscore: '../libraries/underscore.min' // v1.6.0
     },
+    shim: {
+        'phaser': {
+            exports: 'Phaser'
+        }
+    },
     urlArgs: 'bust=' + new Date().getTime()
 });

@@ -1,7 +1,8 @@
 define([
     'backbone',
     'constants',
-    'jquery',
+    'jquery', 
+    'phaser',
     // models
     'models/character',
     'models/home',
@@ -12,7 +13,8 @@ define([
 ], function(
     Backbone,
     constants,
-    $,
+    $, 
+    Phaser,
     // models
     CharacterModel,
     HomeModel,
