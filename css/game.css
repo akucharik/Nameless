@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
     font-family: 'GraphicPixel';
     src: url('../fonts/graphicpixel-webfont.eot');
@@ -32,10 +33,7 @@
 
 }
 
-html, body {
-    height: 100%;
-}
-
+/* Basic */
 body {
     background: rgb(50,50,50);
     color: rgb(255,255,255);
@@ -46,6 +44,10 @@ body {
 
 button {
     cursor: pointer;
+}
+
+h1 {
+    margin-top: 0;
 }
 
 .canvas {
@@ -69,10 +71,6 @@ button {
     display: none;
 }
 
-.spritesheet {
-    display: none;
-}
-
 
 /* Menu */
 .menu,
@@ -90,6 +88,7 @@ button {
     text-align: center;
 }
 
+
 /* Character actions */
 .character-actions-menu {
     left: 1.0em;
@@ -101,6 +100,7 @@ button {
     width: 7.0em
 }
 
+
 /* Game menu */
 .in-game-menu {
     position: absolute;
@@ -111,6 +111,7 @@ button {
 .in-game-menu > li > button {
     width: 7.0em
 }
+
 
 /* Game utilities */
 .statistic {
@@ -131,47 +132,38 @@ button {
  }
 
 
-
-/* Scrolling Table */
-.scrollable-table-container {
-    height: 100%;
-}
-
-.scrollable-table > tbody,
-.scrollable-table > thead {
+/* Scrolling table */
+table.scrollable > tbody,
+table.scrollable > thead {
     display: block;
 }
 
-.scrollable-table > thead > tr {
+table.scrollable > thead > tr {
     display: block;
     position: relative;
 }
 
-.scrollable-table > tbody {
-    height: 0;
+table.scrollable > tbody {
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-/*.scrollable-table > tbody::-webkit-scrollbar {
+/*table.scrollable > tbody::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 14px;
 }
 
-.scrollable-table > tbody::-webkit-scrollbar-thumb {
+table.scrollable > tbody::-webkit-scrollbar-thumb {
     border-radius: 14px;
     background-color: rgba(255,255,255,.3);
 }*/
 
 
 /* Table */
-table-container {
-    border: 1px solid rgb(30,30,30);
-}
-
 table {
 	background: rgba(0,0,0,0.8);
 	border-collapse: collapse;
+    border: 1px solid rgb(30,30,30);
     box-shadow: 0 0 1.0em rgba(0,0,0,0.5);
 	color: #fff;
     line-height: 1.2;
@@ -223,59 +215,16 @@ td {
 
 /* Home */
 .home-container {
-    display: table;
-    height: 100%;
     margin: 0 auto;
     max-width: 1000px;
+    padding: 2.0em 0;
     text-align: center;
     width: 800px;
 }
 
-.home-container-header,
-.home-container-body,
-.home-container-footer {
-    display: table-row;
-}
-
-.home-container-body {
-    height: 100%;
-}
-
-.home-container-footer {
-    height: 4.0em;
-}
-
-.home {
-    
-}
-
 /* Home: Character list */
-.characters-view {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
-.characters-header,
-.characters-body {
-    display: table-row;
-}
-
-.characters-body {
-    height: 100%;
-}
-
 .character-list {
-    /*margin-right: auto;
-    margin-left: auto;
-    position: absolute;
-    top: 7.0em;
-    right: 2.0em;
-    bottom: 2.0em;
-    left: 2.0em;
-    height: 200px;
-    max-width: 1000px;*/
-    height: 100%;
+    margin-top: 1.0em;
     width: 100%;
 }
 

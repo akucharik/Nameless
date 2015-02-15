@@ -52,8 +52,11 @@ define([
     
     var charactersView = new CharactersView({
         el: '#charactersView',
+        gameContainer: '#gameContainer',
+        listContainer: '#characterList',
         model: homeModel,
-        template: '#charactersTemplate'
+        template: '#charactersTemplate',
+        window: window
     });
     
     // TODO: remove exposed characters after development

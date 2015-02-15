@@ -5,15 +5,12 @@
 	<link type="text/css" media="screen" rel="stylesheet" href="css/game.css">
 </head>
 <body>
-	<div class="home-container">
-        <div class="home-container-header">
+	<div id="gameContainer">
+        <div class="home-container">
             <h1>Nameless</h1>
-        </div>
-        <div id="homeBody" class="home-container-body">
             <div id="mainMenuView" class="main-menu-view hidden"></div>
             <div id="charactersView" class="characters-view hidden"></div>
         </div>
-        <div class="home-container-footer"></div>
     </div>
         
     <script id="mainMenuTemplate" type="text/template">
@@ -33,18 +30,16 @@
             </ul>
         </div>
         <div class="characters-body">
-            <div class="scrollable-table-container">
-                <table id="characterList" class="scrollable-table character-list">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Str</th>
-                            <th>Int</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+            <table id="characterList" class="scrollable character-list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Str</th>
+                        <th>Int</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </script>
     

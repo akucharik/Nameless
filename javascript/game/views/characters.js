@@ -14,12 +14,36 @@ define([
 		
 		initialize: function (options) {
             this.options = options;
+            this.characterListView = null;
             this.template = _.template($(this.options.template).html());
+            this.$gameContainer = $(this.options.gameContainer);
+            this.$listContainer = null;
+            this.$tableBody = null;
+            this.$window = $(this.options.window);
             
-            this.listenTo(this.model, 'change:state', this.render);
-            $(window).on('resize', this.resizeTableScrollHeight);
+            this.listenTo(this.model, 'change:state', this.update);
+            this.resizeTableScrollHeight = this.resizeTableScrollHeight.bind(this);
+            this.$window.on('resize', this.resizeTableScrollHeight);
             this.render();
 		},
+        
+        events: {
+            'click #mainMenu': 'onMainMenuClick',
+            'click #newCharacter': 'onNewCharacterClick'
+        },
+        
+        onMainMenuClick: function () {
+            this.model.set('state', constants.home.state.MAIN_MENU);
+        },
+        
+        onNewCharacterClick: function () {
+            alert('Create new character');
+        },
+        
+        remove: function () {
+            this.$window.off('resize', this.resizeTableScrollHeight);
+            Backbone.View.prototype.remove.apply(this, arguments);
+        },
         
         render: function () {
             this.$el.html(this.template());
@@ -29,33 +53,27 @@ define([
                 tagName: 'tbody'
             });
             
-            this.$('#characterList').append(this.characterListView.el);
-            
-            if (this.model.get('state') === constants.home.state.CHARACTERS) { 
-                this.$el.show();
-            }
-            else {
-                this.$el.hide();
-            }
-            
-            this.resizeTableScrollHeight();
+            this.$listContainer = $(this.options.listContainer);
+            this.$listContainer.append(this.characterListView.el);
+            this.$tableBody = this.$(this.characterListView.tagName);
             
             return this;
         },
         
-        events: {
-            'click #mainMenu': 'onMainMenuClick',
-        },
-        
-        onMainMenuClick: function () {
-            this.model.set('state', constants.home.state.MAIN_MENU);
-        },
-        
         resizeTableScrollHeight: function () {
-            // must get after the template is rendered
-            this.$tableBody = this.$('tbody');
-            
-            this.$tableBody.height($(window).height() - this.$tableBody.offset().top - $('.home-container-footer').height());
+            if (this.$el.css('display') === 'block') {
+                this.$tableBody.height(this.$window.height() - this.$tableBody.offset().top - (this.$gameContainer.outerHeight() - this.$tableBody.offset().top - this.$tableBody.height()));
+            }
+        },
+        
+        update: function () {
+            if (this.model.get('state') === constants.home.state.CHARACTERS) { 
+                this.$el.show();
+                this.resizeTableScrollHeight();
+            }
+            else {
+                this.$el.hide();
+            }
         }
         
 	});

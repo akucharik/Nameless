@@ -44,10 +44,12 @@ define([
         
         continueGame: function () {
             //window.location.href = 'game.html';
+            alert('Continue game');
         },
         
         newGame: function () {
             //window.location.href = 'game.html';
+            alert('New game');
         },
         
         editCharacter: function () {
@@ -55,7 +57,7 @@ define([
         },
         
         newCharacter: function () {
-            this.model.set('state', constants.home.state.CHARACTERS);
+            alert('Create new character');
         }
         
 	});
