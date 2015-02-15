@@ -1,18 +1,22 @@
 define([
     'backbone',
-    'jquery',
     'constants',
+    'jquery',
+    // models
     'models/character',
     'models/home',
+    // views
     'views/home',
     'views/characters',
     'views/mainMenu'
 ], function(
     Backbone,
-    $,
     constants,
+    $,
+    // models
     CharacterModel,
     HomeModel,
+    // views
     HomeView,
     CharactersView,
     MainMenuView
@@ -58,6 +62,17 @@ define([
         template: '#charactersTemplate',
         window: window
     });
+
+    var game = new Phaser.Game(constants.canvas.WIDTH, constants.canvas.HEIGHT, Phaser.AUTO, 'game', { preload: preload, create: create });
+
+    function preload () {
+        game.load.image('logo', 'images/phaser.png');
+    }
+
+    function create () {
+        var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+        logo.anchor.setTo(0.5, 0.5);
+    }
     
     // TODO: remove exposed characters after development
     window.homeModel = homeModel;

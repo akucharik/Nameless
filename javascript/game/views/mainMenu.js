@@ -43,12 +43,12 @@ define([
         },
         
         continueGame: function () {
-            //window.location.href = 'game.html';
+            //this.model.set('state', constants.home.state.SAVED_GAMES);
             alert('Continue game');
         },
         
         newGame: function () {
-            //window.location.href = 'game.html';
+            //this.model.set('state', constants.home.state.GAME);
             alert('New game');
         },
         
@@ -57,6 +57,7 @@ define([
         },
         
         newCharacter: function () {
+            //this.model.set('state', constants.home.state.NEW_CHARACTER);
             alert('Create new character');
         }
         
