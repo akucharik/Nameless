@@ -50,10 +50,8 @@ h1 {
     margin-top: 0;
 }
 
-.canvas {
+.canvas > canvas {
      margin: 0 auto;
-     position: relative;
-     width: 720px;
 }
 
 .canvas-background {

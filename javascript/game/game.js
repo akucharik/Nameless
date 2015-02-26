@@ -7,6 +7,7 @@ define([
     'models/character',
     'models/home',
     // views
+    'views/game',
     'views/home',
     'views/characters',
     'views/mainMenu'
@@ -19,6 +20,7 @@ define([
     CharacterModel,
     HomeModel,
     // views
+    GameView,
     HomeView,
     CharactersView,
     MainMenuView
@@ -65,16 +67,33 @@ define([
         window: window
     });
 
-    var game = new Phaser.Game(constants.canvas.WIDTH, constants.canvas.HEIGHT, Phaser.AUTO, 'game', { preload: preload, create: create });
+    var gameView = new GameView({
+        el: '#gameView',
+        model: homeModel
+    });
+    
+    var game = new Phaser.Game(constants.canvas.WIDTH, constants.canvas.HEIGHT, Phaser.AUTO, 'gameView', { preload: preload, create: create });
 
     function preload () {
         game.load.image('logo', 'images/phaser.png');
+        game.load.tilemap('desert', 'tilemaps/tilemap.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('tiles', 'images/tmw_desert_spacing.png');
     }
 
+    var map;
+    var layer;
+    
     function create () {
-        var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-        logo.anchor.setTo(0.5, 0.5);
+        map = game.add.tilemap('desert');
+        map.addTilesetImage('Desert', 'tiles');
+        layer = map.createLayer('Ground');
+        layer.resizeWorld();
+        
+        //var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
+        //logo.anchor.setTo(0.5, 0.5);
     }
+    
+    //$('#game').show();
     
     // TODO: remove exposed characters after development
     window.homeModel = homeModel;

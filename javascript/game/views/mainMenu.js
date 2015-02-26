@@ -48,8 +48,8 @@ define([
         },
         
         newGame: function () {
-            //this.model.set('state', constants.home.state.GAME);
-            alert('New game');
+            this.model.set('state', constants.home.state.GAME);
+            //alert('New game');
         },
         
         editCharacter: function () {
