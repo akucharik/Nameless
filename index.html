@@ -10,20 +10,22 @@
             <h1>Nameless</h1>
             <div id="mainMenuView" class="main-menu-view hidden"></div>
             <div id="charactersView" class="characters-view hidden"></div>
-            <div id="gameView" class="canvas hidden">
-                <ul class="menu">
-                    <li><button id="quitGame">Quit</button></li>
-                </ul>
-            </div>
+            <div id="gameMenuView" class="game-menu-view hidden"></div>
         </div>
     </div>
-        
+    
     <script id="mainMenuTemplate" type="text/template">
         <ul class="menu main-menu">
             <li><button id="continueGame">Continue Game</button></li>
             <li><button id="newGame">New Game</button></li>
             <li><button id="editCharacter">Edit Character</button></li>
             <li><button id="newCharacter">New Character</button></li>
+        </ul>
+    </script>
+    
+    <script id="gameMenuTemplate" type="text/template">
+        <ul class="menu game-menu">
+            <li><button id="quit">Quit</button></li>
         </ul>
     </script>
     

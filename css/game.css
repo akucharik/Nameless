@@ -100,13 +100,22 @@ h1 {
 
 
 /* Game menu */
-.in-game-menu {
-    position: absolute;
-    right: 0.5em;
-    top: 8.0em;
+.game-menu {
+    background-color: rgba(0,0,0,0.3);
+    display: table;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 200px;
 }
 
-.in-game-menu > li > button {
+.game-menu > li:first-child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.game-menu > li > button {
     width: 7.0em
 }
 

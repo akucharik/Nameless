@@ -81,7 +81,7 @@ define(function() {
         home: {
             state: {
                 CHARACTERS: 1,
-                GAME: 2,
+                PLAY: 2,
                 MAIN_MENU: 3,
                 NEW_CHARACTER: 4,
                 SAVED_GAMES: 5

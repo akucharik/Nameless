@@ -10,7 +10,8 @@ define([
     'views/game',
     'views/home',
     'views/characters',
-    'views/mainMenu'
+    'views/mainMenu',
+    'views/gameMenu'
 ], function(
     Backbone,
     constants,
@@ -23,7 +24,8 @@ define([
     GameView,
     HomeView,
     CharactersView,
-    MainMenuView
+    MainMenuView,
+    GameMenuView
 ) {
     
     var homeModel = new HomeModel();
@@ -47,10 +49,28 @@ define([
         new CharacterModel({ name: 'Zhou Yu', strength: 76, intelligence: 98 }),
     ]);
     
-    //var homeView = new HomeView({
-    //    el: '#homeBody',
-    //    model: homeModel
-    //});
+    var homeController = {};
+    _.extend(homeController, Backbone.Events);
+    
+    homeController.newGame = function () {
+        var gameView = new GameView({
+            className: 'canvas',
+            id: 'gameView',
+            model: homeModel,
+            tagName: 'div'
+        });
+        $('.home-container').append(gameView.el);
+    };
+    
+    homeController.onStateChange = function (model) {
+        switch (model.get('state')) {
+            case constants.home.state.PLAY:
+                homeController.newGame();
+                break;
+        }
+    };
+    
+    homeController.listenTo(homeModel, 'change:state', homeController.onStateChange);
     
     var mainMenuView = new MainMenuView({
         el: '#mainMenuView',
@@ -66,36 +86,14 @@ define([
         template: '#charactersTemplate',
         window: window
     });
-
-    var gameView = new GameView({
-        el: '#gameView',
-        model: homeModel
+    
+    var gameMenuView = new GameMenuView({
+        el: '#gameMenuView',
+        model: homeModel,
+        template: '#gameMenuTemplate'
     });
     
-    var game = new Phaser.Game(constants.canvas.WIDTH, constants.canvas.HEIGHT, Phaser.AUTO, 'gameView', { preload: preload, create: create });
-
-    function preload () {
-        game.load.image('logo', 'images/phaser.png');
-        game.load.tilemap('desert', 'tilemaps/tilemap.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.image('tiles', 'images/tmw_desert_spacing.png');
-    }
-
-    var map;
-    var layer;
-    
-    function create () {
-        map = game.add.tilemap('desert');
-        map.addTilesetImage('Desert', 'tiles');
-        layer = map.createLayer('Ground');
-        layer.resizeWorld();
-        
-        //var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-        //logo.anchor.setTo(0.5, 0.5);
-    }
-    
-    //$('#game').show();
-    
-    // TODO: remove exposed characters after development
+    // TODO: remove exposed characters after development is complete
     window.homeModel = homeModel;
     //window.homeView = homeView;
         
