@@ -24,14 +24,20 @@
     </script>
     
     <script id="gameMenuTemplate" type="text/template">
-        <ul class="menu game-menu">
-            <li><button id="quit">Quit</button></li>
-        </ul>
+        <button id="gameMenuButton" class="game-menu-button">Menu</button>
+        <div id="gameMenu" class="hidden">
+            <div class="game-menu">
+                <ul class="game-menu-list menu">
+                    <li><button id="closeGameMenu">Return to Game</button></li>
+                    <li><button id="quitGame">Quit</button></li>
+                </ul>
+            </div>
+        </div>
     </script>
     
     <script id="charactersTemplate" type="text/template">
         <div class="characters-header">
-            <ul class="menu-horizontal">
+            <ul class="menu menu-horizontal">
                 <li><button id="mainMenu">Main Menu</button></li>
                 <li><button id="newCharacter">New Character</button></li>
             </ul>

@@ -38,12 +38,13 @@ body {
     background: rgb(50,50,50);
     color: rgb(255,255,255);
     font-family: 'ubuntu-mono', 'Volter', 'MiniSet2', 'GraphicPixel', 'Titillium Web', sans-serif;
-    font-size: 0.85em;
+    font-size: 1.0em;
     margin: 0;
 }
 
 button {
     cursor: pointer;
+    font-size: inherit;
 }
 
 h1 {
@@ -83,6 +84,10 @@ h1 {
 }
 
 .menu > li > button {
+    border: 0 none;
+    border-radius: 0.3em;
+    margin-top: 0.3em;
+    padding: 0.3em 1.5em;
     text-align: center;
 }
 
@@ -100,23 +105,29 @@ h1 {
 
 
 /* Game menu */
-.game-menu {
-    background-color: rgba(0,0,0,0.3);
-    display: table;
-    height: 100%;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 200px;
+.game-menu-button {
+    position: absolute;
+    right: 1.0em;
+    top: 1.0em;
 }
 
-.game-menu > li:first-child {
+.game-menu {
+    background-color: rgba(0,0,0,0.7);
+    display: table;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.game-menu-list {
     display: table-cell;
     vertical-align: middle;
 }
 
-.game-menu > li > button {
-    width: 7.0em
+.game-menu-list > li > button {
+    width: 11.0em
 }
 
 

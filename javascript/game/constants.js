@@ -80,11 +80,19 @@ define(function() {
         
         home: {
             state: {
-                CHARACTERS: 1,
+                MAIN_MENU: 0,
+                SAVED_GAMES: 1,
                 PLAY: 2,
-                MAIN_MENU: 3,
-                NEW_CHARACTER: 4,
-                SAVED_GAMES: 5
+                CHARACTERS: 3,
+                NEW_CHARACTER: 4
+            }
+        },
+        
+        play: {
+            state: {
+                DEAD: 0,
+                PLAY: 1,
+                MENU: 2
             }
         },
         

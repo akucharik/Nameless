@@ -12,6 +12,7 @@ define([
     
 	var HomeModel = Backbone.Model.extend({
 		defaults: {
+            playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
             savedCharacters: new CharacterCollection([], {
                 model: CharacterModel,

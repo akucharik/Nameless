@@ -89,6 +89,7 @@ define([
     
     var gameMenuView = new GameMenuView({
         el: '#gameMenuView',
+        elGameMenu: '#gameMenu',
         model: homeModel,
         template: '#gameMenuTemplate'
     });
