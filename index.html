@@ -6,11 +6,11 @@
 </head>
 <body>
 	<div id="gameContainer">
-        <div class="home-container">
+        <div id="homeContainer" class="home-container">
             <h1>Nameless</h1>
             <div id="mainMenuView" class="main-menu-view hidden"></div>
             <div id="charactersView" class="characters-view hidden"></div>
-            <div id="gameMenuView" class="game-menu-view hidden"></div>
+            <!--<div id="gameMenuView" class="game-menu-view hidden"></div>-->
         </div>
     </div>
     
@@ -28,7 +28,8 @@
         <div id="gameMenu" class="hidden">
             <div class="game-menu">
                 <ul class="game-menu-list menu">
-                    <li><button id="closeGameMenu">Return to Game</button></li>
+                    <li><button id="resumeGame">Resume</button></li>
+                    <li><button id="saveGame">Save</button></li>
                     <li><button id="quitGame">Quit</button></li>
                 </ul>
             </div>

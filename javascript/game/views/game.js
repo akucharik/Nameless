@@ -2,17 +2,35 @@ define([
 	'backbone',
     'constants',
     'jquery',
-    'phaser'
+    'phaser',
+    // views
+    'views/gameMenu'
 ], function(
     Backbone,
     constants,
     $,
-    Phaser
+    Phaser,
+    // views
+    GameMenuView
 ) {
 
     var GameView = Backbone.View.extend({
-        initialize: function () {
-            this.listenTo(this.model, 'change:state', this.onStateChange);
+        initialize: function (options) {
+            this.options = options;
+            this.elParent = this.options.elParent;
+            this.listenTo(this.model, 'change:state', this.onGameStateChange);
+            
+            this.model.set('playState', constants.play.state.PLAY);
+            
+            this.gameMenuView = new GameMenuView({
+                className: 'game-menu-view',
+                elGameMenu: '#gameMenu',
+                elParent: this.elParent,
+                id: 'gameMenuView',
+                model: this.model,
+                tagName: 'div',
+                template: '#gameMenuTemplate'
+            });
             
             this.game = new Phaser.Game(
                 constants.canvas.WIDTH, 
@@ -27,6 +45,8 @@ define([
             
             this.map = null;
             this.layer = null;
+            
+            this.render();
 		},
         
         preload: function () {
@@ -42,7 +62,7 @@ define([
             this.layer.resizeWorld();
         },
         
-        onStateChange: function () {
+        onGameStateChange: function () {
             if (this.model.get('state') !== constants.home.state.PLAY) { 
                 this.remove();
             }
@@ -53,6 +73,10 @@ define([
         remove: function () {
             this.game.destroy();
             Backbone.View.prototype.remove.call(this);
+        },
+        
+        render: function () {
+            this.$el.appendTo(this.elParent);
         }
         
     });

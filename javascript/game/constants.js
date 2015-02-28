@@ -81,10 +81,10 @@ define(function() {
         home: {
             state: {
                 MAIN_MENU: 0,
-                SAVED_GAMES: 1,
-                PLAY: 2,
-                CHARACTERS: 3,
-                NEW_CHARACTER: 4
+                CHARACTERS: 1,
+                EDIT_CHARACTER: 2,
+                GAMES: 3,
+                PLAY: 4
             }
         },
         

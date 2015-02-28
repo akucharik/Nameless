@@ -7,11 +7,9 @@ define([
     'models/character',
     'models/home',
     // views
-    'views/game',
-    'views/home',
     'views/characters',
-    'views/mainMenu',
-    'views/gameMenu'
+    'views/game',
+    'views/mainMenu'
 ], function(
     Backbone,
     constants,
@@ -21,11 +19,9 @@ define([
     CharacterModel,
     HomeModel,
     // views
-    GameView,
-    HomeView,
     CharactersView,
-    MainMenuView,
-    GameMenuView
+    GameView,
+    MainMenuView
 ) {
     
     var homeModel = new HomeModel();
@@ -54,12 +50,12 @@ define([
     
     homeController.newGame = function () {
         var gameView = new GameView({
+            elParent: '#homeContainer',
             className: 'canvas',
             id: 'gameView',
             model: homeModel,
             tagName: 'div'
         });
-        $('.home-container').append(gameView.el);
     };
     
     homeController.onStateChange = function (model) {
@@ -87,15 +83,7 @@ define([
         window: window
     });
     
-    var gameMenuView = new GameMenuView({
-        el: '#gameMenuView',
-        elGameMenu: '#gameMenu',
-        model: homeModel,
-        template: '#gameMenuTemplate'
-    });
-    
-    // TODO: remove exposed characters after development is complete
+    // TODO: remove exposed objects after development is complete
     window.homeModel = homeModel;
-    //window.homeView = homeView;
         
 });

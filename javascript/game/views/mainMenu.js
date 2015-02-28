@@ -43,7 +43,7 @@ define([
         },
         
         continueGame: function () {
-            //this.model.set('state', constants.home.state.SAVED_GAMES);
+            //this.model.set('state', constants.home.state.GAMES);
             alert('Continue game');
         },
         
@@ -56,7 +56,7 @@ define([
         },
         
         newCharacter: function () {
-            //this.model.set('state', constants.home.state.NEW_CHARACTER);
+            //this.model.set('state', constants.home.state.EDIT_CHARACTER);
             alert('Create new character');
         }
         
