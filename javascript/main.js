@@ -4,6 +4,10 @@ require([
     config
 ) {
     require([
-        'game'
-    ]);
+        'game/game'
+    ], function (
+        game
+        ) {
+           game.initialize(); 
+    });
 });

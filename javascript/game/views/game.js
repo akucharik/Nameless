@@ -1,15 +1,19 @@
 define([
-	'backbone',
-    'constants',
+    // libraries
+    'backbone',
     'jquery',
     'phaser',
+    // game
+    'game/constants',
     // views
     'views/gameMenu'
 ], function(
+    // libraries
     Backbone,
-    constants,
     $,
     Phaser,
+    // game
+    constants,
     // views
     GameMenuView
 ) {

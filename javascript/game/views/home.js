@@ -1,13 +1,19 @@
 define([
+    // libraries
 	'backbone',
     'jquery',
-    'constants',
+    // game
+    'game/constants',
+    // views
     'views/characters',
     'views/mainMenu'
 ], function(
+    // libraries
     Backbone,
     $,
+    // game
     constants,
+    // views
     CharactersView,
     MainMenuView
 ) {

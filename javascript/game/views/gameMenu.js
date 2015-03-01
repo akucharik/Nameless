@@ -3,13 +3,17 @@
 // @license     
 
 define([
-	'backbone',
-    'constants',
-    'jquery'
+	// libraries
+    'backbone',
+    'jquery',
+    // game
+    'game/constants'
 ], function (
+    // libraries
     Backbone,
-    constants,
-    $
+    $,
+    // game
+    constants
 ) {
     
     'use strict';

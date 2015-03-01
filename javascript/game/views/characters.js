@@ -1,12 +1,18 @@
 define([
-	'backbone',
+	// libraries
+    'backbone',
     'jquery',
-    'constants',
+    // game
+    'game/constants',
+    // views
     'views/characterList'
 ], function(
+    // libraries
     Backbone,
     $,
+    // game
     constants,
+    // views
     CharacterListView
 ) {
 

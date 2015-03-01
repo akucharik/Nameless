@@ -1,10 +1,14 @@
 define([
+    // libraries
 	'backbone',
     'jquery',
-    'constants'
+    // game
+    'game/constants'
 ], function(
+    // libraries
     Backbone,
     $,
+    // game
     constants
 ) {
 

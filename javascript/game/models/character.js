@@ -1,8 +1,12 @@
 define([
+    // libraries
 	'backbone',
-    'constants'
+    // game
+    'game/constants'
 ], function(
+    // libraries
     Backbone,
+    // game
     constants
 ) {
     

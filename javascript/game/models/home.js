@@ -1,12 +1,16 @@
 define([
+    // libraries
 	'backbone',
-    'constants',
-    'collections/character',
+    // game
+    'game/constants',
+    // models
     'models/character'
 ], function(
+    // libraries
     Backbone,
+    // game
     constants,
-    CharacterCollection,
+    // models
     CharacterModel
 ) {
     
@@ -14,13 +18,13 @@ define([
 		defaults: {
             playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
-            savedCharacters: new CharacterCollection([], {
+            savedCharacters: new Backbone.Collection([], {
                 model: CharacterModel,
                 comparator: function (item) { 
                     return item.get('name').toLowerCase()
                 }
             }),
-            savedGames: Backbone.Collection.extend({})
+            savedGames: new Backbone.Collection([], {})
 		}
 
 	});
