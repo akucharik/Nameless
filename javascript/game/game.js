@@ -30,12 +30,6 @@ define([
     
     var game = {};
     game.initialize = function () {
-    
-        var testView = ContainerView.extend({
-            initialize: function () {
-                console.log('new container view');
-            }
-        });
         
         var homeModel = new HomeModel();
 
@@ -58,47 +52,77 @@ define([
             new CharacterModel({ name: 'Zhou Yu', strength: 76, intelligence: 98 }),
         ]);
 
-        var homeController = {};
-        _.extend(homeController, Backbone.Events);
+//        var homeController = {};
+//        _.extend(homeController, Backbone.Events);
+//
+//        homeController.newGame = function () {
+//            var gameView = new GameView({
+//                elParent: '#homeContainer',
+//                className: 'canvas',
+//                id: 'gameView',
+//                model: homeModel,
+//                tagName: 'div'
+//            });
+//        };
+//
+//        homeController.onStateChange = function (model) {
+//            switch (model.get('state')) {
+//                case constants.home.state.PLAY:
+//                    homeController.newGame();
+//                    break;
+//            }
+//        };
+//
+//        homeController.listenTo(homeModel, 'change:state', homeController.onStateChange);
 
-        homeController.newGame = function () {
-            var gameView = new GameView({
-                elParent: '#homeContainer',
-                className: 'canvas',
-                id: 'gameView',
-                model: homeModel,
-                tagName: 'div'
-            });
-        };
-
-        homeController.onStateChange = function (model) {
-            switch (model.get('state')) {
-                case constants.home.state.PLAY:
-                    homeController.newGame();
-                    break;
+        var GameView = ContainerView.extend({
+            initialize: function () {
+                this.listenTo(this.model, 'change:state', this.render);
+                this.render();
+            },
+            
+            render: function () {
+                switch (this.model.get('state')) {
+                    case constants.home.state.CHARACTERS:
+                        this.open(new CharactersView({
+                            gameContainer: '#gameContainer',
+                            listContainer: '#characterList',
+                            model: this.model,
+                            template: '#charactersTemplate',
+                            window: window
+                        })).contentView.resizeTableScrollHeight();
+                        break;
+                        
+                    case constants.home.state.EDIT_CHARACTER:
+                        alert('Render edit character');
+                        break;
+                        
+                    case constants.home.state.GAMES:
+                        alert('Render games');
+                        break;
+                        
+                    case constants.home.state.MAIN_MENU:
+                        this.open(new MainMenuView({
+                            className: 'main-menu-view',
+                            model: this.model,
+                            template: '#mainMenuTemplate'
+                        }));
+                        break;
+                        
+                    case constants.home.state.PLAY:
+                        alert('Render play');
+                        break;
+                }
             }
-        };
-
-        homeController.listenTo(homeModel, 'change:state', homeController.onStateChange);
-
-        var mainMenuView = new MainMenuView({
-            el: '#mainMenuView',
-            model: homeModel,
-            template: '#mainMenuTemplate'
         });
-
-        var charactersView = new CharactersView({
-            el: '#charactersView',
-            gameContainer: '#gameContainer',
-            listContainer: '#characterList',
-            model: homeModel,
-            template: '#charactersTemplate',
-            window: window
+        
+        var gameView = new GameView({
+            el: '#homeContainer',
+            model: homeModel
         });
 
         // TODO: remove exposed objects after development is complete
         window.homeModel = homeModel;
-        
     }
     
     return game;

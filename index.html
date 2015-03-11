@@ -7,14 +7,18 @@
 <body>
 	<div id="gameContainer">
         <div id="homeContainer" class="home-container">
-            <h1>Nameless</h1>
+            <!--
             <div id="mainMenuView" class="main-menu-view hidden"></div>
-            <div id="charactersView" class="characters-view hidden"></div>
-            <!--<div id="gameMenuView" class="game-menu-view hidden"></div>-->
+            <div id="charactersView" class="characters-view hidden"></div>-->
         </div>
     </div>
     
+    <script id="gameTemplate" type="text/template">
+        <div id="homeContainer" class="home-container"></div>
+    </script>
+    
     <script id="mainMenuTemplate" type="text/template">
+        <h1>Nameless</h1>
         <ul class="menu main-menu">
             <li><button id="continueGame">Continue Game</button></li>
             <li><button id="newGame">New Game</button></li>

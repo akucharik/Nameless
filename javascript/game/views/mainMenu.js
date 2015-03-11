@@ -20,6 +20,7 @@ define([
             
             this.listenTo(this.model, 'change:state', this.render);
             this.render();
+            this.$el.fadeIn(1000);
 		},
         
         render: function () {
@@ -28,13 +29,6 @@ define([
             this.$editCharacter = this.$el.find('#editCharacter');
             this.model.get('savedGames').length > 0 ? this.$continueGame.show() : this.$continueGame.hide();
             this.model.get('savedCharacters').length > 0 ? this.$editCharacter.show() : this.$editCharacter.hide();
-            
-            if (this.model.get('state') === constants.home.state.MAIN_MENU) { 
-                this.$el.show();
-            }
-            else {
-                this.$el.hide();
-            }
             
             return this;
         },
@@ -47,8 +41,7 @@ define([
         },
         
         continueGame: function () {
-            //this.model.set('state', constants.home.state.GAMES);
-            alert('Continue game');
+            this.model.set('state', constants.home.state.GAMES);
         },
         
         newGame: function () {
@@ -60,8 +53,7 @@ define([
         },
         
         newCharacter: function () {
-            //this.model.set('state', constants.home.state.EDIT_CHARACTER);
-            alert('Create new character');
+            this.model.set('state', constants.home.state.EDIT_CHARACTER);
         }
         
 	});
