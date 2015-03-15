@@ -23,9 +23,11 @@ define([
             this.characterListView = null;
             this.template = _.template($(this.options.template).html());
             this.$gameContainer = $(this.options.gameContainer);
-            this.$listContainer = null;
-            this.$tableBody = null;
             this.$window = $(this.options.window);
+            
+            // process template and references that only exist after template is processed
+            this.$el.html(this.template());
+            this.$tableBody = this.$(this.options.tableBody);
             
             this.resizeTableScrollHeight = this.resizeTableScrollHeight.bind(this);
             this.$window.on('resize', this.resizeTableScrollHeight);
@@ -46,26 +48,22 @@ define([
         
         remove: function () {
             this.$window.off('resize', this.resizeTableScrollHeight);
-            Backbone.View.prototype.remove.apply(this, arguments);
+            Backbone.View.prototype.remove.call(this);
         },
         
         render: function () {
-            this.$el.html(this.template());
-            
             this.characterListView = new CharacterListView({
                 collection: this.model.get('savedCharacters'),
-                tagName: 'tbody'
+                el: this.$tableBody
             });
-            
-            this.$listContainer = this.$(this.options.listContainer);
-            this.$listContainer.append(this.characterListView.el);
-            this.$tableBody = this.$(this.characterListView.tagName);
             
             return this;
         },
         
         resizeTableScrollHeight: function () {
             this.$tableBody.height(this.$window.height() - this.$tableBody.offset().top - (this.$gameContainer.outerHeight() - this.$tableBody.offset().top - this.$tableBody.height()));
+            
+            return this;
         }
         
 	});

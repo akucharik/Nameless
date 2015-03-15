@@ -85,9 +85,11 @@ define([
                 switch (this.model.get('state')) {
                     case constants.home.state.CHARACTERS:
                         this.open(new CharactersView({
+                            className: 'characters-view',
                             gameContainer: '#gameContainer',
                             listContainer: '#characterList',
                             model: this.model,
+                            tableBody: '#characterListItems',
                             template: '#charactersTemplate',
                             window: window
                         })).contentView.resizeTableScrollHeight();

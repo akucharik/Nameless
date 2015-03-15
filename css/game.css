@@ -241,6 +241,12 @@ td {
 }
 
 /* Home: Character list */
+.characters-view {
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-timing-function: ease-out;
+}
+
 .character-list {
     margin-top: 1.0em;
     width: 100%;
@@ -297,4 +303,36 @@ td {
 
 .log-item-default {
     color: yellow;
+}
+
+/* Main Menu */
+.main-menu-view {
+    -webkit-animation-duration: 0.75s;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-name: fade-in;
+    animation-timing-function: ease-out;
+}
+
+
+/* Animations */
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
 }

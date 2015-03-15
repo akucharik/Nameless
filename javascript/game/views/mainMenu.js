@@ -17,10 +17,6 @@ define([
 		initialize: function (options) {
             this.options = options;
             this.template = _.template($(this.options.template).html());
-            
-            this.listenTo(this.model, 'change:state', this.render);
-            this.render();
-            this.$el.fadeIn(1000);
 		},
         
         render: function () {
