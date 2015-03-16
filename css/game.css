@@ -72,6 +72,7 @@ h1 {
 
 
 /* Menu */
+.unbulleted-list,
 .menu,
 .menu-horizontal {
     list-style-type: none;
@@ -245,6 +246,9 @@ td {
     -webkit-animation-duration: 0.5s;
     -webkit-animation-name: fade-in;
     -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.5s;
+    animation-name: fade-in;
+    animation-timing-function: ease-out;
 }
 
 .character-list {
@@ -260,7 +264,9 @@ td {
 .character-list th:nth-child(2),
 .character-list td:nth-child(2),
 .character-list th:nth-child(3),
-.character-list td:nth-child(3) {
+.character-list td:nth-child(3),
+.character-list th:nth-child(4),
+.character-list td:nth-child(4) {
     text-align: right;
     min-width: 3em;
 }
@@ -315,6 +321,20 @@ td {
     animation-timing-function: ease-out;
 }
 
+/* Edit Character */
+.character-type-menu > li > button {
+    font-size: 140%;
+}
+
+.character-type-view,
+.edit-character-view {
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: fade-in;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.5s;
+    animation-name: fade-in;
+    animation-timing-function: ease-out;
+}
 
 /* Animations */
 @-webkit-keyframes fade-in {

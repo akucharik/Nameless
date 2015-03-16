@@ -13,12 +13,16 @@ define([
 	var CharacterModel = Backbone.Model.extend({
 		defaults: {
             // Basic
-            name: 'Unknown',
+            name: '',
             
             // Attributes
-            attributePoints: 50,
-            intelligence: 50,
-            strength: 50,
+            availableAttributePoints: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS,
+            str: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            strMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
+            int: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            intMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
+            chr: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            chrMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
             
             // Health
             health: 6890,

@@ -10,6 +10,8 @@ define([
     'models/home',
     // views
     'views/characters',
+    'views/characterType',
+    'views/editCharacter',
     'views/game',
     'views/mainMenu'
 ], function(
@@ -24,6 +26,8 @@ define([
     HomeModel,
     // views
     CharactersView,
+    CharacterTypeView,
+    EditCharacterView,
     GameView,
     MainMenuView
 ) {
@@ -95,8 +99,20 @@ define([
                         })).contentView.resizeTableScrollHeight();
                         break;
                         
+                    case constants.home.state.CHARACTER_TYPE:
+                        this.open(new CharacterTypeView({
+                            className: 'character-type-view',
+                            model: this.model,
+                            template: '#characterTypeTemplate'
+                        }));
+                        break;
+                        
                     case constants.home.state.EDIT_CHARACTER:
-                        alert('Render edit character');
+                        this.open(new EditCharacterView({
+                            className: 'edit-character-view',
+                            model: this.model,
+                            template: '#editCharacterTemplate'
+                        }));
                         break;
                         
                     case constants.home.state.GAMES:

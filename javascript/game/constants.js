@@ -10,7 +10,39 @@ define(function() {
         },
         
         character: {
-            ATTRIBUTE_MAX: 100
+            attribute: {
+                strength: { 
+                    NAME: 'Strength',
+                    DISPLAY_NAME: 'STR'
+                },
+                intelligence: { 
+                    NAME: 'Intelligence',
+                    DISPLAY_NAME: 'INT'
+                },
+                charisma: { 
+                    NAME: 'Charisma',
+                    DISPLAY_NAME: 'CHR'
+                }
+            },
+            type: {
+                strength: {
+                    NAME: 'Strength'
+                },
+                intelligence: {
+                    NAME: 'Intelligence'
+                },
+                charisma: {
+                    NAME: 'Charisma'
+                },
+                average: {
+                    NAME: 'Average'
+                },
+            },
+            DEFAULT_ATTRIBUTE_VALUE: 5,
+            DEFAULT_ATTRIBUTE_MAX: 8,
+            ATTRIBUTE_MAX: 10,
+            ATTRIBUTE_MIN: 1,
+            DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 6
         },
         
         entity: {
@@ -82,9 +114,10 @@ define(function() {
             state: {
                 MAIN_MENU: 0,
                 CHARACTERS: 1,
-                EDIT_CHARACTER: 2,
-                GAMES: 3,
-                PLAY: 4
+                CHARACTER_TYPE: 2,
+                EDIT_CHARACTER: 3,
+                GAMES: 4,
+                PLAY: 5
             }
         },
         

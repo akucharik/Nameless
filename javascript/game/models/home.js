@@ -18,6 +18,7 @@ define([
 		defaults: {
             playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
+            newCharacter: null,
             savedCharacters: new Backbone.Collection([], {
                 model: CharacterModel,
                 comparator: function (item) { 

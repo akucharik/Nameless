@@ -49,7 +49,7 @@ define([
         },
         
         newCharacter: function () {
-            this.model.set('state', constants.home.state.EDIT_CHARACTER);
+            this.model.set('state', constants.home.state.CHARACTER_TYPE);
         }
         
 	});
