@@ -39,7 +39,7 @@ define([
         
         selectCharacterType: function (event) {
             switch (event.target.dataset.characterType) {
-                case constants.character.type.strength.NAME:
+                case calculatedConstants.character.type.strength.associatedAttribute.NAME:
                     this.character.set('str', calculatedConstants.character.type.strength.DEFAULT_STR);
                     this.character.set('int', calculatedConstants.character.type.strength.DEFAULT_INT);
                     this.character.set('chr', calculatedConstants.character.type.strength.DEFAULT_CHR);
@@ -48,7 +48,7 @@ define([
                     this.character.set('chrMax', calculatedConstants.character.type.strength.CHR_MAX);
                     this.character.set('availableAttributePoints', calculatedConstants.character.type.strength.AVAILABLE_ATTRIBUTE_POINTS);
                     break;
-                case constants.character.type.intelligence.NAME:
+                case calculatedConstants.character.type.intelligence.associatedAttribute.NAME:
                     this.character.set('str', calculatedConstants.character.type.intelligence.DEFAULT_STR);
                     this.character.set('int', calculatedConstants.character.type.intelligence.DEFAULT_INT);
                     this.character.set('chr', calculatedConstants.character.type.intelligence.DEFAULT_CHR);
@@ -57,7 +57,7 @@ define([
                     this.character.set('chrMax', calculatedConstants.character.type.intelligence.CHR_MAX);
                     this.character.set('availableAttributePoints', calculatedConstants.character.type.intelligence.AVAILABLE_ATTRIBUTE_POINTS);
                     break;
-                case constants.character.type.charisma.NAME:
+                case calculatedConstants.character.type.charisma.associatedAttribute.NAME:
                     this.character.set('str', calculatedConstants.character.type.charisma.DEFAULT_STR);
                     this.character.set('int', calculatedConstants.character.type.charisma.DEFAULT_INT);
                     this.character.set('chr', calculatedConstants.character.type.charisma.DEFAULT_CHR);

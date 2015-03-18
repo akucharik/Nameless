@@ -8,6 +8,7 @@ define([
     // models
     'models/character',
     'models/home',
+    'models/skill',
     // views
     'views/characters',
     'views/characterType',
@@ -24,6 +25,7 @@ define([
     // models
     CharacterModel,
     HomeModel,
+    SkillModel,
     // views
     CharactersView,
     CharacterTypeView,
@@ -37,6 +39,21 @@ define([
         
         var homeModel = new HomeModel();
 
+        homeModel.get('skills').add([
+            new SkillModel({ name: 'Scare', associatedAttribute: constants.character.attribute.strength, rank: constants.character.skill.rank.level1}),
+            new SkillModel({ name: 'Charge', associatedAttribute: constants.character.attribute.strength, rank: constants.character.skill.rank.level2}),
+            new SkillModel({ name: 'Coordinate', associatedAttribute: constants.character.attribute.strength, rank: constants.character.skill.rank.level3}),
+            new SkillModel({ name: 'Overpower', associatedAttribute: constants.character.attribute.strength, rank: constants.character.skill.rank.level4}),
+            new SkillModel({ name: 'Spy', associatedAttribute: constants.character.attribute.intelligence, rank: constants.character.skill.rank.level1}),
+            new SkillModel({ name: 'Confuse', associatedAttribute: constants.character.attribute.intelligence, rank: constants.character.skill.rank.level2}),
+            new SkillModel({ name: 'Medic', associatedAttribute: constants.character.attribute.intelligence, rank: constants.character.skill.rank.level3}),
+            new SkillModel({ name: 'Predict', associatedAttribute: constants.character.attribute.intelligence, rank: constants.character.skill.rank.level4}),
+            new SkillModel({ name: 'Rally', associatedAttribute: constants.character.attribute.charisma, rank: constants.character.skill.rank.level1}),
+            new SkillModel({ name: 'Recruit', associatedAttribute: constants.character.attribute.charisma, rank: constants.character.skill.rank.level2}),
+            new SkillModel({ name: 'Command', associatedAttribute: constants.character.attribute.charisma, rank: constants.character.skill.rank.level3}),
+            new SkillModel({ name: 'Turn', associatedAttribute: constants.character.attribute.charisma, rank: constants.character.skill.rank.level4})
+        ]);
+        
         homeModel.get('savedCharacters').add([
             new CharacterModel({ name: 'Aaron', strength: 81, intelligence: 92 }),
             new CharacterModel({ name: 'Chris', strength: 80, intelligence: 91 }),

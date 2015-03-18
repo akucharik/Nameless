@@ -4,16 +4,22 @@ define([
     'jquery',
     // game
     'game/constants',
+    'game/calculatedConstants',
     // models
-    'models/character'
+    'models/character',
+    // views
+    'views/skill'
 ], function(
     // libraries
     Backbone,
     $,
     // game
     constants,
+    calculatedConstants,
     // models
-    CharacterModel
+    CharacterModel,
+    // views
+    SkillView
 ) {
 
 	var EditCharacterView = Backbone.View.extend({
@@ -23,6 +29,8 @@ define([
             this.template = _.template($(this.options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
             
+            this.character = this.model.get('newCharacter');
+            
             this.$name = this.$('#name');
             this.$strIncrease = this.$('#strIncrease');
             this.$strDecrease = this.$('#strDecrease');
@@ -31,7 +39,35 @@ define([
             this.$chrIncrease = this.$('#chrIncrease');
             this.$chrDecrease = this.$('#chrDecrease');
             
-            this.character = this.model.get('newCharacter');
+            this.strSkillViews = [];
+            this.intSkillViews = [];
+            this.chrSkillViews = [];
+            
+            // create skill views
+            this.model.get('skills').each(function (skill) {
+                var skillView = new SkillView({
+                    characterModel: this.character,
+                    model: skill,
+                    tagName: 'li',
+                    template: '#skillTemplate'
+                });
+                
+                switch (skill.get('associatedAttribute').NAME) {
+                    case constants.character.attribute.strength.NAME:
+                        this.strSkillViews.push(skillView);
+                        this.$('#strSkills').append(skillView.el);
+                        break;
+                    case constants.character.attribute.intelligence.NAME:
+                        this.intSkillViews.push(skillView);
+                        this.$('#intSkills').append(skillView.el);
+                        break;
+                    case constants.character.attribute.charisma.NAME:
+                        this.chrSkillViews.push(skillView);
+                        this.$('#chrSkills').append(skillView.el);
+                        break;
+                }
+            }, this);
+            
             this.listenTo(this.character, 'change', this.render);
 		},
         

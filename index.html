@@ -104,26 +104,42 @@
 
         <input id="name" type="text" placeholder="Name" />
         <p>Attribute Points: <span id="availableAttributePoints"></span></p>
-        <ul class="unbulleted-list">
+        <ul class="unbulleted-list attributes">
             <li>
                 <label for="str">STR</label>
                 <span id="str"></span>/<span id="strMax"></span>
                 <button id="strIncrease" data-attribute="str" data-attribute-change="+">+</button>
                 <button id="strDecrease" data-attribute="str" data-attribute-change="-">-</button>
+                <ul id="strSkills" class="unbulleted-list skills"></ul>
             </li>
             <li>
                 <label>INT</label>
                 <span id="int"></span>/<span id="intMax"></span>
                 <button id="intIncrease" data-attribute="int" data-attribute-change="+">+</button>
                 <button id="intDecrease" data-attribute="int" data-attribute-change="-">-</button>
+                <ul id="intSkills" class="unbulleted-list skills"></ul>
             </li>
             <li>
                 <label>CHR</label>
                 <span id="chr"></span>/<span id="chrMax"></span>
                 <button id="chrIncrease" data-attribute="chr" data-attribute-change="+">+</button>
                 <button id="chrDecrease" data-attribute="chr" data-attribute-change="-">-</button>
+                <ul id="chrSkills" class="unbulleted-list skills"></ul>
             </li>
         </ul>
+        
+        <!--<h3>Combat</h3>
+        <ul class="menu skills">
+            <li data-combat-id="0">Foot</li>
+            <li data-combat-id="1">Horse</li>
+            <li data-combat-id="2">Bow</li>
+        </ul>
+        
+        <p></p>-->
+    </script>
+    
+    <script id="skillTemplate" type="text/template">
+        <%= name %>
     </script>
     
 	<script src="javascript/libraries/require.min.js" data-main="javascript/main.js"></script>

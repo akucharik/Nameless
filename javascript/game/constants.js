@@ -13,30 +13,36 @@ define(function() {
             attribute: {
                 strength: { 
                     NAME: 'Strength',
-                    DISPLAY_NAME: 'STR'
+                    DISPLAY_NAME: 'STR',
+                    PROPERTY_NAME: 'str'
                 },
                 intelligence: { 
                     NAME: 'Intelligence',
-                    DISPLAY_NAME: 'INT'
+                    DISPLAY_NAME: 'INT',
+                    PROPERTY_NAME: 'int'
                 },
                 charisma: { 
                     NAME: 'Charisma',
-                    DISPLAY_NAME: 'CHR'
+                    DISPLAY_NAME: 'CHR',
+                    PROPERTY_NAME: 'chr'
                 }
             },
-            type: {
-                strength: {
-                    NAME: 'Strength'
-                },
-                intelligence: {
-                    NAME: 'Intelligence'
-                },
-                charisma: {
-                    NAME: 'Charisma'
-                },
-                average: {
-                    NAME: 'Average'
-                },
+            skill: {
+                rank: {
+                    level1: {
+                        requiredAttributePoints: 5    
+                    },
+                    level2: {
+                        requiredAttributePoints: 7
+                    },
+                    level3: {
+                        requiredAttributePoints: 9
+                    },
+                    level4: {
+                        requiredAttributePoints: 10
+                    }
+                }
+                
             },
             DEFAULT_ATTRIBUTE_VALUE: 5,
             DEFAULT_ATTRIBUTE_MAX: 8,
