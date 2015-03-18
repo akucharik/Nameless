@@ -12,15 +12,11 @@ define([
     
 	var SkillModel = Backbone.Model.extend({
 		defaults: {
-            associatedAttribute: '',
+            associatedAttribute: null,
             enabled: false,
-            rank: constants.character.skill.rank.level1,
-            name: ''
-		},
-        
-        initialize: function () {
-            
-        }
+            name: '',
+            rank: constants.character.skill.rank.level1
+		}
 
 	});
 	
