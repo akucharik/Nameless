@@ -81,11 +81,11 @@ define([
             this.$('#chrMax').html(this.character.get('chrMax'));
             
             this.character.get('str') === this.character.get('strMax') || this.character.get('availableAttributePoints') === 0 ? this.$strIncrease.prop('disabled', true) : this.$strIncrease.prop('disabled', false);
-            this.character.get('str') === constants.character.ATTRIBUTE_MIN ? this.$strDecrease.prop('disabled', true) : this.$strDecrease.prop('disabled', false);
+            this.character.get('str') === constants.character.ATTRIBUTE_MIN_VALUE ? this.$strDecrease.prop('disabled', true) : this.$strDecrease.prop('disabled', false);
             this.character.get('int') === this.character.get('intMax') || this.character.get('availableAttributePoints') === 0 ? this.$intIncrease.prop('disabled', true) : this.$intIncrease.prop('disabled', false);
-            this.character.get('int') === constants.character.ATTRIBUTE_MIN ? this.$intDecrease.prop('disabled', true) : this.$intDecrease.prop('disabled', false);
+            this.character.get('int') === constants.character.ATTRIBUTE_MIN_VALUE ? this.$intDecrease.prop('disabled', true) : this.$intDecrease.prop('disabled', false);
             this.character.get('chr') === this.character.get('chrMax') || this.character.get('availableAttributePoints') === 0 ? this.$chrIncrease.prop('disabled', true) : this.$chrIncrease.prop('disabled', false);
-            this.character.get('chr') === constants.character.ATTRIBUTE_MIN ? this.$chrDecrease.prop('disabled', true) : this.$chrDecrease.prop('disabled', false);
+            this.character.get('chr') === constants.character.ATTRIBUTE_MIN_VALUE ? this.$chrDecrease.prop('disabled', true) : this.$chrDecrease.prop('disabled', false);
             
             return this;
         },
@@ -100,14 +100,14 @@ define([
             var targetData = event.target.dataset;
             
             if (targetData.attributeChange === '+') {
-                if (this.character.get(targetData.attribute) < constants.character.ATTRIBUTE_MAX && 
+                if (this.character.get(targetData.attribute) < constants.character.ATTRIBUTE_MAX_VALUE && 
                     this.character.get('availableAttributePoints') > 0) {
                     this.character.set(targetData.attribute, this.character.get(targetData.attribute) + 1)
                     this.character.set('availableAttributePoints', this.character.get('availableAttributePoints') - 1);
                 }
             }
             else {
-                if (this.character.get(targetData.attribute) > constants.character.ATTRIBUTE_MIN) {
+                if (this.character.get(targetData.attribute) > constants.character.ATTRIBUTE_MIN_VALUE) {
                     this.character.set(targetData.attribute, this.character.get(targetData.attribute) - 1)
                     this.character.set('availableAttributePoints', this.character.get('availableAttributePoints') + 1);
                 }

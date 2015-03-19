@@ -44,10 +44,10 @@ define(function() {
                 }
                 
             },
+            ATTRIBUTE_MAX_VALUE: 10,
+            ATTRIBUTE_MIN_VALUE: 1,
+            DEFAULT_ATTRIBUTE_MAX_VALUE: 8,
             DEFAULT_ATTRIBUTE_VALUE: 5,
-            DEFAULT_ATTRIBUTE_MAX: 8,
-            ATTRIBUTE_MAX: 10,
-            ATTRIBUTE_MIN: 1,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7
         },
         

@@ -16,9 +16,9 @@ define([
                     DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
                     DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
                     DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    STR_MAX: constants.character.ATTRIBUTE_MAX,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX - 1,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX - 1,
+                    STR_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
+                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
                     AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
                 },
                 intelligence: {
@@ -27,9 +27,9 @@ define([
                     DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
                     DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
                     DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX -1,
-                    INT_MAX: constants.character.ATTRIBUTE_MAX,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX -1,
+                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1,
+                    INT_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
+                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1,
                     AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
                 },
                 charisma: {
@@ -38,9 +38,9 @@ define([
                     DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
                     DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
                     DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX - 1,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX - 1,
-                    CHR_MAX: constants.character.ATTRIBUTE_MAX,
+                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+                    CHR_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
                     AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
                 },
                 average: {
@@ -49,9 +49,9 @@ define([
                     DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE,
                     DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE,
                     DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX,
+                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
+                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
+                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
                     AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS
                 }
             }

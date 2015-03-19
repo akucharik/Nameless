@@ -18,11 +18,11 @@ define([
             // Attributes
             availableAttributePoints: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS,
             str: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-            strMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
+            strMax: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
             int: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-            intMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
+            intMax: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
             chr: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-            chrMax: constants.character.DEFAULT_ATTRIBUTE_MAX,
+            chrMax: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
             
             // Health
             health: 6890,
