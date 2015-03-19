@@ -10,15 +10,18 @@ define([
     constants
 ) {
     
-	var SkillModel = Backbone.Model.extend({
+	var CharacterSkillModel = Backbone.Model.extend({
 		defaults: {
             associatedAttribute: null,
+            cost: 0,
+            description: '',
             enabled: false,
+            level: constants.character.skill.level.level1,
             name: '',
-            rank: constants.character.skill.rank.level1
+            value: 0
 		}
 
 	});
 	
-	return SkillModel;
+	return CharacterSkillModel;
 });

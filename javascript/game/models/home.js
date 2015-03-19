@@ -5,7 +5,7 @@ define([
     'game/constants',
     // models
     'models/character',
-    'models/skill'
+    'models/characterSkill'
 ], function(
     // libraries
     Backbone,
@@ -13,7 +13,7 @@ define([
     constants,
     // models
     CharacterModel,
-    SkillModel
+    CharacterSkillModel
 ) {
     
 	var HomeModel = Backbone.Model.extend({
@@ -28,8 +28,8 @@ define([
                 }
             }),
             savedGames: new Backbone.Collection([], {}),
-            skills: new Backbone.Collection([], {
-                model: SkillModel
+            characterSkills: new Backbone.Collection([], {
+                model: CharacterSkillModel
             })
 		}
 

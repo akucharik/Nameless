@@ -8,7 +8,7 @@ define([
     // models
     'models/character',
     // views
-    'views/skill'
+    'views/characterSkill'
 ], function(
     // libraries
     Backbone,
@@ -19,7 +19,7 @@ define([
     // models
     CharacterModel,
     // views
-    SkillView
+    CharacterSkillView
 ) {
 
 	var EditCharacterView = Backbone.View.extend({
@@ -44,12 +44,12 @@ define([
             this.chrSkillViews = [];
             
             // create skill views
-            this.model.get('skills').each(function (skill) {
-                var skillView = new SkillView({
+            this.model.get('characterSkills').each(function (skill) {
+                var skillView = new CharacterSkillView({
                     characterModel: this.character,
                     model: skill,
                     tagName: 'li',
-                    template: '#skillTemplate'
+                    template: '#characterSkillTemplate'
                 });
                 
                 switch (skill.get('associatedAttribute').NAME) {

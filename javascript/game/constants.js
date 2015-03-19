@@ -28,18 +28,18 @@ define(function() {
                 }
             },
             skill: {
-                rank: {
+                level: {
                     level1: {
-                        requiredAttributePoints: 5    
+                        REQUIRED_ATTRIBUTE_POINTS: 5    
                     },
                     level2: {
-                        requiredAttributePoints: 7
+                        REQUIRED_ATTRIBUTE_POINTS: 7
                     },
                     level3: {
-                        requiredAttributePoints: 9
+                        REQUIRED_ATTRIBUTE_POINTS: 9
                     },
                     level4: {
-                        requiredAttributePoints: 10
+                        REQUIRED_ATTRIBUTE_POINTS: 10
                     }
                 }
                 
@@ -48,7 +48,7 @@ define(function() {
             DEFAULT_ATTRIBUTE_MAX: 8,
             ATTRIBUTE_MAX: 10,
             ATTRIBUTE_MIN: 1,
-            DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 6
+            DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7
         },
         
         entity: {

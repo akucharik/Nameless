@@ -12,7 +12,7 @@ define([
     constants
 ) {
 
-	var SkillView = Backbone.View.extend({
+	var CharacterSkillView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.options = options;
@@ -32,12 +32,12 @@ define([
         },
         
         update: function () {
-            this.model.set('enabled', this.characterModel.get(this.model.get('associatedAttribute').PROPERTY_NAME) >= this.model.get('rank').requiredAttributePoints ? true : false);
+            this.model.set('enabled', this.characterModel.get(this.model.get('associatedAttribute').PROPERTY_NAME) >= this.model.get('level').REQUIRED_ATTRIBUTE_POINTS ? true : false);
             
             return this;
         }
         
 	});
 	
-	return SkillView;
+	return CharacterSkillView;
 });
