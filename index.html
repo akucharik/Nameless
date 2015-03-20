@@ -65,9 +65,9 @@
     
     <script id="characterListItemTemplate" type="text/template">
         <td><%= name %></td>
-        <td><%= str %></td>
-        <td><%= int %></td>
-        <td><%= chr %></td>
+        <td><%= attributes.models[0].attributes.value %></td>
+        <td><%= attributes.models[1].attributes.value %></td>
+        <td><%= attributes.models[2].attributes.value %></td>
         <td></td>
     </script>
     
@@ -78,19 +78,19 @@
 
         <ul class="menu character-type-menu">
             <li>
-                <button data-character-type="Strength">Soldier</button>
+                <button data-character-type="strength">Soldier</button>
                 <p>Highly skilled in the art of combat. A force to be reckoned with on the battlefield.</p>
             </li>
             <li>
-                <button data-character-type="Intelligence">Genius</button>
+                <button data-character-type="intelligence">Genius</button>
                 <p>Intellect is unmatched among peers. Strategies are highly successful and effective.</p>
             </li>
             <li>
-                <button data-character-type="Charisma">Mesmer</button>
+                <button data-character-type="charisma">Mesmer</button>
                 <p>A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.</p>
             </li>
             <li>
-                <button data-character-type="Average">Average</button>
+                <button data-character-type="average">Average</button>
                 <p>Well-rounded and adept at all skills, but lacks a truly outstanding strength.</p>
             </li>
         </ul>
@@ -104,29 +104,7 @@
 
         <input id="name" type="text" placeholder="Name" />
         <p>Attribute Points: <span id="availableAttributePoints"></span></p>
-        <ul class="unbulleted-list attributes">
-            <li>
-                <label for="str">STR</label>
-                <span id="str"></span>/<span id="strMax"></span>
-                <button id="strIncrease" data-attribute="str" data-attribute-change="+">+</button>
-                <button id="strDecrease" data-attribute="str" data-attribute-change="-">-</button>
-                <ul id="strSkills" class="unbulleted-list skills"></ul>
-            </li>
-            <li>
-                <label>INT</label>
-                <span id="int"></span>/<span id="intMax"></span>
-                <button id="intIncrease" data-attribute="int" data-attribute-change="+">+</button>
-                <button id="intDecrease" data-attribute="int" data-attribute-change="-">-</button>
-                <ul id="intSkills" class="unbulleted-list skills"></ul>
-            </li>
-            <li>
-                <label>CHR</label>
-                <span id="chr"></span>/<span id="chrMax"></span>
-                <button id="chrIncrease" data-attribute="chr" data-attribute-change="+">+</button>
-                <button id="chrDecrease" data-attribute="chr" data-attribute-change="-">-</button>
-                <ul id="chrSkills" class="unbulleted-list skills"></ul>
-            </li>
-        </ul>
+        <ul id="attributes" class="unbulleted-list attributes"></ul>
         
         <!--<h3>Combat</h3>
         <ul class="menu skills">
@@ -136,6 +114,14 @@
         </ul>
         
         <p></p>-->
+    </script>
+    
+    <script id="editCharacterAttributeTemplate" type="text/template">
+        <span><%= displayName %></span>
+        <span class="attribute-value"><%= value %></span>/<span><%= maxValue %></span>
+        <button data-attribute-change="+">+</button>
+        <button data-attribute-change="-">-</button>
+        <ul class="unbulleted-list skills"></ul>
     </script>
     
     <script id="characterSkillTemplate" type="text/template">

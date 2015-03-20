@@ -16,23 +16,22 @@ define([
 		
 		initialize: function (options) {
             this.options = options;
-            this.characterModel = this.options.characterModel;
             this.template = _.template($(this.options.template).html());
+            this.$el.html(this.template(this.model.toJSON()));
             
-            this.listenTo(this.characterModel, 'change', this.render);
+            this.listenTo(this.model.get('associatedAttribute'), 'change', this.render);
             this.render();
 		},
         
         render: function () {
             this.update();
             this.model.get('enabled') ? this.$el.addClass('selected') : this.$el.removeClass('selected');
-            this.$el.html(this.template(this.model.toJSON()));
             
             return this;
         },
         
         update: function () {
-            this.model.set('enabled', this.characterModel.get(this.model.get('associatedAttribute').PROPERTY_NAME) >= this.model.get('level').REQUIRED_ATTRIBUTE_POINTS ? true : false);
+            this.model.set('enabled', this.model.get('associatedAttribute').get('value') >= this.model.get('requiredAttributePoints') ? true : false);
             
             return this;
         }

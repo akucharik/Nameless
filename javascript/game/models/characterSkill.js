@@ -16,8 +16,8 @@ define([
             cost: 0,
             description: '',
             enabled: false,
-            level: constants.character.skill.level.level1,
             name: '',
+            requiredAttributePoint: 0,
             value: 0
 		}
 

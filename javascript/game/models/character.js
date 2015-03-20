@@ -2,12 +2,18 @@ define([
     // libraries
 	'backbone',
     // game
-    'game/constants'
+    'game/constants',
+    // models
+    'models/characterAttribute',
+    'models/characterSkill'
 ], function(
     // libraries
     Backbone,
     // game
-    constants
+    constants,
+    // models
+    CharacterAttributeModel,
+    CharacterSkillModel
 ) {
     
 	var CharacterModel = Backbone.Model.extend({
@@ -59,7 +65,38 @@ define([
 		},
         
         initialize: function () {
+            // initialize attributes
+            this.set('attributes', new Backbone.Collection([], {
+                model: CharacterAttributeModel
+            }));
             
+            for (var prop in constants.character.attribute) {
+                var attribute = constants.character.attribute[prop];
+                
+                this.get('attributes').add(new CharacterAttributeModel({
+                    name: attribute.NAME,
+                    displayName: attribute.DISPLAY_NAME,
+                    description: attribute.DESCRIPTION,
+                    id: attribute.ID
+                }));
+            }
+            
+            // initialize skills
+            this.set('skills', new Backbone.Collection([], {
+                model: CharacterSkillModel
+            }));
+            
+            for (var prop in constants.character.skill) {
+                var skill = constants.character.skill[prop];
+                
+                this.get('skills').add(new CharacterSkillModel({
+                    name: skill.NAME,
+                    associatedAttribute: this.get('attributes').findWhere({ id: skill.ASSOCIATED_ATTRIBUTE }),
+                    cost: skill.COST,
+                    description: skill.DESCRIPTION,
+                    requiredAttributePoints: skill.REQUIRED_ATTRIBUTE_POINTS
+                }));
+            }
         }
 
 	});

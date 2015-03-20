@@ -14,6 +14,7 @@ define([
 		defaults: {
             description: '',
             displayName: '',
+            id: '',
             maxValue: constants.character.ATTRIBUTE_MAX_VALUE,
             minValue: constants.character.ATTRIBUTE_MIN_VALUE,
             name: '',

@@ -10,45 +10,130 @@ define(function() {
         },
         
         character: {
-            attribute: {
-                strength: { 
-                    NAME: 'Strength',
-                    DISPLAY_NAME: 'STR',
-                    PROPERTY_NAME: 'str'
-                },
-                intelligence: { 
-                    NAME: 'Intelligence',
-                    DISPLAY_NAME: 'INT',
-                    PROPERTY_NAME: 'int'
-                },
-                charisma: { 
-                    NAME: 'Charisma',
-                    DISPLAY_NAME: 'CHR',
-                    PROPERTY_NAME: 'chr'
-                }
-            },
-            skill: {
-                level: {
-                    level1: {
-                        REQUIRED_ATTRIBUTE_POINTS: 5    
-                    },
-                    level2: {
-                        REQUIRED_ATTRIBUTE_POINTS: 7
-                    },
-                    level3: {
-                        REQUIRED_ATTRIBUTE_POINTS: 9
-                    },
-                    level4: {
-                        REQUIRED_ATTRIBUTE_POINTS: 10
-                    }
-                }
-                
-            },
             ATTRIBUTE_MAX_VALUE: 10,
             ATTRIBUTE_MIN_VALUE: 1,
             DEFAULT_ATTRIBUTE_MAX_VALUE: 8,
             DEFAULT_ATTRIBUTE_VALUE: 5,
-            DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7
+            DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
+            attribute: {
+                strength: { 
+                    NAME: 'Strength',
+                    DISPLAY_NAME: 'STR',
+                    DESCRIPTION: 'Strength helps in battle.',
+                    ID: 'strength'
+                },
+                intelligence: { 
+                    NAME: 'Intelligence',
+                    DISPLAY_NAME: 'INT',
+                    DESCRIPTION: 'Intelligence helps execute ideas.',
+                    ID: 'intelligence'
+                },
+                charisma: { 
+                    NAME: 'Charisma',
+                    DISPLAY_NAME: 'CHR',
+                    DESCRIPTION: 'Charisma helps influence people.',
+                    ID: 'charisma'
+                }
+            },
+            skill: {
+                scare: {
+                    NAME: 'Scare',
+                    ASSOCIATED_ATTRIBUTE: 'strength',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'scare',
+                    REQUIRED_ATTRIBUTE_POINTS: 5
+                },
+                charge: {
+                    NAME: 'Charge',
+                    ASSOCIATED_ATTRIBUTE: 'strength',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'charge',
+                    REQUIRED_ATTRIBUTE_POINTS: 7
+                },
+                coordinate: {
+                    NAME: 'Coordinate',
+                    ASSOCIATED_ATTRIBUTE: 'strength',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'coordinate',
+                    REQUIRED_ATTRIBUTE_POINTS: 9
+                },
+                overpower: {
+                    NAME: 'Overpower',
+                    ASSOCIATED_ATTRIBUTE: 'strength',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'overpower',
+                    REQUIRED_ATTRIBUTE_POINTS: 10
+                },
+                spy: {
+                    NAME: 'Spy',
+                    ASSOCIATED_ATTRIBUTE: 'intelligence',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'spy',
+                    REQUIRED_ATTRIBUTE_POINTS: 5
+                },
+                confuse: {
+                    NAME: 'Confuse',
+                    ASSOCIATED_ATTRIBUTE: 'intelligence',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'confuse',
+                    REQUIRED_ATTRIBUTE_POINTS: 7
+                },
+                medic: {
+                    NAME: 'Medic',
+                    ASSOCIATED_ATTRIBUTE: 'intelligence',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'medic',
+                    REQUIRED_ATTRIBUTE_POINTS: 9
+                },
+                predict: {
+                    NAME: 'Predict',
+                    ASSOCIATED_ATTRIBUTE: 'intelligence',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'predict',
+                    REQUIRED_ATTRIBUTE_POINTS: 10
+                },
+                rally: {
+                    NAME: 'Rally',
+                    ASSOCIATED_ATTRIBUTE: 'charisma',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'rally',
+                    REQUIRED_ATTRIBUTE_POINTS: 5
+                },
+                recruit: {
+                    NAME: 'Recruit',
+                    ASSOCIATED_ATTRIBUTE: 'charisma',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'recruit',
+                    REQUIRED_ATTRIBUTE_POINTS: 7
+                },
+                command: {
+                    NAME: 'Command',
+                    ASSOCIATED_ATTRIBUTE: 'charisma',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'command',
+                    REQUIRED_ATTRIBUTE_POINTS: 9
+                },
+                turn: {
+                    NAME: 'Turn',
+                    ASSOCIATED_ATTRIBUTE: 'charisma',
+                    COST: 0,
+                    DESCRIPTION: '',
+                    ID: 'turn',
+                    REQUIRED_ATTRIBUTE_POINTS: 10
+                }
+                
+            }
         },
         
         entity: {

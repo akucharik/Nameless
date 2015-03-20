@@ -11,48 +11,80 @@ define([
         character: {
             type: {
                 strength: {
-                    associatedAttribute: constants.character.attribute.strength,
                     NAME: 'Soldier',
-                    DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
-                    DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    STR_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+                    ID: 'soldier',
+                    attribute: {
+                        strength: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+                            DEFAULT_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE
+                        },
+                        intelligence: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1
+                        },
+                        charisma: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1
+                        }
+                    }
                 },
                 intelligence: {
-                    associatedAttribute: constants.character.attribute.intelligence,
                     NAME: 'Genius',
-                    DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
-                    DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1,
-                    INT_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1,
-                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+                    ID: 'genius',
+                    attribute: {
+                        strength: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1
+                        },
+                        intelligence: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+                            DEFAULT_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE
+                        },
+                        charisma: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1
+                        }
+                    }
                 },
                 charisma: {
-                    associatedAttribute: constants.character.attribute.charisma,
                     NAME: 'Mesmer',
-                    DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-                    DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                    CHR_MAX: constants.character.ATTRIBUTE_MAX_VALUE,
-                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+                    ID: 'mesmer',
+                    attribute: {
+                        strength: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE -1
+                        },
+                        intelligence: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1
+                        },
+                        charisma: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+                            DEFAULT_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE
+                        }
+                    }
                 },
                 average: {
-                    associatedAttribute: null,
                     NAME: 'Average',
-                    DEFAULT_STR: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-                    DEFAULT_INT: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-                    DEFAULT_CHR: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-                    STR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                    INT_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                    CHR_MAX: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS
+                    AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS,
+                    ID: 'average',
+                    attribute: {
+                        strength: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE
+                        },
+                        intelligence: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE
+                        },
+                        charisma: { 
+                            DEFAULT_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+                            DEFAULT_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE
+                        }
+                    }
                 }
             }
         }
