@@ -11,7 +11,7 @@ define([
     'models/home',
     // views
     'views/characters',
-    'views/characterType',
+    'views/editCharacterType',
     'views/editCharacter',
     'views/game',
     'views/mainMenu'
@@ -28,7 +28,7 @@ define([
     HomeModel,
     // views
     CharactersView,
-    CharacterTypeView,
+    EditCharacterTypeView,
     EditCharacterView,
     GameView,
     MainMenuView
@@ -102,10 +102,10 @@ define([
                         break;
                         
                     case constants.home.state.CHARACTER_TYPE:
-                        this.open(new CharacterTypeView({
+                        this.open(new EditCharacterTypeView({
                             className: 'character-type-view',
                             model: this.model,
-                            template: '#characterTypeTemplate'
+                            template: '#editCharacterTypeTemplate'
                         }));
                         break;
                         

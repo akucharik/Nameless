@@ -16,7 +16,7 @@ define([
     CharacterModel
 ) {
 
-	var CharacterTypeView = Backbone.View.extend({
+	var EditCharacterTypeView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.options = options;
@@ -83,5 +83,5 @@ define([
         
 	});
 	
-	return CharacterTypeView;
+	return EditCharacterTypeView;
 });
