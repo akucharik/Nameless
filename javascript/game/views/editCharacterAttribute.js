@@ -5,7 +5,7 @@ define([
     // game
     'game/constants',
     // views
-    'views/characterSkill'
+    'views/editCharacterSkill'
 ], function(
     // libraries
     Backbone,
@@ -13,7 +13,7 @@ define([
     // game
     constants,
     // views
-    CharacterSkillView
+    EditCharacterSkillView
 ) {
 
 	var EditCharacterAttributeView = Backbone.View.extend({
@@ -31,10 +31,10 @@ define([
             
             // create skill views
             this.character.get('skills').where({ associatedAttributeId: this.model.get('id') }).forEach(function (skill) {
-                var skillView = new CharacterSkillView({
+                var skillView = new EditCharacterSkillView({
                     model: skill,
                     tagName: 'li',
-                    template: '#characterSkillTemplate'
+                    template: '#editCharacterSkillTemplate'
                 });
 
                 this.$skills.append(skillView.render().el);

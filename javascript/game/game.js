@@ -7,7 +7,6 @@ define([
     'game/constants',
     // models
     'models/character',
-    'models/characterSkill',
     'models/home',
     // views
     'views/characters',
@@ -24,7 +23,6 @@ define([
     constants,
     // models
     CharacterModel,
-    CharacterSkillModel,
     HomeModel,
     // views
     CharactersView,

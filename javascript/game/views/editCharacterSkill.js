@@ -12,7 +12,7 @@ define([
     constants
 ) {
 
-	var CharacterSkillView = Backbone.View.extend({
+	var EditCharacterSkillView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.options = options;
@@ -30,5 +30,5 @@ define([
         
 	});
 	
-	return CharacterSkillView;
+	return EditCharacterSkillView;
 });

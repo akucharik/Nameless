@@ -4,16 +4,14 @@ define([
     // game
     'game/constants',
     // models
-    'models/character',
-    'models/characterSkill'
+    'models/character'
 ], function(
     // libraries
     Backbone,
     // game
     constants,
     // models
-    CharacterModel,
-    CharacterSkillModel
+    CharacterModel
 ) {
     
 	var HomeModel = Backbone.Model.extend({
@@ -27,10 +25,7 @@ define([
                     return item.get('name').toLowerCase()
                 }
             }),
-            savedGames: new Backbone.Collection([], {}),
-            characterSkills: new Backbone.Collection([], {
-                model: CharacterSkillModel
-            })
+            savedGames: new Backbone.Collection([], {})
 		}
 
 	});
