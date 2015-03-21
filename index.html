@@ -22,7 +22,7 @@
         <ul class="menu main-menu">
             <li><button id="continueGame">Continue Game</button></li>
             <li><button id="newGame">New Game</button></li>
-            <li><button id="editCharacter">Edit Character</button></li>
+            <li><button id="characters">Characters</button></li>
             <li><button id="newCharacter">New Character</button></li>
         </ul>
     </script>
@@ -65,33 +65,34 @@
     
     <script id="characterListItemTemplate" type="text/template">
         <td><%= name %></td>
-        <td><%= attributes.models[0].attributes.value %></td>
-        <td><%= attributes.models[1].attributes.value %></td>
-        <td><%= attributes.models[2].attributes.value %></td>
+        <% attributes.each(function (attribute) {
+            print('<td>' + attribute.get('value') + '</td>')
+        }); %>
         <td></td>
     </script>
     
     <script id="characterTypeTemplate" type="text/template">
         <ul class="menu menu-horizontal">
-            <li><button id="cancel">Cancel</button></li>
+            <li><button id="mainMenu">Main Menu</button></li>
+            <li><button id="characters">Characters</button></li>
         </ul>
 
         <ul class="menu character-type-menu">
             <li>
-                <button data-character-type="strength">Soldier</button>
+                <button data-character-type="0">Average</button>
+                <p>Well-rounded and adept at all skills, but lacks a truly outstanding strength.</p>
+            </li>
+            <li>
+                <button data-character-type="1">Soldier</button>
                 <p>Highly skilled in the art of combat. A force to be reckoned with on the battlefield.</p>
             </li>
             <li>
-                <button data-character-type="intelligence">Genius</button>
+                <button data-character-type="2">Genius</button>
                 <p>Intellect is unmatched among peers. Strategies are highly successful and effective.</p>
             </li>
             <li>
-                <button data-character-type="charisma">Mesmer</button>
+                <button data-character-type="3">Mesmer</button>
                 <p>A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.</p>
-            </li>
-            <li>
-                <button data-character-type="average">Average</button>
-                <p>Well-rounded and adept at all skills, but lacks a truly outstanding strength.</p>
             </li>
         </ul>
     </script>
@@ -102,7 +103,7 @@
             <li><button id="back">Back</button></li>
         </ul>
 
-        <input id="name" type="text" placeholder="Name" />
+        <input id="name" class="edit-character-view-name" type="text" placeholder="Name" />
         <p>Attribute Points: <span id="availableAttributePoints"></span></p>
         <ul id="attributes" class="unbulleted-list attributes"></ul>
         
@@ -125,7 +126,7 @@
     </script>
     
     <script id="characterSkillTemplate" type="text/template">
-        <%= name %>
+        <span><%= name %></span>
     </script>
     
 	<script src="javascript/libraries/require.min.js" data-main="javascript/main.js"></script>

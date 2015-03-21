@@ -16,123 +16,33 @@ define(function() {
             DEFAULT_ATTRIBUTE_VALUE: 5,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
             attribute: {
-                strength: { 
-                    NAME: 'Strength',
-                    DISPLAY_NAME: 'STR',
-                    DESCRIPTION: 'Strength helps in battle.',
-                    ID: 'strength'
-                },
-                intelligence: { 
-                    NAME: 'Intelligence',
-                    DISPLAY_NAME: 'INT',
-                    DESCRIPTION: 'Intelligence helps execute ideas.',
-                    ID: 'intelligence'
-                },
-                charisma: { 
-                    NAME: 'Charisma',
-                    DISPLAY_NAME: 'CHR',
-                    DESCRIPTION: 'Charisma helps influence people.',
-                    ID: 'charisma'
-                }
+                STRENGTH: 0,
+                INTELLIGENCE: 1,
+                CHARISMA: 2,
             },
             skill: {
-                scare: {
-                    NAME: 'Scare',
-                    ASSOCIATED_ATTRIBUTE: 'strength',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'scare',
+                level1: {
+                    COST: 10,
                     REQUIRED_ATTRIBUTE_POINTS: 5
                 },
-                charge: {
-                    NAME: 'Charge',
-                    ASSOCIATED_ATTRIBUTE: 'strength',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'charge',
+                level2: {
+                    COST: 20,
                     REQUIRED_ATTRIBUTE_POINTS: 7
                 },
-                coordinate: {
-                    NAME: 'Coordinate',
-                    ASSOCIATED_ATTRIBUTE: 'strength',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'coordinate',
+                level3: {
+                    COST: 30,
                     REQUIRED_ATTRIBUTE_POINTS: 9
                 },
-                overpower: {
-                    NAME: 'Overpower',
-                    ASSOCIATED_ATTRIBUTE: 'strength',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'overpower',
-                    REQUIRED_ATTRIBUTE_POINTS: 10
-                },
-                spy: {
-                    NAME: 'Spy',
-                    ASSOCIATED_ATTRIBUTE: 'intelligence',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'spy',
-                    REQUIRED_ATTRIBUTE_POINTS: 5
-                },
-                confuse: {
-                    NAME: 'Confuse',
-                    ASSOCIATED_ATTRIBUTE: 'intelligence',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'confuse',
-                    REQUIRED_ATTRIBUTE_POINTS: 7
-                },
-                medic: {
-                    NAME: 'Medic',
-                    ASSOCIATED_ATTRIBUTE: 'intelligence',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'medic',
-                    REQUIRED_ATTRIBUTE_POINTS: 9
-                },
-                predict: {
-                    NAME: 'Predict',
-                    ASSOCIATED_ATTRIBUTE: 'intelligence',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'predict',
-                    REQUIRED_ATTRIBUTE_POINTS: 10
-                },
-                rally: {
-                    NAME: 'Rally',
-                    ASSOCIATED_ATTRIBUTE: 'charisma',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'rally',
-                    REQUIRED_ATTRIBUTE_POINTS: 5
-                },
-                recruit: {
-                    NAME: 'Recruit',
-                    ASSOCIATED_ATTRIBUTE: 'charisma',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'recruit',
-                    REQUIRED_ATTRIBUTE_POINTS: 7
-                },
-                command: {
-                    NAME: 'Command',
-                    ASSOCIATED_ATTRIBUTE: 'charisma',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'command',
-                    REQUIRED_ATTRIBUTE_POINTS: 9
-                },
-                turn: {
-                    NAME: 'Turn',
-                    ASSOCIATED_ATTRIBUTE: 'charisma',
-                    COST: 0,
-                    DESCRIPTION: '',
-                    ID: 'turn',
+                level4: {
+                    COST: 40,
                     REQUIRED_ATTRIBUTE_POINTS: 10
                 }
-                
+            },
+            type: {
+                AVERAGE: 0,
+                STRENGTH: 1,
+                INTELLIGENCE: 2,
+                CHARISMA: 3
             }
         },
         

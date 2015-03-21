@@ -322,6 +322,10 @@ td {
 }
 
 /* Edit Character */
+.character-type-menu {
+    margin-top: 1.0em;
+}
+
 .character-type-menu > li > button {
     font-size: 140%;
 }
@@ -336,9 +340,19 @@ td {
     animation-timing-function: ease-out;
 }
 
+.edit-character-view-name {
+    font-size: 140%;
+    margin-top: 1.0em;
+}
+
+.attributes {
+    display: table;
+    margin: 0 auto;
+}
+
 .attributes > li {
-    float: left;
-    margin: 0 10px;
+    display: table-cell;
+    padding: 0 10px;
     width: 10em;
 }
 

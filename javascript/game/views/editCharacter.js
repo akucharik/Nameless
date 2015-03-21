@@ -4,24 +4,20 @@ define([
     'jquery',
     // game
     'game/constants',
-    'game/calculatedConstants',
     // models
     'models/character',
     // views
-    'views/editCharacterAttribute',
-    'views/characterSkill'
+    'views/editCharacterAttribute'
 ], function(
     // libraries
     Backbone,
     $,
     // game
     constants,
-    calculatedConstants,
     // models
     CharacterModel,
     // views
-    EditCharacterAttributeView,
-    CharacterSkillView
+    EditCharacterAttributeView
 ) {
 
 	var EditCharacterView = Backbone.View.extend({
@@ -34,10 +30,8 @@ define([
             this.character = this.model.get('newCharacter');
             
             this.$name = this.$('#name');
-            
-            this.strSkillViews = [];
-            this.intSkillViews = [];
-            this.chrSkillViews = [];
+            this.$availableAttributePoints = this.$('#availableAttributePoints');
+            this.$attributes = this.$('#attributes');
             
             // create attribute views
             this.character.get('attributes').each(function (attribute) {
@@ -47,39 +41,14 @@ define([
                     tagName: 'li',
                     template: '#editCharacterAttributeTemplate'
                 });
-                this.$('#attributes').append(attributeView.el);
+                this.$attributes.append(attributeView.render().el);
             }, this);
             
-            // create skill views
-            this.model.get('characterSkills').each(function (skill) {
-                var skillView = new CharacterSkillView({
-                    characterModel: this.character,
-                    model: skill,
-                    tagName: 'li',
-                    template: '#characterSkillTemplate'
-                });
-                
-                switch (skill.get('associatedAttribute').NAME) {
-                    case constants.character.attribute.strength.NAME:
-                        this.strSkillViews.push(skillView);
-                        this.$('#strSkills').append(skillView.el);
-                        break;
-                    case constants.character.attribute.intelligence.NAME:
-                        this.intSkillViews.push(skillView);
-                        this.$('#intSkills').append(skillView.el);
-                        break;
-                    case constants.character.attribute.charisma.NAME:
-                        this.chrSkillViews.push(skillView);
-                        this.$('#chrSkills').append(skillView.el);
-                        break;
-                }
-            }, this);
-            
-            this.listenTo(this.character, 'change', this.render);
+            this.listenTo(this.character, 'change:availableAttributePoints', this.render);
 		},
         
         render: function () {
-            this.$('#availableAttributePoints').html(this.character.get('availableAttributePoints'));
+            this.$availableAttributePoints.html(this.character.get('availableAttributePoints'));
             
             return this;
         },
@@ -96,7 +65,7 @@ define([
         save: function () {
             this.character.set('name', this.$name.val());
             this.model.get('savedCharacters').add(this.character);
-            this.model.set('state', constants.home.state.MAIN_MENU);
+            this.model.set('state', constants.home.state.CHARACTERS);
         }
         
 	});

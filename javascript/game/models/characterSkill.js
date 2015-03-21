@@ -13,13 +13,23 @@ define([
 	var CharacterSkillModel = Backbone.Model.extend({
 		defaults: {
             associatedAttribute: null,
+            associatedAttributeName: '',
             cost: 0,
             description: '',
             enabled: false,
             name: '',
-            requiredAttributePoint: 0,
+            requiredAttributePoints: 0,
             value: 0
-		}
+		},
+        
+        initialize: function () {
+            this.update();
+            this.listenTo(this.get('associatedAttribute'), 'change:value', this.update);
+        },
+        
+        update: function () {
+            this.set('enabled', this.get('associatedAttribute').get('value') >= this.get('requiredAttributePoints') ? true : false);
+        }
 
 	});
 	

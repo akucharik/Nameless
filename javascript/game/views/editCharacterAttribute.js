@@ -30,20 +30,17 @@ define([
             this.$skills = this.$('.skills');
             
             // create skill views
-            this.character.get('skills').each(function (skill) {
-                if (skill.get('associatedAttribute').get('id') === this.model.get('id')) {
-                    var skillView = new CharacterSkillView({
-                        model: skill,
-                        tagName: 'li',
-                        template: '#characterSkillTemplate'
-                    });
+            this.character.get('skills').where({ associatedAttributeId: this.model.get('id') }).forEach(function (skill) {
+                var skillView = new CharacterSkillView({
+                    model: skill,
+                    tagName: 'li',
+                    template: '#characterSkillTemplate'
+                });
 
-                    this.$skills.append(skillView.el);
-                }
+                this.$skills.append(skillView.render().el);
             }, this);
             
-            this.listenTo(this.model, 'change', this.render);
-            this.render();
+            this.listenTo(this.character, 'change:availableAttributePoints', this.render);
 		},
         
         events: {

@@ -32,7 +32,7 @@ define([
         events: {
             'click #continueGame': 'continueGame',
             'click #newGame': 'newGame',
-            'click #editCharacter': 'editCharacter',
+            'click #characters': 'onCharactersClick',
             'click #newCharacter': 'newCharacter'
         },
         
@@ -44,7 +44,7 @@ define([
             this.model.set('state', constants.home.state.PLAY);
         },
         
-        editCharacter: function () {
+        onCharactersClick: function () {
             this.model.set('state', constants.home.state.CHARACTERS);
         },
         
