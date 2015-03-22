@@ -34,12 +34,23 @@
 }
 
 /* Basic */
+::-moz-selection {
+  background: transparent;
+}
+
+::selection {
+  background: transparent;
+}
+
 body {
     background: rgb(50,50,50);
     color: rgb(255,255,255);
-    font-family: 'ubuntu-mono', 'Volter', 'MiniSet2', 'GraphicPixel', 'Titillium Web', sans-serif;
     font-size: 1.0em;
     margin: 0;
+}
+
+body, button {
+    font-family: 'ubuntu-mono', 'Volter', 'MiniSet2', 'GraphicPixel', 'Titillium Web', sans-serif;
 }
 
 button {
