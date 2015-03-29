@@ -48,6 +48,9 @@ define([
             var characterAttributes = this.character.get('attributes');
             
             switch (parseInt(event.target.dataset.characterType)) {
+                case constants.character.type.AVERAGE:
+                    this.character.set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS);
+                    break;
                 case constants.character.type.STRENGTH:
                     characterAttributes.findWhere({ name: 'Strength' }).set('maxValue', constants.character.ATTRIBUTE_MAX_VALUE);
                     characterAttributes.findWhere({ name: 'Strength' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE + 2);

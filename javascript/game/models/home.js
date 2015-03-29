@@ -3,6 +3,8 @@ define([
 	'backbone',
     // game
     'game/constants',
+    // collections
+    'collections/character',
     // models
     'models/character'
 ], function(
@@ -10,6 +12,8 @@ define([
     Backbone,
     // game
     constants,
+    // collections
+    CharacterCollection,
     // models
     CharacterModel
 ) {
@@ -19,12 +23,7 @@ define([
             playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
             newCharacter: null,
-            savedCharacters: new Backbone.Collection([], {
-                model: CharacterModel,
-                comparator: function (item) { 
-                    return item.get('name').toLowerCase()
-                }
-            }),
+            savedCharacters: new CharacterCollection([]),
             savedGames: new Backbone.Collection([], {})
 		}
 

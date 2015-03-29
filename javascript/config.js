@@ -4,10 +4,12 @@ requirejs.config({
         // libraries
         backbone: 'backbone-min', // v1.1.2
         containerview: 'backbone.containerview.min',
+        localStorage: 'backbone.localStorage-min', // v1.1.16
         jquery: 'jquery.min', // v2.1.1
         phaser: 'phaser.min', // v2.2.2
         underscore: 'underscore-min', // v1.8.1
         // game
+        collections: '../game/collections',
         game: '../game',
         models: '../game/models',
         views: '../game/views'

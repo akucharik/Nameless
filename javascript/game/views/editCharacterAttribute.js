@@ -30,7 +30,7 @@ define([
             this.$skills = this.$('.skills');
             
             // create skill views
-            this.character.get('skills').where({ associatedAttributeId: this.model.get('id') }).forEach(function (skill) {
+            this.character.get('skills').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (skill) {
                 var skillView = new EditCharacterSkillView({
                     model: skill,
                     tagName: 'li',
