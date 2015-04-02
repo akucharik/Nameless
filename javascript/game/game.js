@@ -5,6 +5,8 @@ define([
     'jquery',
     //game
     'game/constants',
+    // controllers
+    'controllers/savedCharacters',
     // models
     'models/character',
     'models/home',
@@ -21,6 +23,8 @@ define([
     $,
     // game
     constants,
+    // controllers
+    SavedCharactersController,
     // models
     CharacterModel,
     HomeModel,
@@ -36,6 +40,9 @@ define([
     game.initialize = function () {
         
         var homeModel = new HomeModel();
+        homeModel.set('savedCharactersController', new SavedCharactersController({
+            collection: homeModel.get('savedCharacters')
+        }));
         
         // initialize starting game data
         if (!localStorage.Characters) {
@@ -59,21 +66,13 @@ define([
 //                new CharacterModel({ name: 'Zhou Yu', strength: 7, intelligence: 9, charisma: 8 })
             ]);
             
-            //console.log(homeModel.get('savedCharacters'));
-            //console.log('attributes: ', homeModel.get('savedCharacters').at(0).get('attributes'));
-            //console.log('Character before save: ', homeModel.get('savedCharacters').at(0));
-            homeModel.get('savedCharacters').save();
-            //homeModel.get('savedCharacters').sync('create', homeModel.get('savedCharacters'));
-            //console.log('Character after save: ', homeModel.get('savedCharacters').at(0));
-            
         }
         else {
-            //console.log('load characters');
             console.log('about to fetch');
             homeModel.get('savedCharacters').fetch();
             console.log('Characters after load: ', homeModel.get('savedCharacters'));
+            console.log(localStorage);
         }
-        console.log(localStorage);
         
         
 

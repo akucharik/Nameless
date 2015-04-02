@@ -33,15 +33,6 @@ define([
                 requiredAttributePoints: skill.REQUIRED_ATTRIBUTE_POINTS
             });
         }
-        
-//        initialize: function () {
-//            this.update();
-//            this.listenTo(this.get('associatedAttribute'), 'change:value', this.update);
-//        },
-//        
-//        update: function () {
-//            this.set('enabled', this.get('associatedAttribute').get('value') >= this.get('requiredAttributePoints') ? true : false);
-//        }
 
 	});
 	

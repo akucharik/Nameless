@@ -11,6 +11,7 @@ requirejs.config({
         underscore: 'underscore-min', // v1.8.1
         // game
         collections: '../game/collections',
+        controllers: '../game/controllers',
         game: '../game',
         models: '../game/models',
         views: '../game/views'

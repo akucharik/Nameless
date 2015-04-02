@@ -9,14 +9,13 @@ define([
 	var CharacterController = Controller.extend({
 		
 		initialize: function () {
-            this.listenTo(this.model, 'change:attributes', this.updateSkills);
+            this.listenTo(this.model.get('attributes'), 'change:value', this.updateSkills);
 		},
         
-        updateSkills: function () {
-            // for each attribute that was changed:
-            // - get all skills related to that attribute
-            // - update if they are enabled
-            //this.set('enabled', this.get('associatedAttribute').get('value') >= this.get('requiredAttributePoints') ? true : false);
+        updateSkills: function (attribute) {
+            this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(function (skill) {
+                skill.set('enabled', this.model.get('attributes').findWhere({ key: skill.get('associatedAttributeKey') }).get('value') >= skill.get('requiredAttributePoints') ? true : false);
+            }, this);
         }
         
 	});

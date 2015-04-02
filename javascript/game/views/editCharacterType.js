@@ -4,6 +4,8 @@ define([
     'jquery',
     // game
     'game/constants',
+    // controllers
+    'controllers/character',
     // models
     'models/character'
 ], function(
@@ -12,6 +14,8 @@ define([
     $,
     // game
     constants,
+    // controllers
+    CharacterController,
     // models
     CharacterModel
 ) {
@@ -19,11 +23,13 @@ define([
 	var EditCharacterTypeView = Backbone.View.extend({
 		
 		initialize: function (options) {
-            this.options = options;
-            this.template = _.template($(this.options.template).html());
+            this.template = _.template($(options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
             
-            this.character = new CharacterModel();
+            this.model.set('newCharacter', new CharacterModel());
+            this.model.set('newCharacterController', new CharacterController({
+                model: this.model.get('newCharacter')
+            }));
 		},
         
         cancel: function () {
@@ -45,11 +51,11 @@ define([
         },
         
         selectCharacterType: function (event) {
-            var characterAttributes = this.character.get('attributes');
+            var characterAttributes = this.model.get('newCharacter').get('attributes');
             
             switch (parseInt(event.target.dataset.characterType)) {
                 case constants.character.type.AVERAGE:
-                    this.character.set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS);
+                    this.model.get('newCharacter').set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS);
                     break;
                 case constants.character.type.STRENGTH:
                     characterAttributes.findWhere({ name: 'Strength' }).set('maxValue', constants.character.ATTRIBUTE_MAX_VALUE);
@@ -58,7 +64,7 @@ define([
                     characterAttributes.findWhere({ name: 'Intelligence' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE - 1);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('maxValue', constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE - 1);
-                    this.character.set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
+                    this.model.get('newCharacter').set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
                     break;
                 case constants.character.type.INTELLIGENCE:
                     characterAttributes.findWhere({ name: 'Strength' }).set('maxValue', constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1);
@@ -67,7 +73,7 @@ define([
                     characterAttributes.findWhere({ name: 'Intelligence' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE + 2);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('maxValue', constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE - 1);
-                    this.character.set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
+                    this.model.get('newCharacter').set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
                     break;
                 case constants.character.type.CHARISMA:
                     characterAttributes.findWhere({ name: 'Strength' }).set('maxValue', constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1);
@@ -76,11 +82,10 @@ define([
                     characterAttributes.findWhere({ name: 'Intelligence' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE - 1);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('maxValue', constants.character.ATTRIBUTE_MAX_VALUE);
                     characterAttributes.findWhere({ name: 'Charisma' }).set('value', constants.character.DEFAULT_ATTRIBUTE_VALUE + 2);
-                    this.character.set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
+                    this.model.get('newCharacter').set('availableAttributePoints', constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2);
                     break;
             }
             
-            this.model.set('newCharacter', this.character);
             this.model.set('state', constants.home.state.EDIT_CHARACTER);
         }
         

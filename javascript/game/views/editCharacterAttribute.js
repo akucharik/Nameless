@@ -19,9 +19,8 @@ define([
 	var EditCharacterAttributeView = Backbone.View.extend({
 		
 		initialize: function (options) {
-            this.options = options;
-            this.character = this.options.character;
-            this.template = _.template($(this.options.template).html());
+            this.character = options.character;
+            this.template = _.template($(options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
             
             this.$attributeValue = this.$('.attribute-value');

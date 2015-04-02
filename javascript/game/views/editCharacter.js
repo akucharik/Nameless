@@ -4,8 +4,6 @@ define([
     'jquery',
     // game
     'game/constants',
-    // models
-    'models/character',
     // views
     'views/editCharacterAttribute'
 ], function(
@@ -14,8 +12,6 @@ define([
     $,
     // game
     constants,
-    // models
-    CharacterModel,
     // views
     EditCharacterAttributeView
 ) {
@@ -23,20 +19,17 @@ define([
 	var EditCharacterView = Backbone.View.extend({
 		
 		initialize: function (options) {
-            this.options = options;
-            this.template = _.template($(this.options.template).html());
+            this.template = _.template($(options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
-            
-            this.character = this.model.get('newCharacter');
             
             this.$name = this.$('#name');
             this.$availableAttributePoints = this.$('#availableAttributePoints');
             this.$attributes = this.$('#attributes');
             
             // create attribute views
-            this.character.get('attributes').each(function (attribute) {
+            this.model.get('newCharacter').get('attributes').each(function (attribute) {
                 var attributeView = new EditCharacterAttributeView({
-                    character: this.character,
+                    character: this.model.get('newCharacter'),
                     model: attribute,
                     tagName: 'li',
                     template: '#editCharacterAttributeTemplate'
@@ -44,11 +37,11 @@ define([
                 this.$attributes.append(attributeView.render().el);
             }, this);
             
-            this.listenTo(this.character, 'change:availableAttributePoints', this.render);
+            this.listenTo(this.model.get('newCharacter'), 'change:availableAttributePoints', this.render);
 		},
         
         render: function () {
-            this.$availableAttributePoints.html(this.character.get('availableAttributePoints'));
+            this.$availableAttributePoints.html(this.model.get('newCharacter').get('availableAttributePoints'));
             
             return this;
         },
@@ -63,8 +56,9 @@ define([
         },
         
         save: function () {
-            this.character.set('name', this.$name.val());
-            this.model.get('savedCharacters').add(this.character);
+            this.model.get('newCharacter').set('name', this.$name.val());
+            this.model.get('savedCharacters').add(this.model.get('newCharacter'));
+            this.model.get('savedCharacterControllers').push(this.model.get('newCharacterController'));
             this.model.set('state', constants.home.state.CHARACTERS);
         }
         
