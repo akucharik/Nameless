@@ -68,10 +68,10 @@ define([
             
         }
         else {
-            console.log('about to fetch');
+            //console.log('about to fetch');
             homeModel.get('savedCharacters').fetch();
-            console.log('Characters after load: ', homeModel.get('savedCharacters'));
-            console.log(localStorage);
+            //console.log('Characters after load: ', homeModel.get('savedCharacters'));
+            //console.log(localStorage);
         }
         
         

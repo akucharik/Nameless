@@ -15,11 +15,13 @@ define(function() {
             DEFAULT_ATTRIBUTE_MAX_VALUE: 8,
             DEFAULT_ATTRIBUTE_VALUE: 5,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
-//            attribute: {
-//                STRENGTH: 0,
-//                INTELLIGENCE: 1,
-//                CHARISMA: 2,
-//            },
+            SKILL_MAX_VALUE: 100,
+            class: {
+                AVERAGE: 0,
+                STRENGTH: 1,
+                INTELLIGENCE: 2,
+                CHARISMA: 3
+            },
             attribute: {
                 strength: {
                     DESCRIPTION: 'Strength helps in battle.',
@@ -40,29 +42,35 @@ define(function() {
                     NAME: 'Charisma'
                 }
             },
+            gender: {
+                MALE: 0,
+                FEMALE: 1
+            },
             skillLevel: {
                 level1: {
                     COST: 10,
+                    KEY: 'level1',
                     REQUIRED_ATTRIBUTE_POINTS: 5
                 },
                 level2: {
                     COST: 20,
+                    KEY: 'level2',
                     REQUIRED_ATTRIBUTE_POINTS: 7
                 },
                 level3: {
                     COST: 30,
+                    KEY: 'level3',
                     REQUIRED_ATTRIBUTE_POINTS: 9
                 },
                 level4: {
                     COST: 40,
+                    KEY: 'level4',
                     REQUIRED_ATTRIBUTE_POINTS: 10
                 }
             },
             type: {
-                AVERAGE: 0,
-                STRENGTH: 1,
-                INTELLIGENCE: 2,
-                CHARISMA: 3
+                STOCK: 0,
+                CUSTOM: 1
             }
         },
         
@@ -164,6 +172,33 @@ define(function() {
         
     }
     
+    constants.character.proficiency = {
+        foot: {
+            NAME: 'Foot',
+            ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
+            DESCRIPTION: '',
+            KEY: 'foot',
+            ORDER: 0,
+            REQUIRED_ATTRIBUTE_POINTS: 0
+        },
+        horse: {
+            NAME: 'Horse',
+            ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
+            DESCRIPTION: '',
+            KEY: 'horse',
+            ORDER: 1,
+            REQUIRED_ATTRIBUTE_POINTS: 0
+        },
+        bow: {
+            NAME: 'Bow',
+            ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
+            DESCRIPTION: '',
+            KEY: 'bow',
+            ORDER: 2,
+            REQUIRED_ATTRIBUTE_POINTS: 0
+        }
+    };
+    
     constants.character.skill = {
         scare: {
             NAME: 'Scare',
@@ -171,6 +206,7 @@ define(function() {
             COST: constants.character.skillLevel.level1.COST,
             DESCRIPTION: '',
             KEY: 'scare',
+            LEVEL: constants.character.skillLevel.level1.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
         },
         charge: {
@@ -179,6 +215,7 @@ define(function() {
             COST: constants.character.skillLevel.level2.COST,
             DESCRIPTION: '',
             KEY: 'charge',
+            LEVEL: constants.character.skillLevel.level2.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
         },
         coordinate: {
@@ -187,6 +224,7 @@ define(function() {
             COST: constants.character.skillLevel.level3.COST,
             DESCRIPTION: '',
             KEY: 'coordinate',
+            LEVEL: constants.character.skillLevel.level3.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
         },
         overpower: {
@@ -195,6 +233,7 @@ define(function() {
             COST: constants.character.skillLevel.level4.COST,
             DESCRIPTION: '',
             KEY: 'overpower',
+            LEVEL: constants.character.skillLevel.level4.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
         },
         spy: {
@@ -203,6 +242,7 @@ define(function() {
             COST: constants.character.skillLevel.level1.COST,
             DESCRIPTION: '',
             KEY: 'spy',
+            LEVEL: constants.character.skillLevel.level1.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
         },
         confuse: {
@@ -211,6 +251,7 @@ define(function() {
             COST: constants.character.skillLevel.level2.COST,
             DESCRIPTION: '',
             KEY: 'confuse',
+            LEVEL: constants.character.skillLevel.level2.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
         },
         medic: {
@@ -219,6 +260,7 @@ define(function() {
             COST: constants.character.skillLevel.level3.COST,
             DESCRIPTION: '',
             KEY: 'medic',
+            LEVEL: constants.character.skillLevel.level3.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
         },
         predict: {
@@ -227,6 +269,7 @@ define(function() {
             COST: constants.character.skillLevel.level4.COST,
             DESCRIPTION: '',
             KEY: 'predict',
+            LEVEL: constants.character.skillLevel.level4.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
         },
         rally: {
@@ -235,6 +278,7 @@ define(function() {
             COST: constants.character.skillLevel.level1.COST,
             DESCRIPTION: '',
             KEY: 'rally',
+            LEVEL: constants.character.skillLevel.level1.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
         },
         recruit: {
@@ -243,6 +287,7 @@ define(function() {
             COST: constants.character.skillLevel.level2.COST,
             DESCRIPTION: '',
             KEY: 'recruit',
+            LEVEL: constants.character.skillLevel.level2.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS,
         },
         command: {
@@ -251,6 +296,7 @@ define(function() {
             COST: constants.character.skillLevel.level3.COST,
             DESCRIPTION: '',
             KEY: 'command',
+            LEVEL: constants.character.skillLevel.level3.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS,
         },
         turn: {
@@ -259,9 +305,10 @@ define(function() {
             COST: constants.character.skillLevel.level4.COST,
             DESCRIPTION: '',
             KEY: 'turn',
+            LEVEL: constants.character.skillLevel.level4.KEY,
             REQUIRED_ATTRIBUTE_POINTS: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS,
         }
-    }
+    };
     
 	return constants;
 });

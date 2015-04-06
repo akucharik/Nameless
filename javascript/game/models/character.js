@@ -5,10 +5,8 @@ define([
     'game/constants',
     //collections
     'collections/characterAttribute',
-    'collections/characterSkill',
-    // models
-    'models/characterAttribute',
-    'models/characterSkill'
+    'collections/characterProficiency',
+    'collections/characterSkill'
 ], function(
     // libraries
     Backbone,
@@ -16,10 +14,8 @@ define([
     constants,
     // collections
     CharacterAttributeCollection,
-    CharacterSkillCollection,
-    // models
-    CharacterAttributeModel,
-    CharacterSkillModel
+    CharacterProficiencyCollection,
+    CharacterSkillCollection
 ) {
     
 	var CharacterModel = Backbone.Model.extend({
@@ -27,11 +23,16 @@ define([
             return {
                 // Basic
                 name: '',
+                gender: constants.character.gender.MALE,
+                type: constants.character.type.STOCK,
 
                 // Attributes
                 attributes: new CharacterAttributeCollection(),
                 availableAttributePoints: 0,
 
+                // Proficiencies
+                proficiencies: new CharacterProficiencyCollection(),
+                
                 // Skills
                 skills: new CharacterSkillCollection(),
 
@@ -78,16 +79,28 @@ define([
                 this.set('attributes', new CharacterAttributeCollection(options.attributes));
             }
             
+            // initialize proficiencies
+            if (options.proficiencies && _.isArray(options.proficiencies)) {
+                this.set('proficiencies', new CharacterProficiencyCollection(options.proficiencies));
+            }
+            
             // initialize skills
             if (options.skills && _.isArray(options.skills)) {
                 this.set('skills', new CharacterSkillCollection(options.skills));
             }
+            
+            return this;
         },
         
         parse: function (response) {
             if (response.attributes && this.get('attributes') instanceof Backbone.Collection) {
                 this.get('attributes').reset(response.attributes);
                 delete response.attributes;
+            }
+            
+            if (response.proficiencies && this.get('proficiencies') instanceof Backbone.Collection) {
+                this.get('proficiencies').reset(response.proficiencies);
+                delete response.proficiencies;
             }
             
             if (response.skills && this.get('skills') instanceof Backbone.Collection) {

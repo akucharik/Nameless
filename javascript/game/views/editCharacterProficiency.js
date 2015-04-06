@@ -12,15 +12,15 @@ define([
     constants
 ) {
 
-	var EditCharacterSkillView = Backbone.View.extend({
+	var EditCharacterProficiencyView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.options = options;
             this.template = _.template($(this.options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
-            this.$skillProficency = this.$('.skillProficency');
-            this.$skillValue = this.$('.skillValue');
-            this.$skillMaxValue = this.$('.skillMaxValue');
+            this.$proficiencyProficency = this.$('.proficiencyProficency');
+            this.$proficiencyValue = this.$('.proficiencyValue');
+            this.$proficiencyMaxValue = this.$('.proficiencyMaxValue');
             
             this.listenTo(this.model, 'change', this.render);
 		},
@@ -28,20 +28,20 @@ define([
         render: function () {
             if (this.model.get('enabled') === true) {
                 this.$el.addClass('selected')
-                this.$skillProficency.show();
+                this.$proficiencyProficency.show();
             } 
             else {
                 this.$el.removeClass('selected');
-                this.$skillProficency.hide();
+                this.$proficiencyProficency.hide();
             }
             
-            this.$skillValue.html(this.model.get('value'));
-            this.$skillMaxValue.html(this.model.get('maxValue'));
+            this.$proficiencyValue.html(this.model.get('value'));
+            this.$proficiencyMaxValue.html(this.model.get('maxValue'));
             
             return this;
         }
         
 	});
 	
-	return EditCharacterSkillView;
+	return EditCharacterProficiencyView;
 });

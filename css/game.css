@@ -34,6 +34,15 @@
 }
 
 /* Basic */
+.clear-fix:before,
+.clear-fix:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
 ::-moz-selection {
   background: transparent;
 }
@@ -367,20 +376,46 @@ td {
     width: 10em;
 }
 
+/*
+.attributes > li:first-child > .skills > li:before {
+    content: "IV";
+    position: absolute;
+    top: 0;
+    left: -20px;   
+}
+*/
+
+.proficiencies,
+.proficiencies > li,
 .skills,
 .skills > li {
     /*display: inline-block;*/
 }
 
+.proficiencies > li,
 .skills > li {
-    background-color: rgba(0,0,0,0.4);
-    margin: 5px 0;
-    padding: 5px 0;
-    width: 10em;
+    color: #999;
+    position: relative;
 }
 
+.proficiency,
+.skill {
+    background-color: rgba(0,0,0,0.4);
+    margin: 5px 0;
+    padding: 5px 10px;
+    text-align: right;
+    width: 12em;
+}
+
+.proficiency-name,
+.skill-name {
+    float: left;
+}
+
+.proficiencies > .selected,
 .skills > .selected {
     background-color: rgba(255,255,255,0.4);
+    color: #fff;
 }
 
 /* Animations */

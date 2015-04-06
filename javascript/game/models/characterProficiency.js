@@ -10,14 +10,12 @@ define([
     constants
 ) {
     
-	var CharacterSkillModel = Backbone.Model.extend({
+	var CharacterProficiencyModel = Backbone.Model.extend({
 		defaults: {
             associatedAttributeKey: '',
-            cost: 0,
             description: '',
             enabled: false,
             key: '',
-            level: '',
             maxValue: 0,
             name: '',
             requiredAttributePoints: 0,
@@ -25,19 +23,17 @@ define([
 		},
         
         initialize: function (options) {
-            var skill = constants.character.skill[this.get('key')]
+            var proficiency = constants.character.proficiency[this.get('key')]
             
             this.set({
-                associatedAttributeKey: skill.ASSOCIATED_ATTRIBUTE_KEY,
-                cost: skill.COST,
-                description: skill.DESCRIPTION,
-                level: skill.LEVEL,
-                name: skill.NAME, 
-                requiredAttributePoints: skill.REQUIRED_ATTRIBUTE_POINTS
+                associatedAttributeKey: proficiency.ASSOCIATED_ATTRIBUTE_KEY,
+                description: proficiency.DESCRIPTION,
+                name: proficiency.NAME, 
+                requiredAttributePoints: proficiency.REQUIRED_ATTRIBUTE_POINTS
             });
         }
 
 	});
 	
-	return CharacterSkillModel;
+	return CharacterProficiencyModel;
 });

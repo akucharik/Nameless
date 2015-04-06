@@ -5,6 +5,7 @@ define([
     // game
     'game/constants',
     // views
+    'views/editCharacterProficiency',
     'views/editCharacterSkill'
 ], function(
     // libraries
@@ -13,6 +14,7 @@ define([
     // game
     constants,
     // views
+    EditCharacterProficiencyView,
     EditCharacterSkillView
 ) {
 
@@ -26,7 +28,19 @@ define([
             this.$attributeValue = this.$('.attribute-value');
             this.$increaseValue = this.$('[data-attribute-change="+"]');
             this.$decreaseValue = this.$('[data-attribute-change="-"]');
+            this.$proficiencies = this.$('.proficiencies');
             this.$skills = this.$('.skills');
+            
+            // create proficiency views
+            this.character.get('proficiencies').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (proficiency) {
+                var proficiencyView = new EditCharacterProficiencyView({
+                    model: proficiency,
+                    tagName: 'li',
+                    template: '#editCharacterProficiencyTemplate'
+                });
+
+                this.$proficiencies.append(proficiencyView.render().el);
+            }, this);
             
             // create skill views
             this.character.get('skills').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (skill) {

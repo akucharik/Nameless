@@ -79,19 +79,19 @@
 
         <ul class="menu character-type-menu">
             <li>
-                <button data-character-type="0">Average</button>
+                <button data-character-class="0">Average</button>
                 <p>Well-rounded and adept at all skills, but lacks a truly outstanding strength.</p>
             </li>
             <li>
-                <button data-character-type="1">Soldier</button>
+                <button data-character-class="1">Soldier</button>
                 <p>Highly skilled in the art of combat. A force to be reckoned with on the battlefield.</p>
             </li>
             <li>
-                <button data-character-type="2">Genius</button>
+                <button data-character-class="2">Genius</button>
                 <p>Intellect is unmatched among peers. Strategies are highly successful and effective.</p>
             </li>
             <li>
-                <button data-character-type="3">Mesmer</button>
+                <button data-character-class="3">Mesmer</button>
                 <p>A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.</p>
             </li>
         </ul>
@@ -123,10 +123,25 @@
         <button data-attribute-change="+">+</button>
         <button data-attribute-change="-">-</button>
         <ul class="unbulleted-list skills"></ul>
+        <ul class="unbulleted-list proficiencies"></ul>
+    </script>
+    
+    <script id="editCharacterProficiencyTemplate" type="text/template">
+        <div class="proficiency clear-fix">
+            <span class="proficiency-name"><%= name %></span>
+            <span class="proficiencyProficency">
+                <span class="proficiencyValue"><%= value %></span>/<span class="proficiencyMaxValue"><%= maxValue %></span>%
+            </span>
+        </div>
     </script>
     
     <script id="editCharacterSkillTemplate" type="text/template">
-        <span><%= name %></span>
+        <div class="skill clear-fix">
+            <span class="skill-name"><%= name %></span>
+            <span class="skillProficency">
+                <span class="skillValue"><%= value %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
+            </span>
+        </div>
     </script>
     
 	<script src="javascript/libraries/require.min.js" data-main="javascript/main.js"></script>
