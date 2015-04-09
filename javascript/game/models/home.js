@@ -22,10 +22,8 @@ define([
 		defaults: {
             playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
-            newCharacter: null,
-            newCharacterController: null,
+            editCharacter: null,
             savedCharacters: new CharacterCollection([]),
-            savedCharacterControllers: [],
             savedGames: new Backbone.Collection([], {})
 		}
 

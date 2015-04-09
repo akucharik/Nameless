@@ -43,7 +43,7 @@ define([
         },
         
         onNewCharacterClick: function () {
-            this.model.set('state', constants.home.state.CHARACTER_TYPE);
+            this.model.set('state', constants.home.state.EDIT_CHARACTER_CLASS);
         },
         
         remove: function () {

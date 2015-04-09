@@ -16,11 +16,31 @@ define(function() {
             DEFAULT_ATTRIBUTE_VALUE: 5,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
             SKILL_MAX_VALUE: 100,
-            class: {
-                AVERAGE: 0,
-                STRENGTH: 1,
-                INTELLIGENCE: 2,
-                CHARISMA: 3
+            'class': {
+                average: {
+                    ASSOCIATED_ATTRIBUTE_KEY: null,
+                    KEY: 'average',
+                    NAME: 'Average',
+                    VALUE: 0
+                },
+                soldier: {
+                    ASSOCIATED_ATTRIBUTE_KEY: 'strength',
+                    KEY: 'soldier',
+                    NAME: 'Soldier',
+                    VALUE: 1
+                },
+                genius: {
+                    ASSOCIATED_ATTRIBUTE_KEY: 'intelligence',
+                    KEY: 'genius',
+                    NAME: 'Genius',
+                    VALUE: 2
+                },
+                mesmer: {
+                    ASSOCIATED_ATTRIBUTE_KEY: 'charisma',
+                    KEY: 'mesmer',
+                    NAME: 'Mesmer',
+                    VALUE: 3
+                }
             },
             attribute: {
                 strength: {
@@ -143,7 +163,7 @@ define(function() {
             state: {
                 MAIN_MENU: 0,
                 CHARACTERS: 1,
-                CHARACTER_TYPE: 2,
+                EDIT_CHARACTER_CLASS: 2,
                 EDIT_CHARACTER: 3,
                 GAMES: 4,
                 PLAY: 5

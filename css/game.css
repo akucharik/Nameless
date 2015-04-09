@@ -54,12 +54,12 @@
 body {
     background: rgb(50,50,50);
     color: rgb(255,255,255);
-    font-size: 1.0em;
+    font-size: 1.1em;
     margin: 0;
 }
 
 body, button {
-    font-family: 'ubuntu-mono', 'Volter', 'MiniSet2', 'GraphicPixel', 'Titillium Web', sans-serif;
+    font-family: 'ubuntu-mono', 'GraphicPixel', 'Titillium Web', sans-serif;
 }
 
 button {
@@ -342,15 +342,15 @@ td {
 }
 
 /* Edit Character */
-.character-type-menu {
+.edit-character-class-menu {
     margin-top: 1.0em;
 }
 
-.character-type-menu > li > button {
+.edit-character-class-menu > li > button {
     font-size: 140%;
 }
 
-.character-type-view,
+.edit-character-class-view,
 .edit-character-view {
     -webkit-animation-duration: 0.5s;
     -webkit-animation-name: fade-in;

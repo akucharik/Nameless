@@ -42,16 +42,32 @@ define([
         },
         
         calculateSkillValue: function (skill, attribute) {
-            switch (skill.get('level')) {
-                case constants.character.skillLevel.level1.KEY:
-                    return attribute.get('value') * 2;
-                case constants.character.skillLevel.level2.KEY:
-                    return Math.floor(attribute.get('value') * 1.5);
-                case constants.character.skillLevel.level3.KEY:
-                    return attribute.get('value');
-                case constants.character.skillLevel.level4.KEY:
-                    return Math.floor(attribute.get('value') * 0.5);
+            if (attribute.get('maxValue') === constants.character.ATTRIBUTE_MAX_VALUE) {
+                switch (skill.get('level')) {
+                    case constants.character.skillLevel.level1.KEY:
+                        return attribute.get('value') * 4 + 10;
+                    case constants.character.skillLevel.level2.KEY:
+                        return Math.floor(attribute.get('value') * 2 + 10);
+                    case constants.character.skillLevel.level3.KEY:
+                        return attribute.get('value') + 10;
+                    case constants.character.skillLevel.level4.KEY:
+                        return Math.floor(attribute.get('value') * 0 + 10);
+                }
             }
+            else {
+                switch (skill.get('level')) {
+                    case constants.character.skillLevel.level1.KEY:
+                        return attribute.get('value') * 2;
+                    case constants.character.skillLevel.level2.KEY:
+                        return Math.floor(attribute.get('value') * 1.5);
+                    case constants.character.skillLevel.level3.KEY:
+                        return attribute.get('value');
+                    case constants.character.skillLevel.level4.KEY:
+                        return Math.floor(attribute.get('value') * 0.5);
+                }
+            }
+            
+            
         }
         
 	});
