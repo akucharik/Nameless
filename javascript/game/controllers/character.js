@@ -2,17 +2,20 @@ define([
 	// libraries
     'controller',
     // game
-    'game/constants'
+    'game/constants',
+    'game/characterClasses'
 ], function(
     // libraries
     Controller,
     // game
-    constants
+    constants,
+    characterClasses
 ) {
 
 	var CharacterController = Controller.extend({
 		
 		initialize: function () {
+            this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
             this.listenTo(this.model, 'change:characterClass', this.onCharacterClassChange);
             this.listenTo(this.model.get('attributes'), 'change:value', this.onAttributeChange);
 		},
@@ -23,13 +26,14 @@ define([
         },
         
         onCharacterClassChange: function (model) {
-            console.log('model: ', model);
+            this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
+            
             this.model.get('attributes').each(function (attribute) {
-                attribute.set('maxValue', this.model.get('characterClass').get([attribute.get('key')] + 'MaxStartValue'));
-                attribute.set('value', this.model.get('characterClass').get([attribute.get('key')] + 'StartValue'));
+                attribute.set('maxValue', this.characterClass.get([attribute.get('key')] + 'MaxStartValue'));
+                attribute.set('value', this.characterClass.get([attribute.get('key')] + 'StartValue'));
             }, this);
             
-            this.model.set('availableAttributePoints', this.model.get('characterClass').get('availableAttributePointsStartValue'));
+            this.model.set('availableAttributePoints', this.characterClass.get('availableAttributePointsStartValue'));
         },
         
         // unit proficiencies
@@ -39,7 +43,7 @@ define([
             unitProficiency.set({
                 enabled: attribute.get('value') >= unitProficiency.get('requiredAttributePoints') ? true : false,
                 maxValue: attribute.get('value') * 10,
-                value: this.calculateUnitProficiencyValue(attribute, this.model.get('characterClass'))
+                value: this.calculateUnitProficiencyValue(attribute, this.characterClass)
             });
         },
         
@@ -66,7 +70,7 @@ define([
             skill.set({
                 enabled: associatedAttribute.get('value') >= skill.get('requiredAttributePoints') ? true : false,
                 maxValue: associatedAttribute.get('value') * 10,
-                value: this.calculateSkillValue(skill, associatedAttribute, this.model.get('characterClass'))
+                value: this.calculateSkillValue(skill, associatedAttribute, this.characterClass)
             });
         },
         

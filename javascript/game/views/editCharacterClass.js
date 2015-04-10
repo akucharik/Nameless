@@ -57,7 +57,7 @@ define([
         },
         
         selectCharacterClass: function (event) {
-            this.character.set('characterClass', characterClasses.findWhere({ key: event.target.dataset.characterClass }));
+            this.character.set('characterClass', event.target.dataset.characterClass);
             this.model.set('editCharacter', this.character);
             this.model.set('state', constants.home.state.EDIT_CHARACTER);
         }

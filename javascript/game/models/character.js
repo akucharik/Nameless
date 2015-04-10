@@ -3,7 +3,6 @@ define([
 	'backbone',
     // game
     'game/constants',
-    'game/characterClasses',
     //collections
     'collections/characterAttribute',
     'collections/characterUnitProficiency',
@@ -13,7 +12,6 @@ define([
     Backbone,
     // game
     constants,
-    characterClasses,
     // collections
     CharacterAttributeCollection,
     CharacterUnitProficiencyCollection,
@@ -27,7 +25,7 @@ define([
                 name: '',
                 gender: constants.character.gender.MALE,
                 type: constants.character.type.STOCK,
-                characterClass: null, 
+                characterClass: '', 
 
                 // Attributes
                 attributes: new CharacterAttributeCollection(),
