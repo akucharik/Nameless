@@ -13,12 +13,22 @@ define([
 	var CharacterController = Controller.extend({
 		
 		initialize: function () {
+            this.listenTo(this.model, 'change:characterClass', this.onCharacterClassChange);
             this.listenTo(this.model.get('attributes'), 'change:value', this.onAttributeChange);
 		},
         
         onAttributeChange: function (attribute) {
             this.model.get('proficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateProficiency, this);
             this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);
+        },
+        
+        onCharacterClassChange: function () {
+            this.model.get('attributes').each(function (attribute) {
+                attribute.set('maxValue', this.model.get('characterClass')[attribute.get('key')].START_MAX_VALUE);
+                attribute.set('value', this.model.get('characterClass')[attribute.get('key')].START_VALUE);
+            }, this);
+            
+            this.model.set('availableAttributePoints', this.model.get('characterClass').START_AVAILABLE_ATTRIBUTE_POINTS);
         },
         
         updateProficiency: function (proficiency) {
@@ -42,7 +52,7 @@ define([
         },
         
         calculateSkillValue: function (skill, attribute) {
-            if (attribute.get('maxValue') === constants.character.ATTRIBUTE_MAX_VALUE) {
+            if (this.model.get('characterClass').ASSOCIATED_ATTRIBUTE_KEY === attribute.get('key')) {
                 switch (skill.get('level')) {
                     case constants.character.skillLevel.level1.KEY:
                         return attribute.get('value') * 4 + 10;
@@ -66,7 +76,6 @@ define([
                         return Math.floor(attribute.get('value') * 0.5);
                 }
             }
-            
             
         }
         

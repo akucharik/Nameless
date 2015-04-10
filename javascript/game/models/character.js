@@ -25,7 +25,7 @@ define([
                 name: '',
                 gender: constants.character.gender.MALE,
                 type: constants.character.type.STOCK,
-                'class': constants.character.class.AVERAGE, 
+                characterClass: null, 
 
                 // Attributes
                 attributes: new CharacterAttributeCollection(),
