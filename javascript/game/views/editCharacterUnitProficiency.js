@@ -12,15 +12,15 @@ define([
     constants
 ) {
 
-	var EditCharacterProficiencyView = Backbone.View.extend({
+	var EditCharacterUnitProficiencyView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.options = options;
             this.template = _.template($(this.options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
-            this.$proficiencyProficency = this.$('.proficiencyProficency');
-            this.$proficiencyValue = this.$('.proficiencyValue');
-            this.$proficiencyMaxValue = this.$('.proficiencyMaxValue');
+            this.$unitProficiency = this.$('.unitProficiency');
+            this.$unitProficiencyValue = this.$('.unitProficiencyValue');
+            this.$unitProficiencyMaxValue = this.$('.unitProficiencyMaxValue');
             
             this.listenTo(this.model, 'change', this.render);
 		},
@@ -28,20 +28,20 @@ define([
         render: function () {
             if (this.model.get('enabled') === true) {
                 this.$el.addClass('selected')
-                this.$proficiencyProficency.show();
+                this.$unitProficiency.show();
             } 
             else {
                 this.$el.removeClass('selected');
-                this.$proficiencyProficency.hide();
+                this.$unitProficiency.hide();
             }
             
-            this.$proficiencyValue.html(this.model.get('value'));
-            this.$proficiencyMaxValue.html(this.model.get('maxValue'));
+            this.$unitProficiencyValue.html(this.model.get('value'));
+            this.$unitProficiencyMaxValue.html(this.model.get('maxValue'));
             
             return this;
         }
         
 	});
 	
-	return EditCharacterProficiencyView;
+	return EditCharacterUnitProficiencyView;
 });

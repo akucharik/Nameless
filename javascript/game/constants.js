@@ -225,7 +225,7 @@ define(function() {
         }
     };
     
-    constants.character.proficiency = {
+    constants.character.unitProficiency = {
         foot: {
             NAME: 'Foot',
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,

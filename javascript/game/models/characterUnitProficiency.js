@@ -10,7 +10,7 @@ define([
     constants
 ) {
     
-	var CharacterProficiencyModel = Backbone.Model.extend({
+	var CharacterUnitProficiencyModel = Backbone.Model.extend({
 		defaults: {
             associatedAttributeKey: '',
             description: '',
@@ -23,17 +23,17 @@ define([
 		},
         
         initialize: function (options) {
-            var proficiency = constants.character.proficiency[this.get('key')]
+            var unitProficiency = constants.character.unitProficiency[this.get('key')]
             
             this.set({
-                associatedAttributeKey: proficiency.ASSOCIATED_ATTRIBUTE_KEY,
-                description: proficiency.DESCRIPTION,
-                name: proficiency.NAME, 
-                requiredAttributePoints: proficiency.REQUIRED_ATTRIBUTE_POINTS
+                associatedAttributeKey: unitProficiency.ASSOCIATED_ATTRIBUTE_KEY,
+                description: unitProficiency.DESCRIPTION,
+                name: unitProficiency.NAME, 
+                requiredAttributePoints: unitProficiency.REQUIRED_ATTRIBUTE_POINTS
             });
         }
 
 	});
 	
-	return CharacterProficiencyModel;
+	return CharacterUnitProficiencyModel;
 });

@@ -5,7 +5,7 @@ define([
     // game
     'game/constants',
     // views
-    'views/editCharacterProficiency',
+    'views/editCharacterUnitProficiency',
     'views/editCharacterSkill'
 ], function(
     // libraries
@@ -14,7 +14,7 @@ define([
     // game
     constants,
     // views
-    EditCharacterProficiencyView,
+    EditCharacterUnitProficiencyView,
     EditCharacterSkillView
 ) {
 
@@ -25,21 +25,21 @@ define([
             this.template = _.template($(options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
             
-            this.$attributeValue = this.$('.attribute-value');
+            this.$attributeValue = this.$('.attributeValue');
             this.$increaseValue = this.$('[data-attribute-change="+"]');
             this.$decreaseValue = this.$('[data-attribute-change="-"]');
-            this.$proficiencies = this.$('.proficiencies');
-            this.$skills = this.$('.skills');
+            this.$unitProficiencies = this.$('.unitProficiencies');
+            this.$skills = this.$('.skillProficiencies');
             
-            // create proficiency views
-            this.character.get('proficiencies').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (proficiency) {
-                var proficiencyView = new EditCharacterProficiencyView({
-                    model: proficiency,
+            // create unit proficiency views
+            this.character.get('unitProficiencies').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (unitProficiency) {
+                var unitProficiencyView = new EditCharacterUnitProficiencyView({
+                    model: unitProficiency,
                     tagName: 'li',
-                    template: '#editCharacterProficiencyTemplate'
+                    template: '#editCharacterUnitProficiencyTemplate'
                 });
 
-                this.$proficiencies.append(proficiencyView.render().el);
+                this.$unitProficiencies.append(unitProficiencyView.render().el);
             }, this);
             
             // create skill views

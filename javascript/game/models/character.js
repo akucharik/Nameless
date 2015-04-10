@@ -6,7 +6,7 @@ define([
     'game/characterClasses',
     //collections
     'collections/characterAttribute',
-    'collections/characterProficiency',
+    'collections/characterUnitProficiency',
     'collections/characterSkill'
 ], function(
     // libraries
@@ -16,7 +16,7 @@ define([
     characterClasses,
     // collections
     CharacterAttributeCollection,
-    CharacterProficiencyCollection,
+    CharacterUnitProficiencyCollection,
     CharacterSkillCollection
 ) {
     
@@ -33,8 +33,8 @@ define([
                 attributes: new CharacterAttributeCollection(),
                 availableAttributePoints: 0,
 
-                // Proficiencies
-                proficiencies: new CharacterProficiencyCollection(),
+                // Unit proficiencies
+                unitProficiencies: new CharacterUnitProficiencyCollection(),
                 
                 // Skills
                 skills: new CharacterSkillCollection(),
@@ -82,9 +82,9 @@ define([
                 this.set('attributes', new CharacterAttributeCollection(options.attributes));
             }
             
-            // initialize proficiencies
-            if (options.proficiencies && _.isArray(options.proficiencies)) {
-                this.set('proficiencies', new CharacterProficiencyCollection(options.proficiencies));
+            // initialize unit proficiencies
+            if (options.unitProficiencies && _.isArray(options.unitProficiencies)) {
+                this.set('unitProficiencies', new CharacterUnitProficiencyCollection(options.unitProficiencies));
             }
             
             // initialize skills
@@ -101,9 +101,9 @@ define([
                 delete response.attributes;
             }
             
-            if (response.proficiencies && this.get('proficiencies') instanceof Backbone.Collection) {
-                this.get('proficiencies').reset(response.proficiencies);
-                delete response.proficiencies;
+            if (response.unitProficiencies && this.get('unitProficiencies') instanceof Backbone.Collection) {
+                this.get('unitProficiencies').reset(response.unitProficiencies);
+                delete response.unitProficiencies;
             }
             
             if (response.skills && this.get('skills') instanceof Backbone.Collection) {

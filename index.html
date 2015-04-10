@@ -119,18 +119,18 @@
     
     <script id="editCharacterAttributeTemplate" type="text/template">
         <span><%= displayName %></span>
-        <span class="attribute-value"><%= value %></span>/<span><%= maxValue %></span>
+        <span class="attributeValue"><%= value %></span>/<span><%= maxValue %></span>
         <button data-attribute-change="+">+</button>
         <button data-attribute-change="-">-</button>
-        <ul class="unbulleted-list skills"></ul>
-        <ul class="unbulleted-list proficiencies"></ul>
+        <ul class="skillProficiencies unbulleted-list skills"></ul>
+        <ul class="unitProficiencies unbulleted-list unit-proficiencies"></ul>
     </script>
     
-    <script id="editCharacterProficiencyTemplate" type="text/template">
-        <div class="proficiency clear-fix">
-            <span class="proficiency-name"><%= name %></span>
-            <span class="proficiencyProficency">
-                <span class="proficiencyValue"><%= value %></span>/<span class="proficiencyMaxValue"><%= maxValue %></span>%
+    <script id="editCharacterUnitProficiencyTemplate" type="text/template">
+        <div class="unit-proficiency clear-fix">
+            <span class="unit-proficiency-name"><%= name %></span>
+            <span class="unitProficiency">
+                <span class="unitProficiencyValue"><%= value %></span>/<span class="unitProficiencyMaxValue"><%= maxValue %></span>%
             </span>
         </div>
     </script>

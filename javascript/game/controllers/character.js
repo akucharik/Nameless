@@ -18,11 +18,12 @@ define([
 		},
         
         onAttributeChange: function (attribute) {
-            this.model.get('proficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateProficiency, this);
+            this.model.get('unitProficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateUnitProficiency, this);
             this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);
         },
         
-        onCharacterClassChange: function () {
+        onCharacterClassChange: function (model) {
+            console.log('model: ', model);
             this.model.get('attributes').each(function (attribute) {
                 attribute.set('maxValue', this.model.get('characterClass').get([attribute.get('key')] + 'MaxStartValue'));
                 attribute.set('value', this.model.get('characterClass').get([attribute.get('key')] + 'StartValue'));
@@ -32,11 +33,11 @@ define([
         },
         
         // unit proficiencies
-        updateProficiency: function (proficiency) {
-            var attribute = this.model.get('attributes').findWhere({ key: proficiency.get('associatedAttributeKey') });
+        updateUnitProficiency: function (unitProficiency) {
+            var attribute = this.model.get('attributes').findWhere({ key: unitProficiency.get('associatedAttributeKey') });
             
-            proficiency.set({
-                enabled: attribute.get('value') >= proficiency.get('requiredAttributePoints') ? true : false,
+            unitProficiency.set({
+                enabled: attribute.get('value') >= unitProficiency.get('requiredAttributePoints') ? true : false,
                 maxValue: attribute.get('value') * 10,
                 value: this.calculateUnitProficiencyValue(attribute, this.model.get('characterClass'))
             });
