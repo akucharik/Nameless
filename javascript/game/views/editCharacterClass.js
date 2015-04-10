@@ -4,6 +4,7 @@ define([
     'jquery',
     // game
     'game/constants',
+    'game/characterClasses',
     // models
     'models/character',
     // controllers
@@ -14,6 +15,7 @@ define([
     $,
     // game
     constants,
+    characterClasses,
     // models
     CharacterModel,
     // controllers
@@ -55,7 +57,7 @@ define([
         },
         
         selectCharacterClass: function (event) {
-            this.character.set('characterClass', constants.character.characterClass[event.target.dataset.characterClass]);
+            this.character.set('characterClass', characterClasses.findWhere({ key: event.target.dataset.characterClass }));
             this.model.set('editCharacter', this.character);
             this.model.set('state', constants.home.state.EDIT_CHARACTER);
         }

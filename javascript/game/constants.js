@@ -166,84 +166,62 @@ define(function() {
         
     }
     
-    // TODO: Refactor characterClass constants into game objects
-    // costant should just be used for immutable non-calculated values
+    // TODO: Refactor into a config file. Stop using constants as configuration.
     constants.character.characterClass = {
         average: {
-            ASSOCIATED_ATTRIBUTE_KEY: null,
+            ASSOCIATED_ATTRIBUTE_KEY: '',
             DESCRIPTION: 'Well-rounded and adept at all skills, but lacks a truly outstanding strength.',
             KEY: 'average',
             NAME: 'Average',
-            START_AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS,
-            strength: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE
-            },
-            intelligence: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE
-            },
-            charisma: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE
-            }
+            // attribute start values
+            STRENGTH_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
+            STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            INTELLIGENCE_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
+            INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
+            CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS
         },
         soldier: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
             DESCRIPTION: 'Highly skilled in the art of combat. A force to be reckoned with on the battlefield.',
             KEY: 'soldier',
             NAME: 'Soldier',
-            START_AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
-            strength: {
-                START_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2
-            },
-            intelligence: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            },
-            charisma: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            }
+            // attribute start values
+            STRENGTH_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+            INTELLIGENCE_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
         },
         genius: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.intelligence.KEY,
             DESCRIPTION: 'Intellect is unmatched among peers. Strategies are highly successful and effective.',
             KEY: 'genius',
             NAME: 'Genius',
-            START_AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
-            strength: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            },
-            intelligence: {
-                START_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2
-            },
-            charisma: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            }
+            // attribute start values
+            STRENGTH_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            INTELLIGENCE_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+            CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
         },
         mesmer: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.charisma.KEY,
             DESCRIPTION: 'A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.',
             KEY: 'mesmer',
             NAME: 'Mesmer',
-            START_AVAILABLE_ATTRIBUTE_POINTS: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
-            strength: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            },
-            intelligence: {
-                START_MAX_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1
-            },
-            charisma: {
-                START_MAX_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
-                START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2
-            }
+            STRENGTH_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            INTELLIGENCE_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
+            INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
+            CHARISMA_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
         }
     };
     

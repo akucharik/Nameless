@@ -3,6 +3,7 @@ define([
 	'backbone',
     // game
     'game/constants',
+    'game/characterClasses',
     //collections
     'collections/characterAttribute',
     'collections/characterProficiency',
@@ -12,6 +13,7 @@ define([
     Backbone,
     // game
     constants,
+    characterClasses,
     // collections
     CharacterAttributeCollection,
     CharacterProficiencyCollection,
