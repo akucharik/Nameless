@@ -5,7 +5,7 @@ define([
     // game
     'game/constants',
     // controllers
-    'controllers/character',
+    'controllers/editCharacter',
     // views
     'views/editCharacterAttribute'
 ], function(
@@ -15,7 +15,7 @@ define([
     // game
     constants,
     // controllers
-    CharacterController,
+    EditCharacterController,
     // views
     EditCharacterAttributeView
 ) {
@@ -31,7 +31,7 @@ define([
             this.$attributes = this.$('#attributes');
             
             this.character = this.model.get('editCharacter');
-            this.characterController = new CharacterController({
+            this.editCharacterController = new EditCharacterController({
                 model: this.character
             });
             
@@ -65,7 +65,7 @@ define([
         },
         
         remove: function () {
-            this.characterController.remove();
+            this.editCharacterController.remove();
             Backbone.View.prototype.remove.call(this);
         },
         

@@ -12,7 +12,7 @@ define([
     characterClasses
 ) {
 
-	var CharacterController = Controller.extend({
+	var EditCharacterController = Controller.extend({
 		
 		initialize: function () {
             this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
@@ -106,5 +106,5 @@ define([
         
 	});
 	
-	return CharacterController;
+	return EditCharacterController;
 });
