@@ -1,9 +1,13 @@
 define([
 	// libraries
-    'controller'
+    'controller',
+    // game
+    'game/eventLog'
 ], function(
     // libraries
-    Controller
+    Controller,
+    // game
+    eventLog
 ) {
 
 	var SavedCharactersController = Controller.extend({
@@ -14,6 +18,7 @@ define([
         
         update: function (character) {
             character.save();
+            eventLog.add({ message: 'Character added'});
         }
         
 	});

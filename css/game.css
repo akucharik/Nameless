@@ -305,7 +305,7 @@ td {
     overflow-y: scroll;
     padding: 0.5em 1.0em;
     position: fixed;
-    width: 40em;
+    width: 20em;
     z-index: 100;
 }
 

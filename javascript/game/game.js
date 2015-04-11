@@ -5,6 +5,7 @@ define([
     'jquery',
     //game
     'game/constants',
+    'game/eventLog',
     // controllers
     'controllers/savedCharacters',
     // models
@@ -23,6 +24,7 @@ define([
     $,
     // game
     constants,
+    eventLog,
     // controllers
     SavedCharactersController,
     // models
@@ -161,6 +163,8 @@ define([
 
         // TODO: remove exposed objects after development is complete
         window.homeModel = homeModel;
+        
+        eventLog.add({ message: 'Game started'});
     }
     
     return game;

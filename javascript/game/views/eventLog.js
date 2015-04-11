@@ -44,6 +44,10 @@ define([
             return this;
         },
         
+        add: function (item) {
+            this.collection.add(item);
+        },
+        
         clear: function () {
             this.el.innerHTML = '';
         }
