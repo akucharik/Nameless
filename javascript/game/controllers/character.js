@@ -12,7 +12,7 @@ define([
     characterClasses
 ) {
 
-	var EditCharacterController = Controller.extend({
+	var CharacterController = Controller.extend({
 		
 		initialize: function () {
             this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
@@ -20,20 +20,22 @@ define([
             this.listenTo(this.model.get('attributes'), 'change:value', this.onAttributeChange);
 		},
         
-        onAttributeChange: function (attribute) {
-            this.model.get('unitProficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateUnitProficiency, this);
-            this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);
-        },
-        
         onCharacterClassChange: function (model) {
             this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
             
             this.model.get('attributes').each(function (attribute) {
-                attribute.set('maxValue', this.characterClass.get([attribute.get('key')] + 'MaxStartValue'));
-                attribute.set('value', this.characterClass.get([attribute.get('key')] + 'StartValue'));
+                attribute.set({ 
+                    maxValue: this.characterClass.get([attribute.get('key')] + 'MaxStartValue'),
+                    value: this.characterClass.get([attribute.get('key')] + 'StartValue')
+                });
             }, this);
             
             this.model.set('availableAttributePoints', this.characterClass.get('availableAttributePointsStartValue'));
+        },
+        
+        onAttributeChange: function (attribute) {
+            this.model.get('unitProficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateUnitProficiency, this);
+            this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);
         },
         
         // unit proficiencies
@@ -106,5 +108,5 @@ define([
         
 	});
 	
-	return EditCharacterController;
+	return CharacterController;
 });

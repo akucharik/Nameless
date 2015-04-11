@@ -8,7 +8,7 @@ define([
     // models
     'models/character',
     // controllers
-    'controllers/editCharacter'
+    'controllers/character'
 ], function(
     // libraries
     Backbone,
@@ -19,7 +19,7 @@ define([
     // models
     CharacterModel,
     // controllers
-    EditCharacterController
+    CharacterController
 ) {
 
 	var EditCharacterClassView = Backbone.View.extend({
@@ -32,7 +32,7 @@ define([
                 type: constants.character.type.CUSTOM
             });
             
-            this.editCharacterController = new EditCharacterController({
+            this.characterController = new CharacterController({
                 model: this.character
             });
 		},
@@ -52,7 +52,7 @@ define([
         },
         
         remove: function () {
-            this.editCharacterController.remove();
+            this.characterController.remove();
             Backbone.View.prototype.remove.call(this);
         },
         
