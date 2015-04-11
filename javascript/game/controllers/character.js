@@ -45,7 +45,7 @@ define([
             unitProficiency.set({
                 enabled: attribute.get('value') >= unitProficiency.get('requiredAttributePoints') ? true : false,
                 maxValue: attribute.get('value') * 10,
-                value: this.calculateUnitProficiencyValue(attribute, this.characterClass)
+                attributeValue: this.calculateUnitProficiencyValue(attribute, this.characterClass)
             });
         },
         
@@ -72,7 +72,7 @@ define([
             skill.set({
                 enabled: associatedAttribute.get('value') >= skill.get('requiredAttributePoints') ? true : false,
                 maxValue: associatedAttribute.get('value') * 10,
-                value: this.calculateSkillValue(skill, associatedAttribute, this.characterClass)
+                attributeValue: this.calculateSkillValue(skill, associatedAttribute, this.characterClass)
             });
         },
         

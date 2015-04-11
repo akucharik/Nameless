@@ -16,10 +16,13 @@ define([
             description: '',
             enabled: false,
             key: '',
-            maxValue: 0,
             name: '',
             requiredAttributePoints: 0,
-            value: 0
+            // values
+            attributeValue: 0,
+            bonusValue: 0,
+            learnedValue: 0,
+            maxValue: 0
 		},
         
         initialize: function (options) {
@@ -31,6 +34,12 @@ define([
                 name: unitProficiency.NAME, 
                 requiredAttributePoints: unitProficiency.REQUIRED_ATTRIBUTE_POINTS
             });
+        },
+        
+        getValue: function () {
+            var value = this.get('attributeValue') + this.get('bonusValue') + this.get('learnedValue');
+            
+            return value < this.get('maxValue') ? value : this.get('maxValue');
         }
 
 	});

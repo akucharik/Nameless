@@ -136,7 +136,7 @@
         <div class="unit-proficiency clear-fix">
             <span class="unit-proficiency-name"><%= name %></span>
             <span class="unitProficiency">
-                <span class="unitProficiencyValue"><%= value %></span>/<span class="unitProficiencyMaxValue"><%= maxValue %></span>%
+                <span class="unitProficiencyValue"><% print(this.model.getValue()) %></span>/<span class="unitProficiencyMaxValue"><%= maxValue %></span>%
             </span>
         </div>
     </script>
@@ -145,7 +145,7 @@
         <div class="skill clear-fix">
             <span class="skill-name"><%= name %></span>
             <span class="skillProficency">
-                <span class="skillValue"><%= value %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
+                <span class="skillValue"><% print(this.model.getValue()) %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
             </span>
         </div>
     </script>

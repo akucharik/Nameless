@@ -35,7 +35,7 @@ define([
                 this.$skillProficency.hide();
             }
             
-            this.$skillValue.html(this.model.get('value'));
+            this.$skillValue.html(this.model.getValue());
             this.$skillMaxValue.html(this.model.get('maxValue'));
             
             return this;

@@ -35,7 +35,7 @@ define([
                 this.$unitProficiency.hide();
             }
             
-            this.$unitProficiencyValue.html(this.model.get('value'));
+            this.$unitProficiencyValue.html(this.model.getValue());
             this.$unitProficiencyMaxValue.html(this.model.get('maxValue'));
             
             return this;
