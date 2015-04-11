@@ -180,7 +180,19 @@ define(function() {
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
             CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE,
-            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS,
+            strength: {
+                MAX_START_VALUE: 8,
+                START_VALUE: 5
+            },
+            intelligence: {
+                MAX_START_VALUE: 8,
+                START_VALUE: 4
+            },
+            charisma: {
+                MAX_START_VALUE: 8,
+                START_VALUE: 4
+            }
         },
         soldier: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
@@ -194,7 +206,19 @@ define(function() {
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
             CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+            strength: {
+                MAX_START_VALUE: 10,
+                START_VALUE: 7
+            },
+            intelligence: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            },
+            charisma: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            }
         },
         genius: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.intelligence.KEY,
@@ -208,7 +232,19 @@ define(function() {
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
             CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+            strength: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            },
+            intelligence: {
+                MAX_START_VALUE: 10,
+                START_VALUE: 7
+            },
+            charisma: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            }
         },
         mesmer: {
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.charisma.KEY,
@@ -221,7 +257,19 @@ define(function() {
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
             CHARISMA_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
-            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2
+            AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
+            strength: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            },
+            intelligence: {
+                MAX_START_VALUE: 7,
+                START_VALUE: 4
+            },
+            charisma: {
+                MAX_START_VALUE: 10,
+                START_VALUE: 7
+            }
         }
     };
     

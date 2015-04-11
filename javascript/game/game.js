@@ -163,8 +163,6 @@ define([
 
         // TODO: remove exposed objects after development is complete
         window.homeModel = homeModel;
-        
-        eventLog.add({ message: 'Game started'});
     }
     
     return game;

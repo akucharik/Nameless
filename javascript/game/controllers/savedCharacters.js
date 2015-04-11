@@ -17,8 +17,8 @@ define([
 		},
         
         update: function (character) {
-            character.save();
             eventLog.add({ message: 'Character added'});
+            character.save();
         }
         
 	});
