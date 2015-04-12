@@ -64,24 +64,24 @@ define([
             var targetData = event.target.dataset;
             
             if (targetData.attributeChange === '+') {
-                if (this.model.get('value') < this.model.get('maxValue') && 
+                if (this.model.get('startValue') < this.model.get('maxStartValue') && 
                     this.character.get('availableAttributePoints') > 0) {
-                    this.model.set('value', this.model.get('value') + 1);
+                    this.model.set('startValue', this.model.get('startValue') + 1);
                     this.character.set('availableAttributePoints', this.character.get('availableAttributePoints') - 1);
                 }
             }
             else {
-                if (this.model.get('value') > this.model.get('minValue')) {
-                    this.model.set('value', this.model.get('value') - 1);
+                if (this.model.get('startValue') > this.model.get('minValue')) {
+                    this.model.set('startValue', this.model.get('startValue') - 1);
                     this.character.set('availableAttributePoints', this.character.get('availableAttributePoints') + 1);
                 }
             }
         },
         
         render: function () {
-            this.$attributeValue.html(this.model.get('value'));
-            this.model.get('value') === this.model.get('maxValue') || this.character.get('availableAttributePoints') === 0 ? this.$increaseValue.prop('disabled', true) : this.$increaseValue.prop('disabled', false);
-            this.model.get('value') === this.model.get('minValue') ? this.$decreaseValue.prop('disabled', true) : this.$decreaseValue.prop('disabled', false);
+            this.$attributeValue.html(this.model.get('startValue'));
+            this.model.get('startValue') === this.model.get('maxStartValue') || this.character.get('availableAttributePoints') === 0 ? this.$increaseValue.prop('disabled', true) : this.$increaseValue.prop('disabled', false);
+            this.model.get('startValue') === this.model.get('minValue') ? this.$decreaseValue.prop('disabled', true) : this.$decreaseValue.prop('disabled', false);
             
             return this;
         }

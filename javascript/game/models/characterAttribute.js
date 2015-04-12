@@ -15,10 +15,13 @@ define([
             description: '',
             displayName: '',
             key: '',
-            maxValue: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE,
-            minValue: constants.character.ATTRIBUTE_MIN_VALUE,
             name: '',
-            value: constants.character.DEFAULT_ATTRIBUTE_VALUE
+            // values
+            learnedValue: 0,
+            maxValue: constants.character.ATTRIBUTE_MAX_VALUE,
+            maxStartValue: 0,
+            minValue: constants.character.ATTRIBUTE_MIN_VALUE,
+            startValue: constants.character.DEFAULT_ATTRIBUTE_VALUE
 		},
         
         initialize: function (options) {
@@ -29,6 +32,12 @@ define([
                 displayName: attribute.DISPLAY_NAME,
                 name: attribute.NAME
             });
+        },
+        
+        getValue: function () {
+            var value = this.get('startValue') + this.get('learnedValue');
+            
+            return value < this.get('maxValue') ? value : this.get('maxValue');
         }
 
 	});

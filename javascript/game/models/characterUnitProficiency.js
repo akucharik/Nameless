@@ -37,7 +37,7 @@ define([
         },
         
         getValue: function () {
-            var value = this.get('attributeValue') + this.get('bonusValue') + this.get('learnedValue');
+            var value = this.get('attributeValue') + this.get('learnedValue') + this.get('bonusValue');
             
             return value < this.get('maxValue') ? value : this.get('maxValue');
         }

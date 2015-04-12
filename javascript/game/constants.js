@@ -12,10 +12,11 @@ define(function() {
         character: {
             ATTRIBUTE_MAX_VALUE: 10,
             ATTRIBUTE_MIN_VALUE: 1,
-            DEFAULT_ATTRIBUTE_MAX_VALUE: 8,
-            DEFAULT_ATTRIBUTE_VALUE: 5,
+            DEFAULT_ATTRIBUTE_MAX_VALUE: 7,
+            DEFAULT_ATTRIBUTE_VALUE: 4,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
             SKILL_MAX_VALUE: 100,
+            SKILL_MIN_VALUE: 0,
             attribute: {
                 strength: {
                     DESCRIPTION: 'Strength helps in battle.',
@@ -44,22 +45,30 @@ define(function() {
                 level1: {
                     COST: 10,
                     KEY: 'level1',
-                    REQUIRED_ATTRIBUTE_POINTS: 5
+                    REQUIRED_ATTRIBUTE_POINTS: 5,
+                    maxValues: [0, 0, 0, 20, 40, 60, 80, 100, 100, 100, 100],
+                    values: [0, 0, 0, 5, 10, 15, 20, 25, 30, 35, 40]
                 },
                 level2: {
                     COST: 20,
                     KEY: 'level2',
-                    REQUIRED_ATTRIBUTE_POINTS: 7
+                    REQUIRED_ATTRIBUTE_POINTS: 6,
+                    maxValues: [0, 0, 0, 0, 20, 40, 60, 80, 100, 100, 100],
+                    values: [0, 0, 0, 0, 0, 5, 10, 15, 20, 25, 30]
                 },
                 level3: {
                     COST: 30,
                     KEY: 'level3',
-                    REQUIRED_ATTRIBUTE_POINTS: 9
+                    REQUIRED_ATTRIBUTE_POINTS: 8,
+                    maxValues: [0, 0, 0, 0, 0, 0, 20, 40, 60, 80, 100],
+                    values: [0, 0, 0, 0, 0, 0, 0, 5, 10, 15, 20]
                 },
                 level4: {
                     COST: 40,
                     KEY: 'level4',
-                    REQUIRED_ATTRIBUTE_POINTS: 10
+                    REQUIRED_ATTRIBUTE_POINTS: 9,
+                    maxValues: [0, 0, 0, 0, 0, 0, 0, 20, 40, 60, 80],
+                    values: [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 10]
                 }
             },
             type: {
@@ -200,7 +209,7 @@ define(function() {
             KEY: 'soldier',
             NAME: 'Soldier',
             // attribute start values
-            STRENGTH_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            STRENGTH_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE - 1,
             STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
             INTELLIGENCE_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
@@ -228,7 +237,7 @@ define(function() {
             // attribute start values
             STRENGTH_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-            INTELLIGENCE_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            INTELLIGENCE_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE - 1,
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
             CHARISMA_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
@@ -255,7 +264,7 @@ define(function() {
             STRENGTH_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
             INTELLIGENCE_MAX_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_MAX_VALUE - 1,
             INTELLIGENCE_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE - 1,
-            CHARISMA_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE,
+            CHARISMA_MAX_START_VALUE: constants.character.ATTRIBUTE_MAX_VALUE - 1,
             CHARISMA_START_VALUE: constants.character.DEFAULT_ATTRIBUTE_VALUE + 2,
             AVAILABLE_ATTRIBUTE_POINTS_START_VALUE: constants.character.DEFAULT_AVAILABLE_ATTRIBUTE_POINTS - 2,
             strength: {
