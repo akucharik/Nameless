@@ -2,12 +2,12 @@ define([
     // libraries
 	'backbone',
     // game
-    'game/constants'
+    'game/config'
 ], function(
     // libraries
     Backbone,
     // game
-    constants
+    config
 ) {
     
 	var CharacterUnitProficiencyModel = Backbone.Model.extend({
@@ -17,6 +17,7 @@ define([
             enabled: false,
             key: '',
             name: '',
+            levelKey: '',
             requiredAttributePoints: 0,
             // values
             attributeValue: 0,
@@ -26,15 +27,16 @@ define([
 		},
         
         initialize: function (options) {
-            var unitProficiency = constants.character.unitProficiency[this.get('key')]
+            var unitProficiency = config.character.units[this.get('key')]
             
             this.set({
-                associatedAttributeKey: unitProficiency.ASSOCIATED_ATTRIBUTE_KEY,
-                description: unitProficiency.DESCRIPTION,
-                name: unitProficiency.NAME, 
-                requiredAttributePoints: unitProficiency.REQUIRED_ATTRIBUTE_POINTS,
-                maxValues: unitProficiency.MAX_VALUES,
-                values: unitProficiency.VALUES
+                associatedAttributeKey: unitProficiency.associatedAttributeKey,
+                description: unitProficiency.description,
+                levelKey: unitProficiency.levelKey,
+                name: unitProficiency.name, 
+                requiredAttributePoints: unitProficiency.requiredAttributePoints//,
+                //maxValues: unitProficiency.maxValues,
+                //values: unitProficiency.values
             });
         },
         

@@ -2,6 +2,7 @@ define([
 	// libraries
     'controller',
     // game
+    'game/config',
     'game/constants',
     'game/characterClasses',
     'game/eventLog'
@@ -9,6 +10,7 @@ define([
     // libraries
     Controller,
     // game
+    config,
     constants,
     characterClasses,
     eventLog
@@ -58,45 +60,19 @@ define([
         },
         
         calculateSkillMaxValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getSkillMaxValueSkillLevelModifier(skill.get('level'), associatedAttribute) 
-                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.skillValue.maxValue.characterClassModifier.positive, constants.character.skillValue.maxValue.characterClassModifier.negative) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('level'), 'maxValues', associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.maxValue.characterClassModifier.positive, config.character.skill.maxValue.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             
             return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
-        },
-        
-        getSkillMaxValueSkillLevelModifier: function (skillLevel, associatedAttribute) {
-            switch (skillLevel) {
-                case constants.character.skillLevel.level1.KEY:
-                    return constants.character.skillLevel.level1.maxValues[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level2.KEY:
-                    return constants.character.skillLevel.level2.maxValues[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level3.KEY:
-                    return constants.character.skillLevel.level3.maxValues[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level4.KEY:
-                    return constants.character.skillLevel.level4.maxValues[associatedAttribute.getValue()];
-            }
         },
         
         calculateSkillValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getSkillValueSkillLevelModifier(skill.get('level'), associatedAttribute) 
-                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.skillValue.value.characterClassModifier.positive, constants.character.skillValue.value.characterClassModifier.negative) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('level'), 'values', associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.value.characterClassModifier.positive, config.character.skill.value.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             
             return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
-        },
-        
-        getSkillValueSkillLevelModifier: function (skillLevel, associatedAttribute) {
-            switch (skillLevel) {
-                case constants.character.skillLevel.level1.KEY:
-                    return constants.character.skillLevel.level1.values[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level2.KEY:
-                    return constants.character.skillLevel.level2.values[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level3.KEY:
-                    return constants.character.skillLevel.level3.values[associatedAttribute.getValue()];
-                case constants.character.skillLevel.level4.KEY:
-                    return constants.character.skillLevel.level4.values[associatedAttribute.getValue()];
-            }
         },
         
         // unit proficiencies
@@ -111,16 +87,16 @@ define([
         },
         
         calculateUnitProficiencyMaxValue: function (unitProficiency, associatedAttribute, characterClass) {
-            var calculatedValue = unitProficiency.get('maxValues')[associatedAttribute.getValue()] 
-                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.unitProficiencyValue.maxValue.characterClassModifier.positive, constants.character.unitProficiencyValue.maxValue.characterClassModifier.negative) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.unit.levels, unitProficiency.get('levelKey'), 'maxValues', associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.unit.maxValue.characterClassModifier.positive, config.character.unit.maxValue.characterClassModifier.negative) 
                                 + unitProficiency.get('bonusValue');
             
             return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
         },
         
         calculateUnitProficiencyValue: function (unitProficiency, associatedAttribute, characterClass) {
-            var calculatedValue = unitProficiency.get('values')[associatedAttribute.getValue()] 
-                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.unitProficiencyValue.value.characterClassModifier.positive, constants.character.unitProficiencyValue.value.characterClassModifier.negative) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.unit.levels, unitProficiency.get('levelKey'), 'values', associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.unit.value.characterClassModifier.positive, config.character.unit.value.characterClassModifier.negative)
                                 + unitProficiency.get('bonusValue');
             
             return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
@@ -135,6 +111,14 @@ define([
             }
             else {
                  return minValue;
+            }
+        },
+        
+        getProficiencyLevelValue: function (levels, levelKey, valuesKey, associatedAttribute) {
+            for (var level in levels) {
+                if (levels[level].key === levelKey) {
+                    return levels[level][valuesKey][associatedAttribute.getValue()];
+                }
             }
         },
         

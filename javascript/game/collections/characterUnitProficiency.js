@@ -2,14 +2,14 @@ define([
 	// libraries
     'backbone',
     // game
-    'game/constants',
+    'game/config',
     // models
     'models/characterUnitProficiency'
 ], function(
     // libraries
     Backbone,
     // game
-    constants,
+    config,
     // models
     CharacterUnitProficiencyModel
 ) {
@@ -18,9 +18,9 @@ define([
         
         initialize: function (models) {
             if (!models) {
-                for (var unitProficiency in constants.character.unitProficiency) {
+                for (var unit in config.character.units) {
                     this.add(new CharacterUnitProficiencyModel({ 
-                        key: unitProficiency
+                        key: unit
                     }));
                 }
             }
