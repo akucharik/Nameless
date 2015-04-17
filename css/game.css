@@ -418,6 +418,13 @@ td {
     color: #fff;
 }
 
+.unit-proficiency-ratio > span,
+.skill-ratio > span {
+    display: inline-block;
+    padding: 0 0.1em;
+    width: 1.7em;
+}
+
 /* Animations */
 @-webkit-keyframes fade-in {
     from {

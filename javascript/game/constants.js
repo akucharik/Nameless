@@ -15,6 +15,8 @@ define(function() {
             DEFAULT_ATTRIBUTE_MAX_VALUE: 7,
             DEFAULT_ATTRIBUTE_VALUE: 4,
             DEFAULT_AVAILABLE_ATTRIBUTE_POINTS: 7,
+            UNIT_PROFICIENCY_MAX_VALUE: 100,
+            UNIT_PROFICIENCY_MIN_VALUE: 0,
             SKILL_MAX_VALUE: 100,
             SKILL_MIN_VALUE: 0,
             attribute: {
@@ -41,39 +43,77 @@ define(function() {
                 MALE: 0,
                 FEMALE: 1
             },
+            // TODO: refactor to use this config structure
+            skillValue: {
+                maxValue: {
+                    characterClassModifier: {
+                        positive: 10,
+                        negative: -10
+                    },
+                    value: 100
+                },
+                minValue: {
+                    value: 0
+                },
+                value: {
+                    characterClassModifier: {
+                        positive: 5,
+                        negative: -5
+                    },
+                }
+            },
             skillLevel: {
                 level1: {
                     COST: 10,
                     KEY: 'level1',
                     REQUIRED_ATTRIBUTE_POINTS: 5,
-                    maxValues: [0, 0, 0, 20, 40, 60, 80, 100, 100, 100, 100],
-                    values: [0, 0, 0, 5, 10, 15, 20, 25, 30, 35, 40]
+                    maxValues: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 100],
+                    values:    [ 0,  0,  0,  5, 10, 15, 20, 25, 30,  35,  40]
                 },
                 level2: {
                     COST: 20,
                     KEY: 'level2',
                     REQUIRED_ATTRIBUTE_POINTS: 6,
-                    maxValues: [0, 0, 0, 0, 20, 40, 60, 80, 100, 100, 100],
-                    values: [0, 0, 0, 0, 0, 5, 10, 15, 20, 25, 30]
+                    maxValues: [ 0, 10, 20, 30, 40, 50, 60, 70, 80,  90, 100],
+                    values:    [ 0,  0,  0,  0,  0,  5, 10, 15, 20,  25,  30]
                 },
                 level3: {
                     COST: 30,
                     KEY: 'level3',
                     REQUIRED_ATTRIBUTE_POINTS: 8,
-                    maxValues: [0, 0, 0, 0, 0, 0, 20, 40, 60, 80, 100],
-                    values: [0, 0, 0, 0, 0, 0, 0, 5, 10, 15, 20]
+                    maxValues: [ 0,  0,  0, 10, 20, 30, 40, 50, 60,  70,  80],
+                    values:    [ 0,  0,  0,  0,  0,  0,  0,  5, 10,  15,  20]
                 },
                 level4: {
                     COST: 40,
                     KEY: 'level4',
                     REQUIRED_ATTRIBUTE_POINTS: 9,
-                    maxValues: [0, 0, 0, 0, 0, 0, 0, 20, 40, 60, 80],
-                    values: [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 10]
+                    maxValues: [ 0,  0,  0,  0, 10, 20, 30, 40, 50,  60,  70],
+                    values:    [ 0,  0,  0,  0,  0,  0,  0,  0,  0,   5,  10]
                 }
             },
             type: {
                 STOCK: 0,
                 CUSTOM: 1
+            },
+            // TODO: refactor to use this config structure
+            unitProficiencyValue: {
+                maxValue: {
+                    characterClassModifier: {
+                        positive: 10,
+                        negative: 0
+                    },
+                    value: 100
+                },
+                minValue: {
+                    value: 0
+                },
+                value: {
+                    characterClassModifier: {
+                        positive: 5,
+                        negative: -5
+                    },
+                }
             }
         },
         
@@ -289,23 +329,29 @@ define(function() {
             DESCRIPTION: '',
             KEY: 'foot',
             ORDER: 0,
-            REQUIRED_ATTRIBUTE_POINTS: 0
-        },
-        horse: {
-            NAME: 'Horse',
-            ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
-            DESCRIPTION: '',
-            KEY: 'horse',
-            ORDER: 1,
-            REQUIRED_ATTRIBUTE_POINTS: 0
+            REQUIRED_ATTRIBUTE_POINTS: 0,
+            MAX_VALUES: [ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 100],
+            VALUES:     [-10,  -5,   0,   5,  10,  15,  20,  25,  30,  35,  40]
         },
         bow: {
             NAME: 'Bow',
             ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
             DESCRIPTION: '',
             KEY: 'bow',
+            ORDER: 1,
+            REQUIRED_ATTRIBUTE_POINTS: 0,
+            MAX_VALUES: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
+            VALUES:     [-20, -15, -10,  -5,   0,   5,  10,  15,  20,  25,  30]
+        },
+        horse: {
+            NAME: 'Horse',
+            ASSOCIATED_ATTRIBUTE_KEY: constants.character.attribute.strength.KEY,
+            DESCRIPTION: '',
+            KEY: 'horse',
             ORDER: 2,
-            REQUIRED_ATTRIBUTE_POINTS: 0
+            REQUIRED_ATTRIBUTE_POINTS: 0,
+            MAX_VALUES: [  0,   0,  10,  20,  30,  40,  50,  60,  70,  80,  90],
+            VALUES:     [-30, -25, -20, -15, -10,  -5,   0,   5,  10,  15,  20]
         }
     };
     

@@ -32,7 +32,9 @@ define([
                 associatedAttributeKey: unitProficiency.ASSOCIATED_ATTRIBUTE_KEY,
                 description: unitProficiency.DESCRIPTION,
                 name: unitProficiency.NAME, 
-                requiredAttributePoints: unitProficiency.REQUIRED_ATTRIBUTE_POINTS
+                requiredAttributePoints: unitProficiency.REQUIRED_ATTRIBUTE_POINTS,
+                maxValues: unitProficiency.MAX_VALUES,
+                values: unitProficiency.VALUES
             });
         },
         

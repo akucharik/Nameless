@@ -3,13 +3,15 @@ define([
     'controller',
     // game
     'game/constants',
-    'game/characterClasses'
+    'game/characterClasses',
+    'game/eventLog'
 ], function(
     // libraries
     Controller,
     // game
     constants,
-    characterClasses
+    characterClasses,
+    eventLog
 ) {
 
 	var CharacterController = Controller.extend({
@@ -27,13 +29,19 @@ define([
                 attribute.set({ 
                     maxStartValue: this.characterClass.get([attribute.get('key')] + 'MaxStartValue'),
                     startValue: this.characterClass.get([attribute.get('key')] + 'StartValue')
+                }, {
+                    silent: true
                 });
             }, this);
             
             this.model.set('availableAttributePoints', this.characterClass.get('availableAttributePointsStartValue'));
+            this.model.get('skills').forEach(this.updateSkill, this);
+            this.model.get('unitProficiencies').forEach(this.updateUnitProficiency, this);
         },
         
-        onAttributeChange: function (attribute) {
+        onAttributeChange: function (attribute, options) {
+            eventLog.add({ message: attribute.get('name') + (attribute.get('startValue') > attribute.previous('startValue') ? ' increased' : ' decreased') + ' by ' + Math.abs(attribute.get('startValue') - attribute.previous('startValue'))});
+            
             this.model.get('unitProficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateUnitProficiency, this);
             this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);
         },
@@ -44,15 +52,17 @@ define([
             
             skill.set({
                 enabled: associatedAttribute.getValue() >= skill.get('requiredAttributePoints') ? true : false,
-                maxValue: this.calculateSkillMaxValue(skill, associatedAttribute, this.characterClass), // associatedAttribute.getValue() * 10,
+                maxValue: this.calculateSkillMaxValue(skill, associatedAttribute, this.characterClass),
                 attributeValue: this.calculateSkillValue(skill, associatedAttribute, this.characterClass)
             });
         },
         
         calculateSkillMaxValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getSkillMaxValueSkillLevelModifier(skill.get('level'), associatedAttribute) + this.getSkillMaxValueCharacterClassModifier(characterClass, associatedAttribute) + skill.get('bonusValue');
+            var calculatedValue = this.getSkillMaxValueSkillLevelModifier(skill.get('level'), associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.skillValue.maxValue.characterClassModifier.positive, constants.character.skillValue.maxValue.characterClassModifier.negative) 
+                                + skill.get('bonusValue');
             
-            return calculatedValue < constants.character.SKILL_MAX_VALUE ? calculatedValue : constants.character.SKILL_MAX_VALUE ;
+            return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
         },
         
         getSkillMaxValueSkillLevelModifier: function (skillLevel, associatedAttribute) {
@@ -68,26 +78,13 @@ define([
             }
         },
         
-        getSkillMaxValueCharacterClassModifier: function (characterClass, associatedAttribute) {
-            if (characterClass.get('associatedAttributeKey') === associatedAttribute.get('key')) {
-                return 20;
-            }
-            else if (characterClass.get('key') === constants.character.characterClass.average.KEY) {
-                return 0;
-            }
-            else {
-                return -10;
-            }
-        },
-        
         calculateSkillValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getSkillValueSkillLevelModifier(skill.get('level'), associatedAttribute) + this.getSkillValueCharacterClassModifier(characterClass, associatedAttribute) + skill.get('bonusValue');
+            var calculatedValue = this.getSkillValueSkillLevelModifier(skill.get('level'), associatedAttribute) 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.skillValue.value.characterClassModifier.positive, constants.character.skillValue.value.characterClassModifier.negative) 
+                                + skill.get('bonusValue');
             
-            return calculatedValue > constants.character.SKILL_MIN_VALUE ? calculatedValue : constants.character.SKILL_MIN_VALUE ;
-            //return Math.floor(associatedAttribute.getValue() * 5) + this.getSkillValueCharacterClassModifier(characterClass, associatedAttribute);
+            return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
         },
-        
-        //this.getSkillValueSkillLevelModifier(skill.get('level'))
         
         getSkillValueSkillLevelModifier: function (skillLevel, associatedAttribute) {
             switch (skillLevel) {
@@ -102,42 +99,54 @@ define([
             }
         },
         
-        getSkillValueCharacterClassModifier: function (characterClass, associatedAttribute) {
+        // unit proficiencies
+        updateUnitProficiency: function (unitProficiency) {
+            var associatedAttribute = this.model.get('attributes').findWhere({ key: unitProficiency.get('associatedAttributeKey') });
+            
+            unitProficiency.set({
+                enabled: associatedAttribute.getValue() >= unitProficiency.get('requiredAttributePoints') ? true : false,
+                maxValue: this.calculateUnitProficiencyMaxValue(unitProficiency, associatedAttribute, this.characterClass),
+                attributeValue: this.calculateUnitProficiencyValue(unitProficiency, associatedAttribute, this.characterClass)
+            });
+        },
+        
+        calculateUnitProficiencyMaxValue: function (unitProficiency, associatedAttribute, characterClass) {
+            var calculatedValue = unitProficiency.get('maxValues')[associatedAttribute.getValue()] 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.unitProficiencyValue.maxValue.characterClassModifier.positive, constants.character.unitProficiencyValue.maxValue.characterClassModifier.negative) 
+                                + unitProficiency.get('bonusValue');
+            
+            return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
+        },
+        
+        calculateUnitProficiencyValue: function (unitProficiency, associatedAttribute, characterClass) {
+            var calculatedValue = unitProficiency.get('values')[associatedAttribute.getValue()] 
+                                + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, constants.character.unitProficiencyValue.value.characterClassModifier.positive, constants.character.unitProficiencyValue.value.characterClassModifier.negative) 
+                                + unitProficiency.get('bonusValue');
+            
+            return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
+        },
+        
+        getBoundedValue: function (value, maxValue, minValue) {
+            if (value <= maxValue && value >= minValue) {
+                 return value;
+            }
+            else if (value > maxValue) {
+                 return maxValue;
+            }
+            else {
+                 return minValue;
+            }
+        },
+        
+        getProficiencyCharacterClassModifier: function (characterClass, associatedAttribute, positiveModifier, negativeModifier) {
             if (characterClass.get('associatedAttributeKey') === associatedAttribute.get('key')) {
-                return 10;
+                return positiveModifier;
             }
             else if (characterClass.get('key') === constants.character.characterClass.average.KEY) {
                 return 0;
             }
             else {
-                return -5;
-            }
-        },
-        
-        // unit proficiencies
-        updateUnitProficiency: function (unitProficiency) {
-            var attribute = this.model.get('attributes').findWhere({ key: unitProficiency.get('associatedAttributeKey') });
-            
-            unitProficiency.set({
-                enabled: attribute.getValue() >= unitProficiency.get('requiredAttributePoints') ? true : false,
-                maxValue: attribute.getValue() * 10,
-                attributeValue: this.calculateUnitProficiencyValue(attribute, this.characterClass)
-            });
-        },
-        
-        calculateUnitProficiencyValue: function (attribute, characterClass) {
-            return Math.floor(attribute.getValue() * this.getUnitProficiencyValueCharacterClassModifier(characterClass));
-        },
-        
-        getUnitProficiencyValueCharacterClassModifier: function (characterClass) {
-            if (characterClass.get('key') === constants.character.characterClass.soldier.KEY) {
-                return 3;
-            }
-            else if (characterClass.get('key') === constants.character.characterClass.average.KEY) {
-                return 2;
-            }
-            else {
-                return 1;
+                return negativeModifier;
             }
         }
         

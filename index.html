@@ -135,7 +135,7 @@
     <script id="editCharacterUnitProficiencyTemplate" type="text/template">
         <div class="unit-proficiency clear-fix">
             <span class="unit-proficiency-name"><%= name %></span>
-            <span class="unitProficiency">
+            <span class="unitProficiency unit-proficiency-ratio">
                 <span class="unitProficiencyValue"><% print(this.model.getValue()) %></span>/<span class="unitProficiencyMaxValue"><%= maxValue %></span>%
             </span>
         </div>
@@ -144,7 +144,7 @@
     <script id="editCharacterSkillTemplate" type="text/template">
         <div class="skill clear-fix">
             <span class="skill-name"><%= name %></span>
-            <span class="skillProficency">
+            <span class="skillProficency skill-ratio">
                 <span class="skillValue"><% print(this.model.getValue()) %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
             </span>
         </div>
