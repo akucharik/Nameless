@@ -2,14 +2,14 @@ define([
 	// libraries
     'backbone',
     // game
-    'game/constants',
+    'game/config',
     // models
     'models/characterClass'
 ], function(
     // libraries
     Backbone,
     // game
-    constants,
+    config,
     // models
     CharacterClassModel
 ) {
@@ -18,7 +18,7 @@ define([
         
         initialize: function (models) {
             if (!models) {
-                for (var characterClass in constants.character.characterClass) {
+                for (var characterClass in config.character.characterClass) {
                     this.add(new CharacterClassModel({ 
                         key: characterClass
                     }));

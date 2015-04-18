@@ -2,11 +2,13 @@ define([
     // libraries
 	'backbone',
     // game
+    'game/config',
     'game/constants'
 ], function(
     // libraries
     Backbone,
     // game
+    config,
     constants
 ) {
     
@@ -18,10 +20,10 @@ define([
             name: '',
             // values
             learnedValue: 0,
-            maxValue: constants.character.ATTRIBUTE_MAX_VALUE,
+            maxValue: config.character.attribute.maxValue,
+            minValue: config.character.attribute.minValue,
             maxStartValue: 0,
-            minValue: constants.character.ATTRIBUTE_MIN_VALUE,
-            startValue: constants.character.DEFAULT_ATTRIBUTE_VALUE
+            startValue: 0
 		},
         
         initialize: function (options) {

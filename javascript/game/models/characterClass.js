@@ -2,12 +2,12 @@ define([
     // libraries
 	'backbone',
     // game
-    'game/constants'
+    'game/config'
 ], function(
     // libraries
     Backbone,
     // game
-    constants
+    config
 ) {
     
 	var CharacterClassModel = Backbone.Model.extend({
@@ -27,20 +27,20 @@ define([
 		},
         
         initialize: function (options) {
-            var characterClass = constants.character.characterClass[this.get('key')];
+            var characterClass = config.character.characterClass[this.get('key')];
             
             this.set({
-                associatedAttributeKey: characterClass.ASSOCIATED_ATTRIBUTE_KEY,
-                description: characterClass.DESCRIPTION,
-                name: characterClass.NAME,
+                associatedAttributeKey: characterClass.associatedAttributeKey,
+                description: characterClass.description,
+                name: characterClass.name,
                 // attribute start values
-                strengthMaxStartValue: characterClass.STRENGTH_MAX_START_VALUE,
-                strengthStartValue: characterClass.STRENGTH_START_VALUE,
-                intelligenceMaxStartValue: characterClass.INTELLIGENCE_MAX_START_VALUE,
-                intelligenceStartValue: characterClass.INTELLIGENCE_START_VALUE,
-                charismaMaxStartValue: characterClass.CHARISMA_MAX_START_VALUE,
-                charismaStartValue: characterClass.CHARISMA_START_VALUE,
-                availableAttributePointsStartValue: characterClass.AVAILABLE_ATTRIBUTE_POINTS_START_VALUE
+                strengthMaxStartValue: characterClass.strength.maxStartValue,
+                strengthStartValue: characterClass.strength.startValue,
+                intelligenceMaxStartValue: characterClass.intelligence.maxStartValue,
+                intelligenceStartValue: characterClass.intelligence.startValue,
+                charismaMaxStartValue: characterClass.charisma.maxStartValue,
+                charismaStartValue: characterClass.charisma.startValue,
+                availableAttributePointsStartValue: characterClass.availableAttributePoints.startValue
             });
         }
 

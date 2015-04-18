@@ -126,7 +126,7 @@ define([
             if (characterClass.get('associatedAttributeKey') === associatedAttribute.get('key')) {
                 return positiveModifier;
             }
-            else if (characterClass.get('key') === constants.character.characterClass.average.KEY) {
+            else if (characterClass.get('key') === characterClasses.findWhere({ key: 'average'}).get('key')) {
                 return 0;
             }
             else {

@@ -8,7 +8,106 @@ define([
 
     var config = {
         character: {}
-
+    };
+    
+    config.character.attribute = {
+        maxValue: 10,
+        minValue: 1,
+        // defaults
+        defaultMaxValue: 7,
+        defaultValue: 4,
+        defaultAvailableAttributePoints: 7,
+    };
+    
+    config.character.characterClass = {
+        average: {
+            associatedAttributeKey: '',
+            description: 'Well-rounded and adept at all skills, but lacks a truly outstanding strength.',
+            key: 'average',
+            name: 'Average',
+            // attribute start values
+            strength: {
+                maxStartValue: config.character.attribute.defaultMaxValue,
+                startValue:    config.character.attribute.defaultValue
+            },
+            intelligence: {
+                maxStartValue: config.character.attribute.defaultMaxValue,
+                startValue:    config.character.attribute.defaultValue
+            },
+            charisma: {
+                maxStartValue: config.character.attribute.defaultMaxValue,
+                startValue:    config.character.attribute.defaultValue
+            },
+            availableAttributePoints: {
+                startValue:    config.character.attribute.defaultAvailableAttributePoints
+            }
+        },
+        soldier: {
+            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            description: 'Highly skilled in the art of combat. A force to be reckoned with on the battlefield.',
+            key: 'soldier',
+            name: 'Soldier',
+            // attribute start values
+            strength: {
+                maxStartValue: config.character.attribute.defaultMaxValue + 2,
+                startValue:    config.character.attribute.defaultValue + 2
+            },
+            intelligence: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            charisma: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            availableAttributePoints: {
+                startValue:    config.character.attribute.defaultAvailableAttributePoints - 2
+            }
+        },
+        genius: {
+            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            description: 'Intellect is unmatched among peers. Strategies are highly successful and effective.',
+            key: 'genius',
+            name: 'Genius',
+            // attribute start values
+            strength: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            intelligence: {
+                maxStartValue: config.character.attribute.defaultMaxValue + 2,
+                startValue:    config.character.attribute.defaultValue + 2
+            },
+            charisma: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            availableAttributePoints: {
+                startValue:    config.character.attribute.defaultAvailableAttributePoints - 2
+            }
+        },
+        mesmer: {
+            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            description: 'A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.',
+            key: 'mesmer',
+            name: 'Mesmer',
+            // attribute start values
+            strength: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            intelligence: {
+                maxStartValue: config.character.attribute.defaultMaxValue - 1,
+                startValue:    config.character.attribute.defaultValue - 1
+            },
+            charisma: {
+                maxStartValue: config.character.attribute.defaultMaxValue + 2,
+                startValue:    config.character.attribute.defaultValue + 2
+            },
+            availableAttributePoints: {
+                startValue:    config.character.attribute.defaultAvailableAttributePoints - 2
+            }
+        }
     };
     
     config.character.skill = {
