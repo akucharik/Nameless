@@ -14,26 +14,6 @@ define(function() {
             UNIT_PROFICIENCY_MIN_VALUE: 0,
             SKILL_MAX_VALUE: 100,
             SKILL_MIN_VALUE: 0,
-            attribute: {
-                strength: {
-                    DESCRIPTION: 'Strength helps in battle.',
-                    DISPLAY_NAME: 'STR',
-                    KEY: 'strength',
-                    NAME: 'Strength'
-                },
-                intelligence: {
-                    DESCRIPTION: 'Intelligence helps execute ideas.',
-                    DISPLAY_NAME: 'INT',
-                    KEY: 'intelligence',
-                    NAME: 'Intelligence'
-                },
-                charisma: {
-                    DESCRIPTION: 'Charisma helps influence people.',
-                    DISPLAY_NAME: 'CHR',
-                    KEY: 'charisma',
-                    NAME: 'Charisma'
-                }
-            },
             gender: {
                 MALE: 0,
                 FEMALE: 1

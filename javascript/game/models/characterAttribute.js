@@ -2,14 +2,12 @@ define([
     // libraries
 	'backbone',
     // game
-    'game/config',
-    'game/constants'
+    'game/config'
 ], function(
     // libraries
     Backbone,
     // game
-    config,
-    constants
+    config
 ) {
     
 	var CharacterAttributeModel = Backbone.Model.extend({
@@ -27,12 +25,12 @@ define([
 		},
         
         initialize: function (options) {
-            var attribute = constants.character.attribute[this.get('key')];
+            var attribute = config.character.attributes[this.get('key')];
             
             this.set({
-                description: attribute.DESCRIPTION,
-                displayName: attribute.DISPLAY_NAME,
-                name: attribute.NAME
+                description: attribute.description,
+                displayName: attribute.displayName,
+                name: attribute.name
             });
         },
         

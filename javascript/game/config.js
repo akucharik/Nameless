@@ -19,6 +19,27 @@ define([
         defaultAvailableAttributePoints: 7,
     };
     
+    config.character.attributes = {
+        strength: {
+            description: 'Strength helps in battle.',
+            displayName: 'STR',
+            key: 'strength',
+            name: 'Strength'
+        },
+        intelligence: {
+            description: 'Intelligence helps execute ideas.',
+            displayName: 'INT',
+            key: 'intelligence',
+            name: 'Intelligence'
+        },
+        charisma: {
+            description: 'Charisma helps influence people.',
+            displayName: 'CHR',
+            key: 'charisma',
+            name: 'Charisma'
+        }
+    };
+    
     config.character.characterClass = {
         average: {
             associatedAttributeKey: '',
@@ -43,7 +64,7 @@ define([
             }
         },
         soldier: {
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             description: 'Highly skilled in the art of combat. A force to be reckoned with on the battlefield.',
             key: 'soldier',
             name: 'Soldier',
@@ -65,7 +86,7 @@ define([
             }
         },
         genius: {
-            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            associatedAttributeKey: config.character.attributes.intelligence.key,
             description: 'Intellect is unmatched among peers. Strategies are highly successful and effective.',
             key: 'genius',
             name: 'Genius',
@@ -87,7 +108,7 @@ define([
             }
         },
         mesmer: {
-            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            associatedAttributeKey: config.character.attributes.charisma.key,
             description: 'A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.',
             key: 'mesmer',
             name: 'Mesmer',
@@ -162,7 +183,7 @@ define([
     config.character.skills = {
         scare: {
             name: 'Scare',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'scare',
@@ -171,7 +192,7 @@ define([
         },
         charge: {
             name: 'Charge',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'charge',
@@ -180,7 +201,7 @@ define([
         },
         coordinate: {
             name: 'Coordinate',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'coordinate',
@@ -189,7 +210,7 @@ define([
         },
         overpower: {
             name: 'Overpower',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'overpower',
@@ -198,7 +219,7 @@ define([
         },
         spy: {
             name: 'Spy',
-            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            associatedAttributeKey: config.character.attributes.intelligence.key,
             cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'spy',
@@ -207,7 +228,7 @@ define([
         },
         confuse: {
             name: 'Confuse',
-            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            associatedAttributeKey: config.character.attributes.intelligence.key,
             cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'confuse',
@@ -216,7 +237,7 @@ define([
         },
         medic: {
             name: 'Medic',
-            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            associatedAttributeKey: config.character.attributes.intelligence.key,
             cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'medic',
@@ -225,7 +246,7 @@ define([
         },
         predict: {
             name: 'Predict',
-            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            associatedAttributeKey: config.character.attributes.intelligence.key,
             cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'predict',
@@ -234,7 +255,7 @@ define([
         },
         rally: {
             name: 'Rally',
-            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            associatedAttributeKey: config.character.attributes.charisma.key,
             cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'rally',
@@ -243,7 +264,7 @@ define([
         },
         recruit: {
             name: 'Recruit',
-            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            associatedAttributeKey: config.character.attributes.charisma.key,
             cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'recruit',
@@ -252,7 +273,7 @@ define([
         },
         command: {
             name: 'Command',
-            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            associatedAttributeKey: config.character.attributes.charisma.key,
             cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'command',
@@ -261,7 +282,7 @@ define([
         },
         turn: {
             name: 'Turn',
-            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            associatedAttributeKey: config.character.attributes.charisma.key,
             cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'turn',
@@ -309,7 +330,7 @@ define([
     config.character.units = {
         foot: {
             name: 'Foot',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             description: '',
             key: 'foot',
             levelKey: config.character.unit.levels.level1.key,
@@ -318,7 +339,7 @@ define([
         },
         bow: {
             name: 'Bow',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             description: '',
             key: 'bow',
             levelKey: config.character.unit.levels.level2.key,
@@ -327,7 +348,7 @@ define([
         },
         horse: {
             name: 'Horse',
-            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            associatedAttributeKey: config.character.attributes.strength.key,
             description: '',
             key: 'horse',
             levelKey: config.character.unit.levels.level3.key,
