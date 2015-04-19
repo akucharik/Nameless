@@ -134,15 +134,15 @@ define([
             level1: {
                 cost: 10,
                 key: 'level1',
-                requiredAttributePoints: 4,
-                maxValues: [ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 100],
+                requiredAttributePoints: 3,
+                maxValues: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
                 values:    [  0,   0,   0,   5,  10,  15,  20,  25,  30,  35,  40]
             },
             level2: {
                 cost: 20,
                 key: 'level2',
                 requiredAttributePoints: 5,
-                maxValues: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
+                maxValues: [  0,   0,  10,  20,  30,  40,  50,  60,  70,  80,  90],
                 values:    [  0,   0,   0,   0,   0,   5,  10,  15,  20,  25,  30]
             },
             level3: {
@@ -293,12 +293,12 @@ define([
         levels: {
             level1: {
                 key: 'level1',
-                maxValues: [ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 100],
+                maxValues: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
                 values:    [-10,  -5,   0,   5,  10,  15,  20,  25,  30,  35,  40]
             },
             level2: {
                 key: 'level2',
-                maxValues: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
+                maxValues: [  0,   0,  10,  20,  30,  40,  50,  60,  70,  80,  90],
                 values:    [-20, -15, -10,  -5,   0,   5,  10,  15,  20,  25,  30]
             },
             level3: {
@@ -310,7 +310,7 @@ define([
         maxValue: {
             characterClassModifier: {
                 positive: 10,
-                negative: 0
+                negative: -10
             },
             value: 100
         },
