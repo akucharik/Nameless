@@ -38,36 +38,6 @@ define(function() {
                 MALE: 0,
                 FEMALE: 1
             },
-            skillLevel: {
-                level1: {
-                    COST: 10,
-                    KEY: 'level1',
-                    REQUIRED_ATTRIBUTE_POINTS: 4,
-                    maxValues: [ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100, 100],
-                    values:    [  0,   0,   0,   5,  10,  15,  20,  25,  30,  35,  40]
-                },
-                level2: {
-                    COST: 20,
-                    KEY: 'level2',
-                    REQUIRED_ATTRIBUTE_POINTS: 5,
-                    maxValues: [  0,  10,  20,  30,  40,  50,  60,  70,  80,  90, 100],
-                    values:    [  0,   0,   0,   0,   0,   5,  10,  15,  20,  25,  30]
-                },
-                level3: {
-                    COST: 30,
-                    KEY: 'level3',
-                    REQUIRED_ATTRIBUTE_POINTS: 7,
-                    maxValues: [  0,   0,   0,  10,  20,  30,  40,  50,  60,  70,  80],
-                    values:    [  0,   0,   0,   0,   0,   0,   0,   5,  10,  15,  20]
-                },
-                level4: {
-                    COST: 40,
-                    KEY: 'level4',
-                    REQUIRED_ATTRIBUTE_POINTS: 9,
-                    maxValues: [  0,   0,   0,   0,  10,  20,  30,  40,  50,  60,  70],
-                    values:    [  0,   0,   0,   0,   0,   0,   0,   0,   0,   5,  10]
-                }
-            },
             type: {
                 STOCK: 0,
                 CUSTOM: 1

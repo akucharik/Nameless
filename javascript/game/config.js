@@ -163,110 +163,110 @@ define([
         scare: {
             name: 'Scare',
             associatedAttributeKey: constants.character.attribute.strength.KEY,
-            cost: constants.character.skillLevel.level1.COST,
+            cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'scare',
-            levelKey: constants.character.skillLevel.level1.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level1.key,
+            requiredAttributePoints: config.character.skill.levels.level1.requiredAttributePoints
         },
         charge: {
             name: 'Charge',
             associatedAttributeKey: constants.character.attribute.strength.KEY,
-            cost: constants.character.skillLevel.level2.COST,
+            cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'charge',
-            levelKey: constants.character.skillLevel.level2.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level2.key,
+            requiredAttributePoints: config.character.skill.levels.level2.requiredAttributePoints
         },
         coordinate: {
             name: 'Coordinate',
             associatedAttributeKey: constants.character.attribute.strength.KEY,
-            cost: constants.character.skillLevel.level3.COST,
+            cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'coordinate',
-            levelKey: constants.character.skillLevel.level3.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level3.key,
+            requiredAttributePoints: config.character.skill.levels.level3.requiredAttributePoints
         },
         overpower: {
             name: 'Overpower',
             associatedAttributeKey: constants.character.attribute.strength.KEY,
-            cost: constants.character.skillLevel.level4.COST,
+            cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'overpower',
-            levelKey: constants.character.skillLevel.level4.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level4.key,
+            requiredAttributePoints: config.character.skill.levels.level4.requiredAttributePoints
         },
         spy: {
             name: 'Spy',
             associatedAttributeKey: constants.character.attribute.intelligence.KEY,
-            cost: constants.character.skillLevel.level1.COST,
+            cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'spy',
-            levelKey: constants.character.skillLevel.level1.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level1.key,
+            requiredAttributePoints: config.character.skill.levels.level1.requiredAttributePoints
         },
         confuse: {
             name: 'Confuse',
             associatedAttributeKey: constants.character.attribute.intelligence.KEY,
-            cost: constants.character.skillLevel.level2.COST,
+            cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'confuse',
-            levelKey: constants.character.skillLevel.level2.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level2.key,
+            requiredAttributePoints: config.character.skill.levels.level2.requiredAttributePoints
         },
         medic: {
             name: 'Medic',
             associatedAttributeKey: constants.character.attribute.intelligence.KEY,
-            cost: constants.character.skillLevel.level3.COST,
+            cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'medic',
-            levelKey: constants.character.skillLevel.level3.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level3.key,
+            requiredAttributePoints: config.character.skill.levels.level3.requiredAttributePoints
         },
         predict: {
             name: 'Predict',
             associatedAttributeKey: constants.character.attribute.intelligence.KEY,
-            cost: constants.character.skillLevel.level4.COST,
+            cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'predict',
-            levelKey: constants.character.skillLevel.level4.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level4.key,
+            requiredAttributePoints: config.character.skill.levels.level4.requiredAttributePoints
         },
         rally: {
             name: 'Rally',
             associatedAttributeKey: constants.character.attribute.charisma.KEY,
-            cost: constants.character.skillLevel.level1.COST,
+            cost: config.character.skill.levels.level1.cost,
             description: '',
             key: 'rally',
-            levelKey: constants.character.skillLevel.level1.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+            levelKey: config.character.skill.levels.level1.key,
+            requiredAttributePoints: config.character.skill.levels.level1.requiredAttributePoints
         },
         recruit: {
             name: 'Recruit',
             associatedAttributeKey: constants.character.attribute.charisma.KEY,
-            cost: constants.character.skillLevel.level2.COST,
+            cost: config.character.skill.levels.level2.cost,
             description: '',
             key: 'recruit',
-            levelKey: constants.character.skillLevel.level2.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS,
+            levelKey: config.character.skill.levels.level2.key,
+            requiredAttributePoints: config.character.skill.levels.level2.requiredAttributePoints,
         },
         command: {
             name: 'Command',
             associatedAttributeKey: constants.character.attribute.charisma.KEY,
-            cost: constants.character.skillLevel.level3.COST,
+            cost: config.character.skill.levels.level3.cost,
             description: '',
             key: 'command',
-            levelKey: constants.character.skillLevel.level3.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS,
+            levelKey: config.character.skill.levels.level3.key,
+            requiredAttributePoints: config.character.skill.levels.level3.requiredAttributePoints,
         },
         turn: {
             name: 'Turn',
             associatedAttributeKey: constants.character.attribute.charisma.KEY,
-            cost: constants.character.skillLevel.level4.COST,
+            cost: config.character.skill.levels.level4.cost,
             description: '',
             key: 'turn',
-            levelKey: constants.character.skillLevel.level4.KEY,
-            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS,
+            levelKey: config.character.skill.levels.level4.key,
+            requiredAttributePoints: config.character.skill.levels.level4.requiredAttributePoints,
         }
     };
     
