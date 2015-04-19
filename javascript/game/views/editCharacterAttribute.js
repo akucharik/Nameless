@@ -28,30 +28,30 @@ define([
             this.$attributeValue = this.$('.attributeValue');
             this.$increaseValue = this.$('[data-attribute-change="+"]');
             this.$decreaseValue = this.$('[data-attribute-change="-"]');
-            this.$unitProficiencies = this.$('.unitProficiencies');
-            this.$skills = this.$('.skillProficiencies');
+//            this.$unitProficiencies = this.$('.unitProficiencies');
+//            this.$skills = this.$('.skillProficiencies');
             
             // create unit proficiency views
-            this.character.get('unitProficiencies').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (unitProficiency) {
-                var unitProficiencyView = new EditCharacterUnitProficiencyView({
-                    model: unitProficiency,
-                    tagName: 'li',
-                    template: '#editCharacterUnitProficiencyTemplate'
-                });
-
-                this.$unitProficiencies.append(unitProficiencyView.render().el);
-            }, this);
+//            this.character.get('unitProficiencies').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (unitProficiency) {
+//                var unitProficiencyView = new EditCharacterUnitProficiencyView({
+//                    model: unitProficiency,
+//                    tagName: 'li',
+//                    template: '#editCharacterUnitProficiencyTemplate'
+//                });
+//
+//                this.$unitProficiencies.append(unitProficiencyView.render().el);
+//            }, this);
             
             // create skill views
-            this.character.get('skills').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (skill) {
-                var skillView = new EditCharacterSkillView({
-                    model: skill,
-                    tagName: 'li',
-                    template: '#editCharacterSkillTemplate'
-                });
-
-                this.$skills.append(skillView.render().el);
-            }, this);
+//            this.character.get('skills').where({ associatedAttributeKey: this.model.get('key') }).forEach(function (skill) {
+//                var skillView = new EditCharacterSkillView({
+//                    model: skill,
+//                    tagName: 'li',
+//                    template: '#editCharacterSkillTemplate'
+//                });
+//
+//                this.$skills.append(skillView.render().el);
+//            }, this);
             
             this.listenTo(this.character, 'change:availableAttributePoints', this.render);
 		},

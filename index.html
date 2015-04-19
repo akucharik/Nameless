@@ -104,28 +104,43 @@
     </script>
     
     <script id="editCharacterTemplate" type="text/template">
-        <ul class="menu menu-horizontal">
-            <li><button id="save">Save</button></li>
-            <li><button id="back">Back</button></li>
-        </ul>
-
-        <input id="name" class="edit-character-view-name" type="text" placeholder="Name" />
-        <p>Attribute Points: <span id="availableAttributePoints"></span></p>
-        <ul id="attributes" class="unbulleted-list attributes"></ul>
-        
-        <!--<h3>Combat</h3>
-        <ul class="menu skills">
-            <li data-combat-id="0">Foot</li>
-            <li data-combat-id="1">Horse</li>
-            <li data-combat-id="2">Bow</li>
-        </ul>
-        
-        <p></p>-->
+        <div class="edit-character">
+            <div class="edit-character-top clear-fix">
+                <input id="name" class="edit-character-name" type="text" placeholder="Name" />
+                <select class="edit-character-gender">
+                    <option>Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="edit-character-left">
+                <div class="edit-character-portrait">Portrait</div>
+                <ul id="attributes" class="unbulleted-list edit-character-attributes"></ul>
+                <p class="edit-character-attribute-points">
+                    <span>PTS</span>
+                    <span class="attribute-ratio">
+                        <span id="availableAttributePoints"></span>
+                    </span>
+                </p>
+            </div>
+            <div class="edit-character-right">
+                <div class="edit-character-proficiencies">
+                    <ul id="skills" class="unbulleted-list edit-character-skills"></ul>
+                    <ul id="units" class="unbulleted-list edit-character-units"></ul>
+                </div>
+            </div>
+            <ul class="menu menu-horizontal screen-actions clear-fix">
+                <li><button id="save">Save</button></li>
+                <li><button id="back">Back</button></li>
+            </ul>
+        </div>
     </script>
     
     <script id="editCharacterAttributeTemplate" type="text/template">
         <span><%= displayName %></span>
-        <span class="attributeValue"><%= startValue %></span>/<span><%= maxStartValue %></span>
+        <span class="attribute-ratio">
+            <span class="attributeValue"><%= startValue %></span>/<span><%= maxStartValue %></span>
+        </span>
         <button data-attribute-change="+">+</button>
         <button data-attribute-change="-">-</button>
         <ul class="skillProficiencies unbulleted-list skills"></ul>

@@ -7,7 +7,9 @@ define([
     // controllers
     'controllers/character',
     // views
-    'views/editCharacterAttribute'
+    'views/editCharacterAttribute',
+    'views/editCharacterSkill',
+    'views/editCharacterUnitProficiency'
 ], function(
     // libraries
     Backbone,
@@ -17,7 +19,9 @@ define([
     // controllers
     CharacterController,
     // views
-    EditCharacterAttributeView
+    EditCharacterAttributeView,
+    EditCharacterSkillView,
+    EditCharacterUnitProficiencyView
 ) {
 
 	var EditCharacterView = Backbone.View.extend({
@@ -29,6 +33,8 @@ define([
             this.$name = this.$('#name');
             this.$availableAttributePoints = this.$('#availableAttributePoints');
             this.$attributes = this.$('#attributes');
+            this.$skills = this.$('#skills');
+            this.$units = this.$('#units');
             
             this.character = this.model.get('editCharacter');
             this.characterController = new CharacterController({
@@ -44,6 +50,28 @@ define([
                     template: '#editCharacterAttributeTemplate'
                 });
                 this.$attributes.append(attributeView.render().el);
+            }, this);
+            
+            // create skill views
+            this.character.get('skills').forEach(function (skill) {
+                var skillView = new EditCharacterSkillView({
+                    model: skill,
+                    tagName: 'li',
+                    template: '#editCharacterSkillTemplate'
+                });
+
+                this.$skills.append(skillView.render().el);
+            }, this);
+            
+            // create unit views
+            this.character.get('unitProficiencies').forEach(function (unitProficiency) {
+                var unitProficiencyView = new EditCharacterUnitProficiencyView({
+                    model: unitProficiency,
+                    tagName: 'li',
+                    template: '#editCharacterUnitProficiencyTemplate'
+                });
+
+                this.$units.append(unitProficiencyView.render().el);
             }, this);
             
             this.listenTo(this.character, 'change:availableAttributePoints', this.render);

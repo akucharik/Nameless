@@ -58,7 +58,7 @@ body {
     margin: 0;
 }
 
-body, button {
+body, button, input {
     font-family: 'ubuntu-mono', 'GraphicPixel', 'Titillium Web', sans-serif;
 }
 
@@ -360,9 +360,63 @@ td {
     animation-timing-function: ease-out;
 }
 
-.edit-character-view-name {
+.edit-character {
+    display: table;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.edit-character-top {
+    text-align: left;
+}
+
+.edit-character-name {
     font-size: 140%;
     margin-top: 1.0em;
+    width: 16.5em;
+}
+
+.edit-character-gender {
+    
+}
+
+.edit-character-left,
+.edit-character-right {
+    box-sizing: border-box;
+    float: left;
+    margin-top: 1.0em;
+}
+
+.edit-character-left {
+    padding-right: 1.0em;
+    width: 13em;
+}
+
+.edit-character-right {
+    width: 15em;
+}
+
+.edit-character-portrait {
+    background-color: rgba(0,0,0,0.5);
+    color: #666;
+    height: 250px;
+    line-height: 250px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.edit-character-attributes {
+    margin-top: 1.0em;
+}
+
+.edit-character-attributes,
+.edit-character-attribute-points {
+    font-size: 150%;
+    text-align: left;
+}
+
+.edit-character-attribute-points {
+    margin: 0.2em 0;
 }
 
 .attributes {
@@ -376,6 +430,13 @@ td {
     width: 10em;
 }
 
+.attribute-ratio > span {
+    display: inline-block;
+    padding: 0 0.1em;
+    text-align: right;
+    width: 0.7em;
+}
+
 /*
 .attributes > li:first-child > .skills > li:before {
     content: "IV";
@@ -384,6 +445,11 @@ td {
     left: -20px;   
 }
 */
+
+.edit-character-proficiencies {
+    background-color: rgba(0,0,0,0.5);
+    padding: 1.0em 1.5em;
+}
 
 .unit-proficiencies,
 .unit-proficiencies > li,
@@ -400,11 +466,11 @@ td {
 
 .unit-proficiency,
 .skill {
-    background-color: rgba(0,0,0,0.4);
-    margin: 5px 0;
-    padding: 5px 10px;
+    /*background-color: rgba(0,0,0,0.4);*/
+    color: #666;
+    /*margin: 5px 0;*/
+    padding: 2px 0;
     text-align: right;
-    width: 12em;
 }
 
 .unit-proficiency-name,
@@ -412,9 +478,11 @@ td {
     float: left;
 }
 
+.edit-character-skills > .selected > .skill,
+.edit-character-units > .selected > .unit-proficiency,
 .unit-proficiencies > .selected,
 .skills > .selected {
-    background-color: rgba(255,255,255,0.4);
+    /*background-color: rgba(255,255,255,0.4);*/
     color: #fff;
 }
 
