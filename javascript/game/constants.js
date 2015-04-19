@@ -10,10 +10,6 @@ define(function() {
         },
         
         character: {
-            UNIT_PROFICIENCY_MAX_VALUE: 100,
-            UNIT_PROFICIENCY_MIN_VALUE: 0,
-            SKILL_MAX_VALUE: 100,
-            SKILL_MIN_VALUE: 0,
             gender: {
                 MALE: 0,
                 FEMALE: 1

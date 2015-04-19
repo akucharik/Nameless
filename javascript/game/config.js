@@ -1,9 +1,7 @@
 define([
-    // game
-    'game/constants'
+
 ], function(
-    // game
-    constants
+
 ) {
 
     var config = {

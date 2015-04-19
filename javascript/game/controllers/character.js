@@ -64,7 +64,7 @@ define([
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.maxValue.characterClassModifier.positive, config.character.skill.maxValue.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             
-            return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
+            return this.getBoundedValue(calculatedValue, config.character.skill.maxValue.value, config.character.skill.minValue.value);
         },
         
         calculateSkillValue: function (skill, associatedAttribute, characterClass) {
@@ -72,7 +72,7 @@ define([
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.value.characterClassModifier.positive, config.character.skill.value.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             
-            return this.getBoundedValue(calculatedValue, constants.character.SKILL_MAX_VALUE, constants.character.SKILL_MIN_VALUE);
+            return this.getBoundedValue(calculatedValue, config.character.skill.maxValue.value, config.character.skill.minValue.value);
         },
         
         // unit proficiencies
@@ -91,7 +91,7 @@ define([
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.unit.maxValue.characterClassModifier.positive, config.character.unit.maxValue.characterClassModifier.negative) 
                                 + unitProficiency.get('bonusValue');
             
-            return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
+            return this.getBoundedValue(calculatedValue, config.character.unit.maxValue.value, config.character.unit.minValue.value);
         },
         
         calculateUnitProficiencyValue: function (unitProficiency, associatedAttribute, characterClass) {
@@ -99,7 +99,7 @@ define([
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.unit.value.characterClassModifier.positive, config.character.unit.value.characterClassModifier.negative)
                                 + unitProficiency.get('bonusValue');
             
-            return this.getBoundedValue(calculatedValue, constants.character.UNIT_PROFICIENCY_MAX_VALUE, constants.character.UNIT_PROFICIENCY_MIN_VALUE);
+            return this.getBoundedValue(calculatedValue, config.character.unit.maxValue.value, config.character.unit.minValue.value);
         },
         
         getBoundedValue: function (value, maxValue, minValue) {
