@@ -2,12 +2,12 @@ define([
     // libraries
 	'backbone',
     // game
-    'game/constants'
+    'game/config'
 ], function(
     // libraries
     Backbone,
     // game
-    constants
+    config
 ) {
     
 	var CharacterSkillModel = Backbone.Model.extend({
@@ -17,7 +17,7 @@ define([
             description: '',
             enabled: false,
             key: '',
-            level: '',
+            levelKey: '',
             name: '',
             requiredAttributePoints: 0,
             // values
@@ -28,15 +28,15 @@ define([
 		},
         
         initialize: function (options) {
-            var skill = constants.character.skill[this.get('key')]
+            var skill = config.character.skills[this.get('key')]
             
             this.set({
-                associatedAttributeKey: skill.ASSOCIATED_ATTRIBUTE_KEY,
-                cost: skill.COST,
-                description: skill.DESCRIPTION,
-                level: skill.LEVEL,
-                name: skill.NAME, 
-                requiredAttributePoints: skill.REQUIRED_ATTRIBUTE_POINTS
+                associatedAttributeKey: skill.associatedAttributeKey,
+                cost: skill.cost,
+                description: skill.description,
+                levelKey: skill.levelKey,
+                name: skill.name, 
+                requiredAttributePoints: skill.requiredAttributePoints
             });
         },
         

@@ -60,7 +60,7 @@ define([
         },
         
         calculateSkillMaxValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('level'), 'maxValues', associatedAttribute) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('levelKey'), 'maxValues', associatedAttribute) 
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.maxValue.characterClassModifier.positive, config.character.skill.maxValue.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             
@@ -68,7 +68,7 @@ define([
         },
         
         calculateSkillValue: function (skill, associatedAttribute, characterClass) {
-            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('level'), 'values', associatedAttribute) 
+            var calculatedValue = this.getProficiencyLevelValue(config.character.skill.levels, skill.get('levelKey'), 'values', associatedAttribute) 
                                 + this.getProficiencyCharacterClassModifier(characterClass, associatedAttribute, config.character.skill.value.characterClassModifier.positive, config.character.skill.value.characterClassModifier.negative) 
                                 + skill.get('bonusValue');
             

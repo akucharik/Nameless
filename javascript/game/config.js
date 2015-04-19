@@ -160,7 +160,114 @@ define([
     };
     
     config.character.skills = {
-    
+        scare: {
+            name: 'Scare',
+            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            cost: constants.character.skillLevel.level1.COST,
+            description: '',
+            key: 'scare',
+            levelKey: constants.character.skillLevel.level1.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+        },
+        charge: {
+            name: 'Charge',
+            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            cost: constants.character.skillLevel.level2.COST,
+            description: '',
+            key: 'charge',
+            levelKey: constants.character.skillLevel.level2.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
+        },
+        coordinate: {
+            name: 'Coordinate',
+            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            cost: constants.character.skillLevel.level3.COST,
+            description: '',
+            key: 'coordinate',
+            levelKey: constants.character.skillLevel.level3.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
+        },
+        overpower: {
+            name: 'Overpower',
+            associatedAttributeKey: constants.character.attribute.strength.KEY,
+            cost: constants.character.skillLevel.level4.COST,
+            description: '',
+            key: 'overpower',
+            levelKey: constants.character.skillLevel.level4.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
+        },
+        spy: {
+            name: 'Spy',
+            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            cost: constants.character.skillLevel.level1.COST,
+            description: '',
+            key: 'spy',
+            levelKey: constants.character.skillLevel.level1.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+        },
+        confuse: {
+            name: 'Confuse',
+            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            cost: constants.character.skillLevel.level2.COST,
+            description: '',
+            key: 'confuse',
+            levelKey: constants.character.skillLevel.level2.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS
+        },
+        medic: {
+            name: 'Medic',
+            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            cost: constants.character.skillLevel.level3.COST,
+            description: '',
+            key: 'medic',
+            levelKey: constants.character.skillLevel.level3.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS
+        },
+        predict: {
+            name: 'Predict',
+            associatedAttributeKey: constants.character.attribute.intelligence.KEY,
+            cost: constants.character.skillLevel.level4.COST,
+            description: '',
+            key: 'predict',
+            levelKey: constants.character.skillLevel.level4.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS
+        },
+        rally: {
+            name: 'Rally',
+            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            cost: constants.character.skillLevel.level1.COST,
+            description: '',
+            key: 'rally',
+            levelKey: constants.character.skillLevel.level1.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level1.REQUIRED_ATTRIBUTE_POINTS
+        },
+        recruit: {
+            name: 'Recruit',
+            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            cost: constants.character.skillLevel.level2.COST,
+            description: '',
+            key: 'recruit',
+            levelKey: constants.character.skillLevel.level2.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level2.REQUIRED_ATTRIBUTE_POINTS,
+        },
+        command: {
+            name: 'Command',
+            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            cost: constants.character.skillLevel.level3.COST,
+            description: '',
+            key: 'command',
+            levelKey: constants.character.skillLevel.level3.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level3.REQUIRED_ATTRIBUTE_POINTS,
+        },
+        turn: {
+            name: 'Turn',
+            associatedAttributeKey: constants.character.attribute.charisma.KEY,
+            cost: constants.character.skillLevel.level4.COST,
+            description: '',
+            key: 'turn',
+            levelKey: constants.character.skillLevel.level4.KEY,
+            requiredAttributePoints: constants.character.skillLevel.level4.REQUIRED_ATTRIBUTE_POINTS,
+        }
     };
     
     config.character.unit = {
