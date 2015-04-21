@@ -160,7 +160,7 @@ define([
             el: '#homeContainer',
             model: homeModel
         });
-
+        
         // TODO: remove exposed objects after development is complete
         window.homeModel = homeModel;
     }

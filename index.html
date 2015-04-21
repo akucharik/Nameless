@@ -107,11 +107,7 @@
         <div class="edit-character">
             <div class="edit-character-top clear-fix">
                 <input id="name" class="edit-character-name" type="text" placeholder="Name" />
-                <select class="edit-character-gender">
-                    <option>Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
+                <button id="editCharacterGender"></button>
             </div>
             <div class="edit-character-left">
                 <div class="edit-character-portrait">Portrait</div>
@@ -163,6 +159,22 @@
                 <span class="skillValue"><% print(this.model.getValue()) %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
             </span>
         </div>
+    </script>
+    
+    <script id="modalTemplate" type="text/template">
+        <div class="modal-content">
+            <div id="modalContent"></div>
+            <ul class="menu">
+                <li><button id="modalClose">Cancel</button>
+            </ul>
+        </div>
+    </script>
+    
+    <script id="editCharacterGenderTemplate" type="text/template">
+        <ul class="menu">
+            <li><button class="editCharacterGenderOption" data-gender="Male">Male</button></li>
+            <li><button class="editCharacterGenderOption" data-gender="Female">Female</button></li>
+        </ul>
     </script>
     
 	<script src="javascript/libraries/require.min.js" data-main="javascript/main.js"></script>

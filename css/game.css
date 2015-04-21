@@ -252,6 +252,30 @@ td {
 }
 
 
+/* Modal */
+.modal {
+    background-color: rgba(0,0,0,0.7);
+    display: table;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal-content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    
+    -webkit-animation-duration: 0.2s;
+    -webkit-animation-name: zoom-in;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.2s;
+    animation-name: zoom-in;
+    animation-timing-function: ease-out;
+}
+
 /* Home */
 .home-container {
     margin: 0 auto;
@@ -327,8 +351,16 @@ td {
     text-shadow: 0 1px 2px black;
 }
 
-.log-item-default {
+.log-item {
     color: yellow;
+}
+
+.log-item > .attribute {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 85%;
+    padding: 2px 6px;
 }
 
 /* Main Menu */
@@ -511,5 +543,25 @@ td {
     
     to {
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes zoom-in {
+    from {
+        transform: scale(0.5);
+    }
+    
+    to {
+        transform: scale(1.0);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(0.5);
+    }
+    
+    to {
+        transform: scale(1.0);
     }
 }

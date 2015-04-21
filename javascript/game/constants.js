@@ -11,8 +11,8 @@ define(function() {
         
         character: {
             gender: {
-                MALE: 0,
-                FEMALE: 1
+                MALE: 'Male',
+                FEMALE: 'Female'
             },
             type: {
                 STOCK: 0,
@@ -107,7 +107,7 @@ define(function() {
         log: {
             item: {
                 cssClass: {
-                    DEFAULT: 'log-item-default'
+                    DEFAULT: 'log-item'
                 },
                 type: {
                     DEFAULT: 0

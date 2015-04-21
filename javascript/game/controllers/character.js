@@ -21,6 +21,7 @@ define([
 		initialize: function () {
             this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
             this.listenTo(this.model, 'change:characterClass', this.onCharacterClassChange);
+            this.listenTo(this.model, 'change', this.onChange);
             this.listenTo(this.model.get('attributes'), 'change', this.onAttributeChange);
 		},
         
@@ -41,8 +42,18 @@ define([
             this.model.get('unitProficiencies').forEach(this.updateUnitProficiency, this);
         },
         
-        onAttributeChange: function (attribute, options) {
-            eventLog.add({ message: attribute.get('name') + (attribute.get('startValue') > attribute.previous('startValue') ? ' increased' : ' decreased') + ' by ' + Math.abs(attribute.get('startValue') - attribute.previous('startValue'))});
+        onChange: function () {
+            var changedAttributes = this.model.changedAttributes()
+            
+            for (var attribute in changedAttributes) {
+                eventLog.add({ message: '<span class="attribute">' + attribute + '</span>' + ' changed to ' + changedAttributes[attribute] });
+            }
+        },
+        
+        onAttributeChange: function (attribute) {
+            eventLog.add({ message: '<span class="attribute">' + attribute.get('key') + '</span>' + (attribute.get('startValue') > attribute.previous('startValue') ? ' increased' : ' decreased') + ' by ' + Math.abs(attribute.get('startValue') - attribute.previous('startValue')) });
+            
+            //eventLog.add({ message: attribute.get('name') + (attribute.get('startValue') > attribute.previous('startValue') ? ' increased' : ' decreased') + ' by ' + Math.abs(attribute.get('startValue') - attribute.previous('startValue'))});
             
             this.model.get('unitProficiencies').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateUnitProficiency, this);
             this.model.get('skills').where({ associatedAttributeKey: attribute.get('key') }).forEach(this.updateSkill, this);

@@ -8,6 +8,7 @@ define([
     'controllers/character',
     // views
     'views/editCharacterAttribute',
+    'views/editCharacterGender',
     'views/editCharacterSkill',
     'views/editCharacterUnitProficiency'
 ], function(
@@ -20,6 +21,7 @@ define([
     CharacterController,
     // views
     EditCharacterAttributeView,
+    EditCharacterGenderView,
     EditCharacterSkillView,
     EditCharacterUnitProficiencyView
 ) {
@@ -84,12 +86,22 @@ define([
         },
         
         events: {
+            'click #editCharacterGender': 'editCharacterGender',
             'click #back': 'back',
             'click #save': 'save'
         },
         
         back: function () {
             this.model.set('state', constants.home.state.EDIT_CHARACTER_CLASS);
+        },
+        
+        editCharacterGender: function () {
+            var editCharacterGenderView = new EditCharacterGenderView({
+                className: 'modal',
+                model: this.character,
+                modalTemplate: '#modalTemplate',
+                template: '#editCharacterGenderTemplate',
+            }).render().$el.appendTo(this.$el);
         },
         
         remove: function () {
