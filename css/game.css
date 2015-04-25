@@ -63,8 +63,12 @@ body, button, input {
 }
 
 button {
+    border: 0 none;
+    border-radius: 0.3em;
     cursor: pointer;
     font-size: inherit;
+    padding: 0.2em 0.4em;
+    text-align: center;
 }
 
 h1 {
@@ -254,7 +258,7 @@ td {
 
 /* Modal */
 .modal {
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.8);
     display: table;
     height: 100%;
     left: 0;
@@ -382,6 +386,7 @@ td {
     font-size: 140%;
 }
 
+.animate-screen-in,
 .edit-character-class-view,
 .edit-character-view {
     -webkit-animation-duration: 0.5s;
@@ -395,6 +400,7 @@ td {
 .edit-character {
     display: table;
     margin: 0 auto;
+    text-align: left;
     width: 500px;
 }
 
@@ -405,7 +411,7 @@ td {
 .edit-character-name {
     font-size: 140%;
     margin-top: 1.0em;
-    width: 16.5em;
+    width: 19.5em;
 }
 
 .edit-character-gender {
@@ -426,6 +432,10 @@ td {
 
 .edit-character-right {
     width: 15em;
+}
+
+.edit-character-right h2 {
+    margin: 0;
 }
 
 .edit-character-portrait {
@@ -478,7 +488,8 @@ td {
 }
 */
 
-.edit-character-proficiencies {
+.edit-character-skills,
+.edit-character-units {
     background-color: rgba(0,0,0,0.5);
     padding: 1.0em 1.5em;
 }

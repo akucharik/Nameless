@@ -77,12 +77,13 @@
         <td></td>
     </script>
     
+    <script id="editCharacterManagerTemplate" type="text/template">
+        <div id="editCharacterManagerContent"></div>
+        <div id="editCharacterManagerActions"></div>
+    </script>
+    
     <script id="editCharacterClassTemplate" type="text/template">
-        <ul class="menu menu-horizontal">
-            <li><button id="mainMenu">Main Menu</button></li>
-            <li><button id="characters">Characters</button></li>
-        </ul>
-
+        <h1>Choose a Character Class</h1>
         <ul class="menu edit-character-class-menu">
             <li>
                 <button data-character-class="average">Average</button>
@@ -103,13 +104,18 @@
         </ul>
     </script>
     
+    <script id="editCharacterClassActionsTemplate" type="text/template">
+        <li><button id="cancelCharacterClass">Cancel</button></li>
+    </script>
+    
     <script id="editCharacterTemplate" type="text/template">
+        <h1>Customize Your Character</h1>
         <div class="edit-character">
             <div class="edit-character-top clear-fix">
-                <input id="name" class="edit-character-name" type="text" placeholder="Name" />
-                <button id="editCharacterGender"></button>
+                <input id="name" class="edit-character-name" type="text" placeholder="Name" value="<%= name %>" />
             </div>
             <div class="edit-character-left">
+                <button id="gender" style="margin-bottom: 0.3em; width: 100%;"><%= gender %></button>
                 <div class="edit-character-portrait">Portrait</div>
                 <ul id="attributes" class="unbulleted-list edit-character-attributes"></ul>
                 <p class="edit-character-attribute-points">
@@ -120,16 +126,18 @@
                 </p>
             </div>
             <div class="edit-character-right">
-                <div class="edit-character-proficiencies">
-                    <ul id="skills" class="unbulleted-list edit-character-skills"></ul>
-                    <ul id="units" class="unbulleted-list edit-character-units"></ul>
-                </div>
+                <h2>Skills</h2>
+                <ul id="skills" class="unbulleted-list edit-character-skills"></ul>
+                <h2>Units</h2>
+                <ul id="units" class="unbulleted-list edit-character-units"></ul>
             </div>
-            <ul class="menu menu-horizontal screen-actions clear-fix">
-                <li><button id="save">Save</button></li>
-                <li><button id="back">Back</button></li>
-            </ul>
         </div>
+    </script>
+    
+    <script id="editCharacterActionsTemplate" type="text/template">
+        <li><button id="save">Save</button></li>
+        <li><button id="editCharacterClass">Change Character Class</button></li>
+        <li><button id="cancelCharacterDetail">Cancel</button></li>
     </script>
     
     <script id="editCharacterAttributeTemplate" type="text/template">

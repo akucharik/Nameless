@@ -22,10 +22,10 @@ define([
 		defaults: function () {
             return {
                 // Basic
-                name: '',
+                characterClass: '',
                 gender: constants.character.gender.MALE,
+                name: '',
                 type: constants.character.type.STOCK,
-                characterClass: '', 
 
                 // Attributes
                 attributes: new CharacterAttributeCollection(),

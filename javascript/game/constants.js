@@ -20,6 +20,17 @@ define(function() {
             }
         },
         
+        editCharacter: {
+            mode: {
+                CREATE: 0,
+                EDIT: 1
+            },
+            source: {
+                MAIN_MENU: 0,
+                CHARACTERS: 1
+            }
+        },
+        
         entity: {
             controlType: {
                 NPC: 0,
@@ -89,10 +100,9 @@ define(function() {
             state: {
                 MAIN_MENU: 0,
                 CHARACTERS: 1,
-                EDIT_CHARACTER_CLASS: 2,
-                EDIT_CHARACTER: 3,
-                GAMES: 4,
-                PLAY: 5
+                EDIT_CHARACTER: 2,
+                GAMES: 3,
+                PLAY: 4
             }
         },
         

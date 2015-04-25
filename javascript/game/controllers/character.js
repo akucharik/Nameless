@@ -26,20 +26,22 @@ define([
 		},
         
         onCharacterClassChange: function (model) {
-            this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
-            
-            this.model.get('attributes').each(function (attribute) {
-                attribute.set({ 
-                    maxStartValue: this.characterClass.get([attribute.get('key')] + 'MaxStartValue'),
-                    startValue: this.characterClass.get([attribute.get('key')] + 'StartValue')
-                }, {
-                    silent: true
-                });
-            }, this);
-            
-            this.model.set('availableAttributePoints', this.characterClass.get('availableAttributePointsStartValue'));
-            this.model.get('skills').forEach(this.updateSkill, this);
-            this.model.get('unitProficiencies').forEach(this.updateUnitProficiency, this);
+            if (this.model.get('characterClass').length && this.model.get('characterClass').length > 0) {
+                this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
+
+                this.model.get('attributes').each(function (attribute) {
+                    attribute.set({ 
+                        maxStartValue: this.characterClass.get([attribute.get('key')] + 'MaxStartValue'),
+                        startValue: this.characterClass.get([attribute.get('key')] + 'StartValue')
+                    }, {
+                        silent: true
+                    });
+                }, this);
+
+                this.model.set('availableAttributePoints', this.characterClass.get('availableAttributePointsStartValue'));
+                this.model.get('skills').forEach(this.updateSkill, this);
+                this.model.get('unitProficiencies').forEach(this.updateUnitProficiency, this);
+            }
         },
         
         onChange: function () {

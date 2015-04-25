@@ -13,6 +13,7 @@ define([
     'models/home',
     // views
     'views/characters',
+    'views/editCharacterManager',
     'views/editCharacterClass',
     'views/editCharacter',
     'views/game',
@@ -32,6 +33,7 @@ define([
     HomeModel,
     // views
     CharactersView,
+    EditCharacterManagerView,
     EditCharacterClassView,
     EditCharacterView,
     GameView,
@@ -121,20 +123,19 @@ define([
                         })).contentView.resizeTableScrollHeight();
                         break;
                         
-                    case constants.home.state.EDIT_CHARACTER_CLASS:
-                        this.open(new EditCharacterClassView({
-                            className: 'edit-character-class-view',
-                            model: this.model,
-                            template: '#editCharacterClassTemplate'
-                        }));
-                        break;
-                        
                     case constants.home.state.EDIT_CHARACTER:
-                        this.open(new EditCharacterView({
-                            className: 'edit-character-view',
+                        this.open(new EditCharacterManagerView({
+                            actionsId: 'editCharacterManagerActions',
+                            contentId: 'editCharacterManagerContent',
                             model: this.model,
-                            template: '#editCharacterTemplate'
+                            template: '#editCharacterManagerTemplate'
                         }));
+                        
+//                        this.open(new EditCharacterClassView({
+//                            className: 'edit-character-class-view',
+//                            model: this.model,
+//                            template: '#editCharacterClassTemplate'
+//                        }));
                         break;
                         
                     case constants.home.state.GAMES:

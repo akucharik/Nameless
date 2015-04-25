@@ -49,7 +49,9 @@ define([
         },
         
         newCharacter: function () {
-            this.model.set('state', constants.home.state.EDIT_CHARACTER_CLASS);
+            this.model.set('editCharacterMode', constants.editCharacter.mode.CREATE);
+            this.model.set('editCharacterSource', constants.editCharacter.source.MAIN_MENU);
+            this.model.set('state', constants.home.state.EDIT_CHARACTER);
         }
         
 	});

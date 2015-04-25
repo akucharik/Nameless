@@ -2,10 +2,6 @@ define([
     // libraries
 	'backbone',
     'jquery',
-    // game
-    'game/constants',
-    // controllers
-    'controllers/character',
     // views
     'views/editCharacterAttribute',
     'views/editCharacterGender',
@@ -15,10 +11,6 @@ define([
     // libraries
     Backbone,
     $,
-    // game
-    constants,
-    // controllers
-    CharacterController,
     // views
     EditCharacterAttributeView,
     EditCharacterGenderView,
@@ -30,23 +22,28 @@ define([
 		
 		initialize: function (options) {
             this.template = _.template($(options.template).html());
+            
+            // listen to events
+            this.listenTo(this.model, 'change:availableAttributePoints', this.render);
+            this.listenTo(this.model, 'change:gender', this.render);
+		},
+        
+        render: function () {
             this.$el.html(this.template(this.model.toJSON()));
             
+            // cache DOM elements
             this.$name = this.$('#name');
+            this.$gender = this.$('#gender');
             this.$availableAttributePoints = this.$('#availableAttributePoints');
+            
             this.$attributes = this.$('#attributes');
             this.$skills = this.$('#skills');
             this.$units = this.$('#units');
             
-            this.character = this.model.get('editCharacter');
-            this.characterController = new CharacterController({
-                model: this.character
-            });
-            
             // create attribute views
-            this.character.get('attributes').each(function (attribute) {
+            this.model.get('attributes').each(function (attribute) {
                 var attributeView = new EditCharacterAttributeView({
-                    character: this.character,
+                    character: this.model,
                     model: attribute,
                     tagName: 'li',
                     template: '#editCharacterAttributeTemplate'
@@ -55,7 +52,7 @@ define([
             }, this);
             
             // create skill views
-            this.character.get('skills').forEach(function (skill) {
+            this.model.get('skills').forEach(function (skill) {
                 var skillView = new EditCharacterSkillView({
                     model: skill,
                     tagName: 'li',
@@ -66,7 +63,7 @@ define([
             }, this);
             
             // create unit views
-            this.character.get('unitProficiencies').forEach(function (unitProficiency) {
+            this.model.get('unitProficiencies').forEach(function (unitProficiency) {
                 var unitProficiencyView = new EditCharacterUnitProficiencyView({
                     model: unitProficiency,
                     tagName: 'li',
@@ -76,43 +73,26 @@ define([
                 this.$units.append(unitProficiencyView.render().el);
             }, this);
             
-            this.listenTo(this.character, 'change:availableAttributePoints', this.render);
-		},
-        
-        render: function () {
-            this.$availableAttributePoints.html(this.character.get('availableAttributePoints'));
-            
             return this;
         },
         
-        events: {
-            'click #editCharacterGender': 'editCharacterGender',
-            'click #back': 'back',
-            'click #save': 'save'
+        update: function () {
+            this.$gender.html(this.model.get('gender'));
+            this.$availableAttributePoints.html(this.model.get('availableAttributePoints'));
         },
         
-        back: function () {
-            this.model.set('state', constants.home.state.EDIT_CHARACTER_CLASS);
+        // events
+        events: {
+            'click #gender': 'editCharacterGender'
         },
         
         editCharacterGender: function () {
             var editCharacterGenderView = new EditCharacterGenderView({
                 className: 'modal',
-                model: this.character,
+                model: this.model,
                 modalTemplate: '#modalTemplate',
                 template: '#editCharacterGenderTemplate',
             }).render().$el.appendTo(this.$el);
-        },
-        
-        remove: function () {
-            this.characterController.remove();
-            Backbone.View.prototype.remove.call(this);
-        },
-        
-        save: function () {
-            this.character.set('name', this.$name.val());
-            this.model.get('savedCharacters').add(this.character);
-            this.model.set('state', constants.home.state.CHARACTERS);
         }
         
 	});

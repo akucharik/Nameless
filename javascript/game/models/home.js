@@ -20,10 +20,18 @@ define([
     
 	var HomeModel = Backbone.Model.extend({
 		defaults: {
+            // States
             playState: constants.play.state.DEAD,
             state: constants.home.state.MAIN_MENU,
-            editCharacter: null,
+            
+            // Create/Edit character
+            editCharacterMode: null,
+            editCharacterSource: null,
+            
+            // Characters
             savedCharacters: new CharacterCollection([]),
+            
+            // Games
             savedGames: new Backbone.Collection([], {})
 		}
 
