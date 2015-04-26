@@ -536,7 +536,157 @@ td {
     width: 1.7em;
 }
 
+/* Scrolling selector */
+.scrolling-selector-action,
+.scrolling-selector-content {
+    height: 5em;
+    vertical-align: middle;
+}
+
+.scrolling-selector-content,
+.scrolling-selector-content > li {
+    width: 200px;
+}
+
+.scrolling-selector-content {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.scrolling-selector-content > li {
+    display: inline-block;
+    left: 100%;
+    line-height: 5em;
+    position: absolute;
+    text-align: center;
+}
+
+.scrolling-selector-content > .selected {
+    left: 0;
+}
+
+.scrolling-selector-animate-in-left {
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: scrolling-selector-animate-in-left;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.4s;
+    animation-name: scrolling-selector-animate-in-left;
+    animation-timing-function: ease-out;
+}
+
+.scrolling-selector-animate-in-right {
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: scrolling-selector-animate-in-right;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.4s;
+    animation-name: scrolling-selector-animate-in-right;
+    animation-timing-function: ease-out;
+}
+
+.scrolling-selector-animate-out-left {
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: scrolling-selector-animate-out-left;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.4s;
+    animation-name: scrolling-selector-animate-out-left;
+    animation-timing-function: ease-out;
+}
+
+.scrolling-selector-animate-out-right {
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: scrolling-selector-animate-out-right;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.4s;
+    animation-name: scrolling-selector-animate-out-right;
+    animation-timing-function: ease-out;
+}
+
 /* Animations */
+
+/* Scrolling selector */
+@-webkit-keyframes scrolling-selector-animate-in-left {
+    from {
+        left: -100%;
+    }
+    
+    to {
+        left: 0;
+    }
+}
+
+@keyframes scrolling-selector-animate-in-left {
+    from {
+        left: -100%;
+    }
+    
+    to {
+        left: 0;
+    }
+}
+
+@-webkit-keyframes scrolling-selector-animate-in-right {
+    from {
+        left: 100%;
+    }
+    
+    to {
+        left: 0;
+    }
+}
+
+@keyframes scrolling-selector-animate-in-right {
+    from {
+        left: 100%;
+    }
+    
+    to {
+        left: 0;
+    }
+}
+
+@-webkit-keyframes scrolling-selector-animate-out-left {
+    from {
+        left: 0;
+    }
+    
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes scrolling-selector-animate-out-left {
+    from {
+        left: 0;
+    }
+    
+    to {
+        left: 100%;
+    }
+}
+
+@-webkit-keyframes scrolling-selector-animate-out-right {
+    from {
+        left: 0;
+    }
+    
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes scrolling-selector-animate-out-right {
+    from {
+        left: 0;
+    }
+    
+    to {
+        left: 100%;
+    }
+}
+
+/* Generic */
 @-webkit-keyframes fade-in {
     from {
         opacity: 0;

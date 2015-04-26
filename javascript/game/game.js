@@ -17,7 +17,9 @@ define([
     'views/editCharacterClass',
     'views/editCharacter',
     'views/game',
-    'views/mainMenu'
+    'views/mainMenu', 
+    
+    'game/characterClasses', 'views/scrollingSelector', 'views/characterClass'
 ], function(
     // libraries
     Backbone,
@@ -37,11 +39,20 @@ define([
     EditCharacterClassView,
     EditCharacterView,
     GameView,
-    MainMenuView
+    MainMenuView, 
+     
+    characterClasses, ScrollingSelectorView, CharacterClassView
 ) {
     
     var game = {};
     game.initialize = function () {
+        
+        var editCharacterClassView = new ScrollingSelectorView({
+            collection: characterClasses,
+            itemView: CharacterClassView,
+            itemViewTemplate: '#characterClassTemplate',
+            template: '#scrollingSelectorTemplate'
+        }).render().$el.appendTo('#gameContainer');
         
         var homeModel = new HomeModel();
         homeModel.set('savedCharactersController', new SavedCharactersController({
