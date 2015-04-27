@@ -14,6 +14,7 @@ requirejs.config({
         controllers: '../game/controllers',
         game: '../game',
         models: '../game/models',
+        templates: '../game/templates',
         views: '../game/views'
     },
     shim: {

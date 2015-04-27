@@ -1,22 +1,28 @@
 define([
     // libraries
 	'backbone',
+    'containerview',
     'jquery',
     // views
-    'views/characterClass'
+    'views/characterClass',
+    // templates
+    "text!templates/scrollingSelector.html"
 ], function(
     // libraries
     Backbone,
+    ContainerView,
     $,
     // views
-    CharacterClassView
+    CharacterClassView,
+    // templates
+    scrollingSelectorTemplate
 ) {
 
-	var ScrollingSelectorView = Backbone.View.extend({
+	var ScrollingSelectorView = ContainerView.extend({
 		
 		initialize: function (options) {
-            this.template = _.template($(options.template).html());
-            this.contentSelector = options.contentSelector || '.scrollingSelectorContent';
+            this.template = _.template(scrollingSelectorTemplate);
+            this.listSelector = options.listSelector || '.scrollingSelectorList';
             
             // animations
             this.animateInLeftClass = options.animateInLeftClass || 'scrolling-selector-animate-in-left';
@@ -25,9 +31,8 @@ define([
             this.animateOutRightClass = options.animateOutRightClass || 'scrolling-selector-animate-out-right';
             this.isAnimating = false;
             
-            // item view
-            this.ItemView = options.itemView;
-            this.itemViewTemplate = options.itemViewTemplate;
+            // list item view
+            this.ListItemView = options.listItemView;
             
             // selected item
             this.selectedItemIndex = 0;
@@ -39,26 +44,23 @@ define([
             this.$el.html(this.template());
             
             // cache DOM elements
-            this.$content = this.$(this.contentSelector);
+            this.$content = this.$(this.listSelector);
             
-            this.collection.forEach(function (item) {
-                if (_.isFunction(this.ItemView)) {
-                    var itemView = new this.ItemView({
-                        model: item,
-                        tagName: 'li',
-                        template: this.itemViewTemplate
-                    }).render().$el.appendTo(this.$content);
+            this.list = this.createSubcontainer(this.listSelector);
+            
+            if (this.collection.length) {
+                if (_.isFunction(this.ListItemView)) {
+                    this.list.open(this.ListItemView, this.collection);
                 }
                 else {
                     try {
-                        throw new Error('itemView is not a function');
+                        throw new Error('listItemView is not a function');
                     }
                     catch (error) {
                         console.error(error.message);
                     }
                 }
-                
-            }, this);
+            }
             
             this.setSelectedItemClass();
             

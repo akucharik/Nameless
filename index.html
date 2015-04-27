@@ -27,7 +27,7 @@
         <h1>Nameless</h1>
         <ul class="menu main-menu">
             <li><button id="continueGame">Continue Game</button></li>
-            <li><button id="newGame">New Game</button></li>
+            <li><button id="newGame" disabled="disabled">New Game</button></li>
             <li><button id="characters">Characters</button></li>
             <li><button id="newCharacter">New Character</button></li>
         </ul>
@@ -183,16 +183,6 @@
             <li><button class="editCharacterGenderOption" data-gender="Male">Male</button></li>
             <li><button class="editCharacterGenderOption" data-gender="Female">Female</button></li>
         </ul>
-    </script>
-    
-    <script id="characterClassTemplate" type="text/template">
-        <span><%= name %></span>
-    </script>
-    
-    <script id="scrollingSelectorTemplate" type="text/template">
-        <button class="scrollingSelectorPrev scrolling-selector-action"><</button>
-        <ul class="scrollingSelectorContent unbulleted-list scrolling-selector-content"></ul>
-        <button class="scrollingSelectorNext scrolling-selector-action">></button>
     </script>
     
 	<script src="javascript/libraries/require.min.js" data-main="javascript/main.js"></script>

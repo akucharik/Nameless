@@ -47,13 +47,6 @@ define([
     var game = {};
     game.initialize = function () {
         
-        var editCharacterClassView = new ScrollingSelectorView({
-            collection: characterClasses,
-            itemView: CharacterClassView,
-            itemViewTemplate: '#characterClassTemplate',
-            template: '#scrollingSelectorTemplate'
-        }).render().$el.appendTo('#gameContainer');
-        
         var homeModel = new HomeModel();
         homeModel.set('savedCharactersController', new SavedCharactersController({
             collection: homeModel.get('savedCharacters')
@@ -114,6 +107,12 @@ define([
 //
 //        homeController.listenTo(homeModel, 'change:state', homeController.onStateChange);
 
+        var editCharacterClassView = new ScrollingSelectorView({
+            collection: characterClasses,
+            listItemView: CharacterClassView,
+            model: homeModel.get('savedCharacters').findWhere({ name: 'Aaron' })
+        }).render().$el.appendTo('#gameContainer');
+        
         var GameView = ContainerView.extend({
             initialize: function () {
                 this.listenTo(this.model, 'change:state', this.render);

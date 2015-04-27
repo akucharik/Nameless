@@ -1,15 +1,23 @@
 define([
+    // libraries
 	'backbone',
-    'jquery'
+    'jquery',
+    // templates
+    "text!templates/characterClass.html"
 ], function(
+    // libraries
     Backbone,
-    $
+    $,
+    // templates
+    characterClassTemplate
 ) {
 
 	var CharacterClassView = Backbone.View.extend({
 		
-		initialize: function (options) {
-            this.template = _.template($(options.template).html());
+		initialize: function () {
+            this.template = _.template(characterClassTemplate);
+            
+            this.setElement(document.createElement('li'));
 		},
         
         render: function () {
