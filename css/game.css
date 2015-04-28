@@ -569,36 +569,44 @@ td {
 
 .scrolling-selector-animate-in-left {
     -webkit-animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
     -webkit-animation-name: scrolling-selector-animate-in-left;
     -webkit-animation-timing-function: ease-out;
     animation-duration: 0.4s;
+    animation-fill-mode: forwards;
     animation-name: scrolling-selector-animate-in-left;
     animation-timing-function: ease-out;
 }
 
 .scrolling-selector-animate-in-right {
     -webkit-animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
     -webkit-animation-name: scrolling-selector-animate-in-right;
     -webkit-animation-timing-function: ease-out;
     animation-duration: 0.4s;
+    animation-fill-mode: forwards;
     animation-name: scrolling-selector-animate-in-right;
     animation-timing-function: ease-out;
 }
 
 .scrolling-selector-animate-out-left {
     -webkit-animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
     -webkit-animation-name: scrolling-selector-animate-out-left;
     -webkit-animation-timing-function: ease-out;
     animation-duration: 0.4s;
+    animation-fill-mode: forwards;
     animation-name: scrolling-selector-animate-out-left;
     animation-timing-function: ease-out;
 }
 
 .scrolling-selector-animate-out-right {
     -webkit-animation-duration: 0.4s;
+    -webkit-animation-fill-mode: forwards;
     -webkit-animation-name: scrolling-selector-animate-out-right;
     -webkit-animation-timing-function: ease-out;
     animation-duration: 0.4s;
+    animation-fill-mode: forwards;
     animation-name: scrolling-selector-animate-out-right;
     animation-timing-function: ease-out;
 }

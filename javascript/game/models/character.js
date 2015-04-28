@@ -22,7 +22,7 @@ define([
 		defaults: function () {
             return {
                 // Basic
-                characterClass: '',
+                characterClass: 'average',
                 gender: constants.character.gender.MALE,
                 name: '',
                 type: constants.character.type.STOCK,

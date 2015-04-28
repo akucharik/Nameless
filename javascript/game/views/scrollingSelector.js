@@ -3,17 +3,21 @@ define([
 	'backbone',
     'containerview',
     'jquery',
+    // game
+    'game/constants',
     // views
-    'views/characterClass',
+    'views/selectListItem',
     // templates
-    "text!templates/scrollingSelector.html"
+    'text!templates/scrollingSelector.html'
 ], function(
     // libraries
     Backbone,
     ContainerView,
     $,
+    // game
+    constants,
     // views
-    CharacterClassView,
+    SelectListItemView,
     // templates
     scrollingSelectorTemplate
 ) {
@@ -25,26 +29,15 @@ define([
             this.listSelector = options.listSelector || '.scrollingSelectorList';
             
             // animations
-            this.animateInLeftClass = options.animateInLeftClass || 'scrolling-selector-animate-in-left';
-            this.animateInRightClass = options.animateInRightClass || 'scrolling-selector-animate-in-right';
-            this.animateOutLeftClass = options.animateOutLeftClass || 'scrolling-selector-animate-out-left';
-            this.animateOutRightClass = options.animateOutRightClass || 'scrolling-selector-animate-out-right';
             this.isAnimating = false;
             
             // list item view
-            this.ListItemView = options.listItemView;
-            
-            // selected item
-            this.selectedItemIndex = 0;
-            this.selectedItemClass = options.selectedItemClass || 'selected';
-            this.selectedItemSelector = '.' + this.selectedItemClass;
+            this.list = null;
+            this.ListItemView = options.listItemView || SelectListItemView;
 		},
         
         render: function () {
             this.$el.html(this.template());
-            
-            // cache DOM elements
-            this.$content = this.$(this.listSelector);
             
             this.list = this.createSubcontainer(this.listSelector);
             
@@ -62,17 +55,23 @@ define([
                 }
             }
             
-            this.setSelectedItemClass();
+            if (_.isUndefined(this.getSelectedItem())) {
+                this.collection.at(0).set('selected', true);
+            }
             
             return this;
         },
         
         getSelectedItem: function () {
-            return this.$content.children().eq(this.selectedItemIndex);
+            return this.collection.findWhere({ selected: true });
         },
         
-        setSelectedItemClass: function () {
-            this.getSelectedItem().addClass(this.selectedItemClass);
+        getPrevItem: function () {
+            return (this.collection.indexOf(this.getSelectedItem()) - 1) >= 0 ? (this.collection.at(this.collection.indexOf(this.getSelectedItem()) - 1)) : (this.collection.at(this.collection.length - 1));
+        },
+        
+        getNextItem: function () {
+            return (this.collection.indexOf(this.getSelectedItem()) + 1) <= (this.collection.length - 1) ? (this.collection.at(this.collection.indexOf(this.getSelectedItem()) + 1)) : this.collection.at(0);
         },
         
         // events
@@ -89,17 +88,31 @@ define([
         
         prev: function () {
             if (!this.isAnimating) {
-                this.getSelectedItem().addClass(this.animateOutRightClass);
-                this.selectedItemIndex = (this.selectedItemIndex - 1) >= 0 ? (this.selectedItemIndex - 1) : (this.collection.length - 1);
-                this.getSelectedItem().addClass(this.animateInLeftClass);
+                var prevItem = this.getPrevItem();
+                
+                this.getSelectedItem().set({
+                    animation: constants.animation.OUT_RIGHT,
+                    selected: false
+                });
+                prevItem.set({
+                    animation: constants.animation.IN_LEFT,
+                    selected: true
+                });
             }
         },
         
         next: function () {
             if (!this.isAnimating) {
-                this.getSelectedItem().addClass(this.animateOutLeftClass);
-                this.selectedItemIndex = (this.selectedItemIndex + 1) <= (this.collection.length - 1) ? (this.selectedItemIndex + 1) : 0;
-                this.getSelectedItem().addClass(this.animateInRightClass);
+                var nextItem = this.getNextItem();
+                
+                this.getSelectedItem().set({
+                    animation: constants.animation.OUT_LEFT,
+                    selected: false
+                });
+                nextItem.set({
+                    animation: constants.animation.IN_RIGHT,
+                    selected: true
+                });
             }
         },
         
@@ -109,8 +122,6 @@ define([
         
         onAnimationEnd: function () {
             this.isAnimating = false;
-            $(event.target).removeClass();
-            this.setSelectedItemClass();
         }
         
 	});

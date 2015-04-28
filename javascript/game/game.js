@@ -19,7 +19,7 @@ define([
     'views/game',
     'views/mainMenu', 
     
-    'game/characterClasses', 'views/scrollingSelector', 'views/characterClass'
+    'game/characterClasses', 'collections/selectListItem', 'models/selectListItem', 'views/scrollingSelector'
 ], function(
     // libraries
     Backbone,
@@ -41,7 +41,7 @@ define([
     GameView,
     MainMenuView, 
      
-    characterClasses, ScrollingSelectorView, CharacterClassView
+    characterClasses, SelectListItemCollection, SelectListItemModel, ScrollingSelectorView
 ) {
     
     var game = {};
@@ -107,9 +107,29 @@ define([
 //
 //        homeController.listenTo(homeModel, 'change:state', homeController.onStateChange);
 
+        var getSelectListItems = function (collection, mappings) {
+            var items = [];
+            
+            for (var i = 0; i < collection.length; i++) {
+                items.push(new SelectListItemModel({
+                    description: collection.at(i).get(mappings.description),
+                    text: collection.at(i).get(mappings.text),
+                    value: collection.at(i).get(mappings.value)
+                }));
+            }
+            
+            return items;
+        };
+        
+        var characterClassesList = new SelectListItemCollection(getSelectListItems(characterClasses, {
+            description: 'description',
+            text: 'name',
+            value: 'key'
+        }));
+        
+        
         var editCharacterClassView = new ScrollingSelectorView({
-            collection: characterClasses,
-            listItemView: CharacterClassView,
+            collection: characterClassesList,
             model: homeModel.get('savedCharacters').findWhere({ name: 'Aaron' })
         }).render().$el.appendTo('#gameContainer');
         

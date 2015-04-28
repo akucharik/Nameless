@@ -124,6 +124,13 @@ define(function() {
                 }
             }
             
+        },
+        
+        animation: {
+            IN_LEFT: 0,
+            IN_RIGHT: 1,
+            OUT_LEFT: 2,
+            OUT_RIGHT: 3
         }
         
     }
