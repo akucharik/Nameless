@@ -24,7 +24,9 @@ define([
 
 	var EditCharacterTraitsView = ContainerView.extend({
 		
-		initialize: function () {
+		initialize: function (options) {
+            this.template = _.template(options.template);
+            
             this.characterGenderList = new SelectListItemCollection(ScrollingSelectorView.prototype.mapSelectListItems(gameObjects.character.genders, {
                 text: 'name',
                 value: 'key'
@@ -43,6 +45,8 @@ define([
 		},
         
         render: function () {
+            this.$el.html(this.template(this.model.toJSON()));
+            
             this.append(new ScrollingSelectorView({
                     collection: this.characterGenderList,
                     model: this.model,

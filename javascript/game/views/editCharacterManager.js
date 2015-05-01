@@ -14,7 +14,9 @@ define([
     'views/editCharacter',
     'views/editCharacterActions',
     // controllers
-    'controllers/character'
+    'controllers/character',
+    // templates
+    'text!templates/editCharacterDetails.html'
 ], function(
     // libraries
     Backbone,
@@ -31,7 +33,9 @@ define([
     EditCharacterView,
     EditCharacterActionsView,
     // controllers
-    CharacterController
+    CharacterController,
+    // templates
+    editCharacterDetailsTemplate
 ) {
 
 	var EditCharacterManagerView = ContainerView.extend({
@@ -41,19 +45,14 @@ define([
             this.actionsSelector = '#' + this.actionsId;
             this.contentId = options.contentId;
             this.contentSelector = '#' + this.contentId;
-            this.isDirty = false;
             this.template = _.template($(options.template).html());
-            
-            // create new character
-            this.character = new CharacterModel({
-                type: constants.character.type.CUSTOM
-            });
+
             this.characterController = new CharacterController({
-                model: this.character
+                model: this.model.get('character')
             });
             
             // listen to events
-            //this.listenTo(this.character, 'change:characterClass', this.update);
+            this.listenTo(this.model, 'change:state', this.update);
 		},
         
         remove: function () {
@@ -69,23 +68,18 @@ define([
         },
         
         update: function () {
-            if (true) {
+            if (this.model.get('state') === constants.editCharacter.state.DETAILS) {
                 this.swapIn(new EditCharacterTraitsView({
                     className: 'animate-screen-in',
                     id: this.contentId,
-                    model: this.character,
+                    model: this.model.get('character'),
+                    template: editCharacterDetailsTemplate
                 }), this.contentSelector);
-//                this.swapIn(new EditCharacterClassView({
-//                    className: 'animate-screen-in',
-//                    id: this.contentId,
-//                    model: this.character,
-//                    template: '#editCharacterClassTemplate'
-//                }), this.contentSelector);
                 
                 this.swapIn(new EditCharacterClassActionsView({
                     className: 'menu menu-horizontal screen-actions clear-fix animate-screen-in',
                     id: this.actionsId,
-                    model: this.editCharacterActionsModel,
+                    model: this.model,
                     tagName: 'ul',
                     template: '#editCharacterClassActionsTemplate'
                 }), this.actionsSelector);
@@ -94,19 +88,19 @@ define([
                 this.swapIn(new EditCharacterView({
                     className: 'animate-screen-in',
                     id: this.contentId,
-                    model: this.character,
+                    model: this.model.get('character'),
                     template: '#editCharacterTemplate'
                 }), this.contentSelector);
                 
                 this.swapIn(new EditCharacterActionsView({
                     className: 'menu menu-horizontal screen-actions clear-fix animate-screen-in',
                     id: this.actionsId,
-                    model: this.editCharacterActionsModel,
+                    model: this.model,
                     tagName: 'ul',
                     template: '#editCharacterActionsTemplate'
                 }), this.actionsSelector);
                 
-                this.isDirty = true;
+                this.model.set('isDirty', true);
             }
             
             return this;
@@ -124,39 +118,40 @@ define([
             'click #save': 'save'
         },
         
-//        nextCharacterClass: function () {
-//            this.model.set('state', constants.home.state.MAIN_MENU);
-//        },
+        nextCharacterClass: function () {
+            this.model.set('state', constants.editCharacter.state.ATTRIBUTES);
+        },
         
         cancelCharacterClass: function () {
-            if (this.model.get('editCharacterSource') === constants.editCharacter.source.MAIN_MENU && this.isDirty === false) {
-                this.model.set('state', constants.home.state.MAIN_MENU);
+            if (this.model.get('source') === constants.editCharacter.source.MAIN_MENU && !this.model.get('isDirty')) {
+                this.model.get('gameModel').set('state', constants.home.state.MAIN_MENU);
             }
-            else if (this.model.get('editCharacterSource') === constants.editCharacter.source.CHARACTERS && this.isDirty === false) {
-                this.model.set('state', constants.home.state.CHARACTERS);
+            else if (this.model.get('source') === constants.editCharacter.source.CHARACTERS && !this.model.get('isDirty')) {
+                this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
             }
             else {
-                this.character.set('characterClass', this.character.previousAttributes().characterClass);
+                this.model.get('character').set('characterClass', this.model.get('character').previousAttributes().characterClass);
+                this.model.set('state', constants.editCharacter.state.ATTRIBUTES);
             }
         },
         
         cancelCharacterDetail: function () {
-            if (this.model.get('editCharacterSource') === constants.editCharacter.source.MAIN_MENU) {
-                this.model.set('state', constants.home.state.MAIN_MENU);
+            if (this.model.get('source') === constants.editCharacter.source.MAIN_MENU) {
+                this.model.get('gameModel').set('state', constants.home.state.MAIN_MENU);
             }
             else {
-                this.model.set('state', constants.home.state.CHARACTERS);
+                this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
             }
         },
         
         editCharacterClass: function () {
-            this.character.set('characterClass', '');
+            this.model.set('state', constants.editCharacter.state.DETAILS);
         },
         
         save: function () {
-            this.character.set('name', this.$name.val());
-            this.model.get('savedCharacters').add(this.character);
-            this.model.set('state', constants.home.state.CHARACTERS);
+            this.model.get('character').set('name', this.$name.val());
+            this.model.get('savedCharacters').add(this.model.get('character'));
+            this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
         }
         
 	});

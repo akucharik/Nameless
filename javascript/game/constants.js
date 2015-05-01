@@ -28,6 +28,10 @@ define(function() {
             source: {
                 MAIN_MENU: 0,
                 CHARACTERS: 1
+            },
+            state: {
+                DETAILS: 0,
+                ATTRIBUTES: 1
             }
         },
         

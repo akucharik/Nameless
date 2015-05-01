@@ -25,7 +25,6 @@ define([
             state: constants.home.state.MAIN_MENU,
             
             // Create/Edit character
-            editCharacterMode: null,
             editCharacterSource: null,
             
             // Characters

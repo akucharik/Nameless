@@ -10,6 +10,7 @@ define([
     'controllers/savedCharacters',
     // models
     'models/character',
+    'models/editCharacter',
     'models/home',
     // views
     'views/characters',
@@ -30,6 +31,7 @@ define([
     SavedCharactersController,
     // models
     CharacterModel,
+    EditCharacterModel,
     HomeModel,
     // views
     CharactersView,
@@ -127,7 +129,11 @@ define([
                         this.open(new EditCharacterManagerView({
                             actionsId: 'editCharacterManagerActions',
                             contentId: 'editCharacterManagerContent',
-                            model: this.model,
+                            model: new EditCharacterModel({
+                                gameModel: this.model,
+                                savedCharacters: this.model.get('savedCharacters'),
+                                source: this.model.get('editCharacterSource')
+                            }),
                             template: '#editCharacterManagerTemplate'
                         }));
                         
