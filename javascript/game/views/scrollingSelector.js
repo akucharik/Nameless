@@ -5,6 +5,8 @@ define([
     'jquery',
     // game
     'game/constants',
+    // models
+    'models/selectListItem',
     // views
     'views/selectListItem',
     // templates
@@ -16,6 +18,8 @@ define([
     $,
     // game
     constants,
+    // models
+    SelectListItemModel,
     // views
     SelectListItemView,
     // templates
@@ -25,8 +29,9 @@ define([
 	var ScrollingSelectorView = ContainerView.extend({
 		
 		initialize: function (options) {
-            this.template = _.template(scrollingSelectorTemplate);
+            this.attribute = options.attribute;
             this.listSelector = options.listSelector || '.scrollingSelectorList';
+            this.template = _.template(scrollingSelectorTemplate);
             
             // animations
             this.isAnimating = false;
@@ -34,6 +39,8 @@ define([
             // list item view
             this.list = null;
             this.ListItemView = options.listItemView || SelectListItemView;
+            
+            this.listenTo(this.collection, 'change:selected', this.setAttribute);
 		},
         
         render: function () {
@@ -72,6 +79,20 @@ define([
         
         getNextItem: function () {
             return (this.collection.indexOf(this.getSelectedItem()) + 1) <= (this.collection.length - 1) ? (this.collection.at(this.collection.indexOf(this.getSelectedItem()) + 1)) : this.collection.at(0);
+        },
+        
+        mapSelectListItems: function (collection, mappings) {
+            var items = [];
+
+            for (var i = 0; i < collection.length; i++) {
+                items.push(new SelectListItemModel({
+                    description: collection.at(i).get(mappings.description),
+                    text: collection.at(i).get(mappings.text),
+                    value: collection.at(i).get(mappings.value)
+                }));
+            }
+
+            return items;
         },
         
         // events
@@ -122,6 +143,12 @@ define([
         
         onAnimationEnd: function () {
             this.isAnimating = false;
+        },
+        
+        setAttribute: function () {
+            if (this.getSelectedItem()) {
+                this.model.set(this.attribute, this.getSelectedItem().get('value'));
+            }
         }
         
 	});

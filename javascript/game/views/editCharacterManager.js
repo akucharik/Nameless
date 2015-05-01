@@ -8,6 +8,7 @@ define([
     // models
     'models/character',
     // views
+    'views/editCharacterTraits',
     'views/editCharacterClass',
     'views/editCharacterClassActions',
     'views/editCharacter',
@@ -24,6 +25,7 @@ define([
     // models
     CharacterModel,
     // views
+    EditCharacterTraitsView,
     EditCharacterClassView,
     EditCharacterClassActionsView,
     EditCharacterView,
@@ -51,7 +53,7 @@ define([
             });
             
             // listen to events
-            this.listenTo(this.character, 'change:characterClass', this.update);
+            //this.listenTo(this.character, 'change:characterClass', this.update);
 		},
         
         remove: function () {
@@ -67,13 +69,18 @@ define([
         },
         
         update: function () {
-            if (this.character.get('characterClass') === '') {
-                this.swapIn(new EditCharacterClassView({
+            if (true) {
+                this.swapIn(new EditCharacterTraitsView({
                     className: 'animate-screen-in',
                     id: this.contentId,
                     model: this.character,
-                    template: '#editCharacterClassTemplate'
                 }), this.contentSelector);
+//                this.swapIn(new EditCharacterClassView({
+//                    className: 'animate-screen-in',
+//                    id: this.contentId,
+//                    model: this.character,
+//                    template: '#editCharacterClassTemplate'
+//                }), this.contentSelector);
                 
                 this.swapIn(new EditCharacterClassActionsView({
                     className: 'menu menu-horizontal screen-actions clear-fix animate-screen-in',
@@ -107,11 +114,19 @@ define([
         
         // events
         events: {
+            // character class
+            'click #nextCharacterClass': 'nextCharacterClass',
             'click #cancelCharacterClass': 'cancelCharacterClass',
+            
+            // character detail
             'click #cancelCharacterDetail': 'cancelCharacterDetail',
             'click #editCharacterClass': 'editCharacterClass',
             'click #save': 'save'
         },
+        
+//        nextCharacterClass: function () {
+//            this.model.set('state', constants.home.state.MAIN_MENU);
+//        },
         
         cancelCharacterClass: function () {
             if (this.model.get('editCharacterSource') === constants.editCharacter.source.MAIN_MENU && this.isDirty === false) {

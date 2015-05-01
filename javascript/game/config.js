@@ -5,8 +5,11 @@ define([
 ) {
 
     var config = {
-        character: {}
+        character: {},
+        imagesBaseUrl: 'images/'
     };
+    
+    config.portraitsBaseUrl = config.imagesBaseUrl;
     
     config.character.attribute = {
         maxValue: 10,
@@ -128,6 +131,36 @@ define([
             }
         }
     };
+    
+    config.character.gender = {
+        female: {
+            key: 'female',
+            name: 'Female'
+        },
+        male: {
+            key: 'male',
+            name: 'Male'
+        }
+    };
+    
+    config.character.portrait = [
+        {
+            gender: config.character.gender.female.key,
+            url: config.portraitsBaseUrl + 'imageUrlFemale1'
+        },
+        {
+            gender: config.character.gender.female.key,
+            url: config.portraitsBaseUrl + 'imageUrlFemale2'
+        },
+        {
+            gender: config.character.gender.male.key,
+            url: config.portraitsBaseUrl + 'imageUrlMale1'
+        },
+        {
+            gender: config.character.gender.male.key,
+            url: config.portraitsBaseUrl + 'imageUrlMale2'
+        }
+    ];
     
     config.character.skill = {
         levels: {

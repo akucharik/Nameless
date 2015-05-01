@@ -4,22 +4,22 @@ define([
     // game
     'game/config',
     'game/constants',
-    'game/characterClasses',
-    'game/eventLog'
+    'game/eventLog',
+    'game/gameObjects'
 ], function(
     // libraries
     Controller,
     // game
     config,
     constants,
-    characterClasses,
-    eventLog
+    eventLog,
+    gameObjects
 ) {
 
 	var CharacterController = Controller.extend({
 		
 		initialize: function () {
-            this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
+            this.characterClass = gameObjects.character.classes.findWhere({ key: this.model.get('characterClass') });
             this.listenTo(this.model, 'change:characterClass', this.onCharacterClassChange);
             this.listenTo(this.model, 'change', this.onChange);
             this.listenTo(this.model.get('attributes'), 'change', this.onAttributeChange);
@@ -27,7 +27,7 @@ define([
         
         onCharacterClassChange: function (model) {
             if (this.model.get('characterClass').length && this.model.get('characterClass').length > 0) {
-                this.characterClass = characterClasses.findWhere({ key: this.model.get('characterClass') });
+                this.characterClass = gameObjects.character.classes.findWhere({ key: this.model.get('characterClass') });
 
                 this.model.get('attributes').each(function (attribute) {
                     attribute.set({ 
@@ -139,7 +139,7 @@ define([
             if (characterClass.get('associatedAttributeKey') === associatedAttribute.get('key')) {
                 return positiveModifier;
             }
-            else if (characterClass.get('key') === characterClasses.findWhere({ key: 'average'}).get('key')) {
+            else if (characterClass.get('key') === gameObjects.character.classes.findWhere({ key: 'average'}).get('key')) {
                 return 0;
             }
             else {

@@ -33,7 +33,6 @@ define([
                 associatedAttributeKey: characterClass.associatedAttributeKey,
                 description: characterClass.description,
                 name: characterClass.name,
-                selected: false,
                 // attribute start values
                 strengthMaxStartValue: characterClass.strength.maxStartValue,
                 strengthStartValue: characterClass.strength.startValue,
