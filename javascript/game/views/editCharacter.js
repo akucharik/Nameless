@@ -21,7 +21,7 @@ define([
 	var EditCharacterView = Backbone.View.extend({
 		
 		initialize: function (options) {
-            this.template = _.template($(options.template).html());
+            this.template = _.template(options.template);
             
             // listen to events
             this.listenTo(this.model, 'change:availableAttributePoints', this.render);

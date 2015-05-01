@@ -1,2 +1,14 @@
-<h1>Create a Character</h1>
-<input id="name" class="edit-character-name" type="text" placeholder="Name" value="" />
+<div class="edit-character">
+    <h2><%= name %></h2>
+    <ul id="attributes" class="unbulleted-list edit-character-attributes"></ul>
+    <p class="edit-character-attribute-points">
+        <span>PTS</span>
+        <span class="attribute-ratio">
+            <span id="availableAttributePoints"></span>
+        </span>
+    </p>
+    <h2>Skills</h2>
+    <ul id="skills" class="unbulleted-list edit-character-skills"></ul>
+    <h2>Units</h2>
+    <ul id="units" class="unbulleted-list edit-character-units"></ul>
+</div>

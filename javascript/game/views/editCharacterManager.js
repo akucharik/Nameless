@@ -16,6 +16,7 @@ define([
     // controllers
     'controllers/character',
     // templates
+    'text!templates/editCharacterBasics.html',
     'text!templates/editCharacterDetails.html'
 ], function(
     // libraries
@@ -35,6 +36,7 @@ define([
     // controllers
     CharacterController,
     // templates
+    editCharacterBasicsTemplate,
     editCharacterDetailsTemplate
 ) {
 
@@ -73,7 +75,7 @@ define([
                     className: 'animate-screen-in',
                     id: this.contentId,
                     model: this.model.get('character'),
-                    template: editCharacterDetailsTemplate
+                    template: editCharacterBasicsTemplate
                 }), this.contentSelector);
                 
                 this.swapIn(new EditCharacterClassActionsView({
@@ -89,7 +91,7 @@ define([
                     className: 'animate-screen-in',
                     id: this.contentId,
                     model: this.model.get('character'),
-                    template: '#editCharacterTemplate'
+                    template: editCharacterDetailsTemplate
                 }), this.contentSelector);
                 
                 this.swapIn(new EditCharacterActionsView({
@@ -111,11 +113,16 @@ define([
             // character class
             'click #nextCharacterClass': 'nextCharacterClass',
             'click #cancelCharacterClass': 'cancelCharacterClass',
+            'blur #editCharacterName': 'setCharacterName',
             
             // character detail
             'click #cancelCharacterDetail': 'cancelCharacterDetail',
             'click #editCharacterClass': 'editCharacterClass',
             'click #save': 'save'
+        },
+        
+        setCharacterName: function (event) {
+            this.model.get('character').set('name', event.target.value);
         },
         
         nextCharacterClass: function () {

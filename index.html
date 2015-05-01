@@ -78,61 +78,14 @@
     </script>
     
     <script id="editCharacterManagerTemplate" type="text/template">
+        <h1>Customize Your Character</h1>
         <div id="editCharacterManagerContent"></div>
         <div id="editCharacterManagerActions"></div>
-    </script>
-    
-    <script id="editCharacterClassTemplate" type="text/template">
-        <h1>Choose a Character Class</h1>
-        <ul class="menu edit-character-class-menu">
-            <li>
-                <button data-character-class="average">Average</button>
-                <p>Well-rounded and adept at all skills, but lacks a truly outstanding strength.</p>
-            </li>
-            <li>
-                <button data-character-class="soldier">Soldier</button>
-                <p>Highly skilled in the art of combat. A force to be reckoned with on the battlefield.</p>
-            </li>
-            <li>
-                <button data-character-class="genius">Genius</button>
-                <p>Intellect is unmatched among peers. Strategies are highly successful and effective.</p>
-            </li>
-            <li>
-                <button data-character-class="mesmer">Mesmer</button>
-                <p>A magnetic personality that is convincing and extremely influential. Ideas are easily accepted, and others follow.</p>
-            </li>
-        </ul>
     </script>
     
     <script id="editCharacterClassActionsTemplate" type="text/template">
         <li><button id="nextCharacterClass">Next</button></li>
         <li><button id="cancelCharacterClass">Cancel</button></li>
-    </script>
-    
-    <script id="editCharacterTemplate" type="text/template">
-        <h1>Customize Your Character</h1>
-        <div class="edit-character">
-            <div class="edit-character-top clear-fix">
-                <input id="name" class="edit-character-name" type="text" placeholder="Name" value="<%= name %>" />
-            </div>
-            <div class="edit-character-left">
-                <button id="gender" style="margin-bottom: 0.3em; width: 100%;"><%= gender %></button>
-                <div class="edit-character-portrait">Portrait</div>
-                <ul id="attributes" class="unbulleted-list edit-character-attributes"></ul>
-                <p class="edit-character-attribute-points">
-                    <span>PTS</span>
-                    <span class="attribute-ratio">
-                        <span id="availableAttributePoints"></span>
-                    </span>
-                </p>
-            </div>
-            <div class="edit-character-right">
-                <h2>Skills</h2>
-                <ul id="skills" class="unbulleted-list edit-character-skills"></ul>
-                <h2>Units</h2>
-                <ul id="units" class="unbulleted-list edit-character-units"></ul>
-            </div>
-        </div>
     </script>
     
     <script id="editCharacterActionsTemplate" type="text/template">
