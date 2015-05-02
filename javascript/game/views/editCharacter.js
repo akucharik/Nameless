@@ -45,7 +45,7 @@ define([
             this.actionsSelector = '#' + this.actionsId;
             this.contentId = options.contentId;
             this.contentSelector = '#' + this.contentId;
-            this.template = _.template($(options.template).html());
+            this.template = _.template(options.template);
 
             this.characterController = new CharacterController({
                 model: this.model.get('character')

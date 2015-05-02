@@ -16,7 +16,9 @@ define([
     'views/characters',
     'views/editCharacter',
     'views/game',
-    'views/mainMenu'
+    'views/mainMenu',
+    // templates
+    'text!templates/editCharacter.html'
 ], function(
     // libraries
     Backbone,
@@ -35,7 +37,9 @@ define([
     CharactersView,
     EditCharacterView,
     GameView,
-    MainMenuView
+    MainMenuView,
+    // templates
+    editCharacterTemplate
 ) {
     
     var game = {};
@@ -130,7 +134,7 @@ define([
                                 savedCharacters: this.model.get('savedCharacters'),
                                 source: this.model.get('editCharacterSource')
                             }),
-                            template: '#editCharacterManagerTemplate'
+                            template: editCharacterTemplate
                         }));
                         break;
                         
