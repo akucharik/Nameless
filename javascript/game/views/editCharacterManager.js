@@ -8,10 +8,9 @@ define([
     // models
     'models/character',
     // views
-    'views/editCharacterTraits',
-    'views/editCharacterClass',
+    'views/editCharacterBasics',
     'views/editCharacterClassActions',
-    'views/editCharacter',
+    'views/editCharacterDetails',
     'views/editCharacterActions',
     // controllers
     'controllers/character',
@@ -28,10 +27,9 @@ define([
     // models
     CharacterModel,
     // views
-    EditCharacterTraitsView,
-    EditCharacterClassView,
+    EditCharacterBasicsView,
     EditCharacterClassActionsView,
-    EditCharacterView,
+    EditCharacterDetailsView,
     EditCharacterActionsView,
     // controllers
     CharacterController,
@@ -71,7 +69,7 @@ define([
         
         update: function () {
             if (this.model.get('state') === constants.editCharacter.state.DETAILS) {
-                this.swapIn(new EditCharacterTraitsView({
+                this.swapIn(new EditCharacterBasicsView({
                     className: 'animate-screen-in',
                     id: this.contentId,
                     model: this.model.get('character'),
@@ -87,7 +85,7 @@ define([
                 }), this.actionsSelector);
             }
             else {
-                this.swapIn(new EditCharacterView({
+                this.swapIn(new EditCharacterDetailsView({
                     className: 'animate-screen-in',
                     id: this.contentId,
                     model: this.model.get('character'),

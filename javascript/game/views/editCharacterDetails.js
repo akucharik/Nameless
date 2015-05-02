@@ -4,7 +4,6 @@ define([
     'jquery',
     // views
     'views/editCharacterAttribute',
-    'views/editCharacterGender',
     'views/editCharacterSkill',
     'views/editCharacterUnitProficiency'
 ], function(
@@ -13,19 +12,17 @@ define([
     $,
     // views
     EditCharacterAttributeView,
-    EditCharacterGenderView,
     EditCharacterSkillView,
     EditCharacterUnitProficiencyView
 ) {
 
-	var EditCharacterView = Backbone.View.extend({
+	var EditCharacterDetailsView = Backbone.View.extend({
 		
 		initialize: function (options) {
             this.template = _.template(options.template);
             
             // listen to events
-            this.listenTo(this.model, 'change:availableAttributePoints', this.render);
-            this.listenTo(this.model, 'change:gender', this.render);
+            this.listenTo(this.model, 'change:availableAttributePoints', this.update);
 		},
         
         render: function () {
@@ -33,7 +30,6 @@ define([
             
             // cache DOM elements
             this.$name = this.$('#name');
-            this.$gender = this.$('#gender');
             this.$availableAttributePoints = this.$('#availableAttributePoints');
             
             this.$attributes = this.$('#attributes');
@@ -77,25 +73,10 @@ define([
         },
         
         update: function () {
-            this.$gender.html(this.model.get('gender'));
             this.$availableAttributePoints.html(this.model.get('availableAttributePoints'));
-        },
-        
-        // events
-        events: {
-            'click #gender': 'editCharacterGender'
-        },
-        
-        editCharacterGender: function () {
-            var editCharacterGenderView = new EditCharacterGenderView({
-                className: 'modal',
-                model: this.model,
-                modalTemplate: '#modalTemplate',
-                template: '#editCharacterGenderTemplate',
-            }).render().$el.appendTo(this.$el);
         }
         
 	});
 	
-	return EditCharacterView;
+	return EditCharacterDetailsView;
 });

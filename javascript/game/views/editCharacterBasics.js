@@ -22,7 +22,7 @@ define([
     ScrollingSelectorView
 ) {
 
-	var EditCharacterTraitsView = ContainerView.extend({
+	var EditCharacterBasicsView = ContainerView.extend({
 		
 		initialize: function (options) {
             this.template = _.template(options.template);
@@ -73,5 +73,5 @@ define([
         
 	});
 	
-	return EditCharacterTraitsView;
+	return EditCharacterBasicsView;
 });

@@ -15,8 +15,6 @@ define([
     // views
     'views/characters',
     'views/editCharacterManager',
-    'views/editCharacterClass',
-    'views/editCharacter',
     'views/game',
     'views/mainMenu'
 ], function(
@@ -36,8 +34,6 @@ define([
     // views
     CharactersView,
     EditCharacterManagerView,
-    EditCharacterClassView,
-    EditCharacterView,
     GameView,
     MainMenuView
 ) {
@@ -136,12 +132,6 @@ define([
                             }),
                             template: '#editCharacterManagerTemplate'
                         }));
-                        
-//                        this.open(new EditCharacterClassView({
-//                            className: 'edit-character-class-view',
-//                            model: this.model,
-//                            template: '#editCharacterClassTemplate'
-//                        }));
                         break;
                         
                     case constants.home.state.GAMES:
