@@ -418,6 +418,13 @@ td {
     
 }
 
+.edit-character-class-description {
+    text-align: left;
+    height: 100px;
+    margin: 0 auto;
+    width: 260px;
+}
+
 .edit-character-left,
 .edit-character-right {
     box-sizing: border-box;
