@@ -38,7 +38,7 @@ define([
     editCharacterDetailsTemplate
 ) {
 
-	var EditCharacterManagerView = ContainerView.extend({
+	var EditCharacterView = ContainerView.extend({
 		
 		initialize: function (options) {
             this.actionsId = options.actionsId;
@@ -161,5 +161,5 @@ define([
         
 	});
 	
-	return EditCharacterManagerView;
+	return EditCharacterView;
 });

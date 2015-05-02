@@ -14,7 +14,7 @@ define([
     'models/home',
     // views
     'views/characters',
-    'views/editCharacterManager',
+    'views/editCharacter',
     'views/game',
     'views/mainMenu'
 ], function(
@@ -33,7 +33,7 @@ define([
     HomeModel,
     // views
     CharactersView,
-    EditCharacterManagerView,
+    EditCharacterView,
     GameView,
     MainMenuView
 ) {
@@ -122,7 +122,7 @@ define([
                         break;
                         
                     case constants.home.state.EDIT_CHARACTER:
-                        this.open(new EditCharacterManagerView({
+                        this.open(new EditCharacterView({
                             actionsId: 'editCharacterManagerActions',
                             contentId: 'editCharacterManagerContent',
                             model: new EditCharacterModel({
