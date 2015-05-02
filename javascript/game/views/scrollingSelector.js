@@ -42,6 +42,13 @@ define([
             this.ListItemView = options.listItemView || SelectListItemView;
             
             this.listenTo(this.collection, 'change:selected', this.setAttribute);
+            
+            if (this.model.get(this.attribute)) {
+                this.collection.findWhere({ value: this.model.get(this.attribute) }).set('selected', true);
+            }
+            else {
+                this.collection.at(0).set('selected', true);
+            }
 		},
         
         render: function () {
@@ -61,10 +68,6 @@ define([
                         console.error(error.message);
                     }
                 }
-            }
-            
-            if (_.isUndefined(this.getSelectedItem())) {
-                this.collection.at(0).set('selected', true);
             }
             
             return this;
