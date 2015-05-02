@@ -537,6 +537,10 @@ td {
 }
 
 /* Scrolling selector */
+.scrolling-selector {
+    margin: 1.0em 0;
+}
+
 .scrolling-selector-action,
 .scrolling-selector-content {
     height: 5em;

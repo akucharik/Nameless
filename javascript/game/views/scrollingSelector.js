@@ -30,6 +30,7 @@ define([
 		
 		initialize: function (options) {
             this.attribute = options.attribute;
+            this.className = 'scrolling-selector';
             this.listSelector = options.listSelector || '.scrollingSelectorList';
             this.template = _.template(scrollingSelectorTemplate);
             
@@ -45,7 +46,7 @@ define([
         
         render: function () {
             this.$el.html(this.template());
-            
+            this.$el.addClass(this.className);            
             this.list = this.createSubcontainer(this.listSelector);
             
             if (this.collection.length) {
