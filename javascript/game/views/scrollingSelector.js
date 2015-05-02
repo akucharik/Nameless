@@ -32,7 +32,7 @@ define([
             this.attribute = options.attribute;
             this.className = 'scrolling-selector';
             this.listSelector = options.listSelector || '.scrollingSelectorList';
-            this.template = _.template(scrollingSelectorTemplate);
+            this.template = _.template(options.template || scrollingSelectorTemplate);
             
             // animations
             this.isAnimating = false;

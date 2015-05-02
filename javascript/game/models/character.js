@@ -25,7 +25,7 @@ define([
                 characterClass: '',
                 gender: '',
                 name: '',
-                portrait: '',
+                portrait: null,
                 type: constants.character.type.STOCK,
 
                 // Attributes

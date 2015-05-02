@@ -8,8 +8,10 @@ define([
     
 	var CharacterPortraitModel = Backbone.Model.extend({
 		defaults: {
-            gender: '',
-            url: '',
+            gender: null,
+            id: null,
+            x: 0,
+            y: 0
 		}
 
 	});

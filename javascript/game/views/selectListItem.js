@@ -68,7 +68,27 @@ define([
             if (this.model.get('selected')) {
                 this.$el.addClass(this.selectedClass);
             }
-        }
+        },
+        
+        // inheritance
+        inheritAncestor: function (ancestor, arguments) {
+            this.initializeAncestor(ancestor, arguments);
+            this.inheritAncestorEvents(ancestor);
+        },
+        
+        initializeAncestor: function (ancestor, arguments) {
+            ancestor.prototype.initialize.apply(this, arguments);
+        },
+        
+        inheritAncestorEvents: function (ancestor) {
+            var ancestorEvents = ancestor.prototype.events;
+            
+            if(_.isFunction(ancestorEvents)) {
+                ancestorEvents = ancestorEvents();
+            }
+            
+            this.events = _.extend({}, ancestorEvents, this.events);
+        },
         
 	});
 	

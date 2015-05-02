@@ -6,10 +6,8 @@ define([
 
     var config = {
         character: {},
-        imagesBaseUrl: 'images/'
+        imagesUrl: 'images/'
     };
-    
-    config.portraitsBaseUrl = config.imagesBaseUrl;
     
     config.character.attribute = {
         maxValue: 10,
@@ -143,22 +141,30 @@ define([
         }
     };
     
-    config.character.portrait = [
+    config.character.portraits = [
         {
             gender: config.character.gender.female.key,
-            url: config.portraitsBaseUrl + 'imageUrlFemale1'
+            id: 0,
+            x: 0,
+            y: 0
         },
         {
             gender: config.character.gender.female.key,
-            url: config.portraitsBaseUrl + 'imageUrlFemale2'
+            id: 1,
+            x: 275,
+            y: 0
         },
         {
             gender: config.character.gender.male.key,
-            url: config.portraitsBaseUrl + 'imageUrlMale1'
+            id: 2,
+            x: 548,
+            y: 0
         },
         {
             gender: config.character.gender.male.key,
-            url: config.portraitsBaseUrl + 'imageUrlMale2'
+            id: 3,
+            x: 822,
+            y: 0
         }
     ];
     

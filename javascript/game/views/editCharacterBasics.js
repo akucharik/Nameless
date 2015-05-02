@@ -6,12 +6,15 @@ define([
     // game
     'game/gameObjects',
     // collections
+    'collections/selectListImageItem',
     'collections/selectListItem',
     // views
     'views/editCharacterClass',
+    'views/selectListImageItem',
     'views/scrollingSelector',
     // templates
     'text!templates/editCharacterClass.html',
+    'text!templates/portraitSelector.html'
 ], function(
     // libraries
     Backbone,
@@ -20,12 +23,15 @@ define([
     // game
     gameObjects,
     // collections
+    SelectListImageItemCollection,
     SelectListItemCollection,
     // views
     EditCharacterClassView,
+    SelectListImageItemView,
     ScrollingSelectorView,
     // templates
-    editCharacterClassTemplate
+    editCharacterClassTemplate,
+    portraitSelectorTemplate
 ) {
 
 	var EditCharacterBasicsView = ContainerView.extend({
@@ -38,9 +44,10 @@ define([
                 value: 'key'
             }));
             
-            this.characterPortraitList = new SelectListItemCollection(ScrollingSelectorView.prototype.mapSelectListItems(gameObjects.character.portraits, {
-                text: 'url',
-                value: 'url'
+            this.characterPortraitList = new SelectListImageItemCollection(SelectListImageItemCollection.prototype.mapItems(gameObjects.character.portraits, {
+                value: 'id',
+                x: 'x',
+                y: 'y'
             }));
 		},
         
@@ -48,10 +55,10 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             
             this.swapIn(new ScrollingSelectorView({
-                    collection: this.characterGenderList,
-                    model: this.model,
-                    attribute: 'gender'
-                }), '#editCharacterGender');
+                attribute: 'gender',
+                collection: this.characterGenderList,
+                model: this.model
+            }), '#editCharacterGender');
             
             this.swapIn(new EditCharacterClassView({
                 selectorId: 'editCharacterClassSelector',
@@ -61,10 +68,12 @@ define([
             }), '#editCharacterClass');
             
             this.swapIn(new ScrollingSelectorView({
-                    collection: this.characterPortraitList,
-                    model: this.model,
-                    attribute: 'portrait'
-                }), '#editCharacterPortrait');
+                attribute: 'portrait',
+                collection: this.characterPortraitList,
+                model: this.model,
+                listItemView: SelectListImageItemView,
+                template: portraitSelectorTemplate
+            }), '#editCharacterPortrait');
             
             return this;
         }

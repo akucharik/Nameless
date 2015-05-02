@@ -446,12 +446,7 @@ td {
 }
 
 .edit-character-portrait {
-    background-color: rgba(0,0,0,0.5);
-    color: #666;
-    height: 250px;
-    line-height: 250px;
-    text-align: center;
-    vertical-align: middle;
+    
 }
 
 .edit-character-attributes {
@@ -621,6 +616,28 @@ td {
     animation-fill-mode: forwards;
     animation-name: scrolling-selector-animate-out-right;
     animation-timing-function: ease-out;
+}
+
+.edit-character-portrait {
+    background-image: url(../images/portraits.jpg);
+    background-repeat: no-repeat;
+    background-size: 2200px;
+    height: 100%;
+    width: 100%;
+}
+
+.portrait-selector-action,
+.portrait-selector-content {
+    height: 370px;
+}
+
+.portrait-selector-content,
+.portrait-selector-content > li {
+    width: 285px;
+}
+
+.portrait-selector-content > li {
+    height: 100%;
 }
 
 /* Animations */

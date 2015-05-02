@@ -18,10 +18,12 @@ define([
         
         initialize: function (models) {
             if (!models) {
-                config.character.portrait.forEach(function (portrait) {
+                config.character.portraits.forEach(function (portrait) {
                     this.add(new CharacterPortraitModel({ 
                         gender: portrait.gender,
-                        url: portrait.url
+                        id: portrait.id,
+                        x: portrait.x,
+                        y: portrait.y
                     }));
                 }, this);
             }
