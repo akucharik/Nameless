@@ -28,11 +28,9 @@ define([
         render: function () {
             if (this.model.get('enabled') === true) {
                 this.$el.addClass('selected')
-                this.$unitProficiency.show();
             } 
             else {
                 this.$el.removeClass('selected');
-                this.$unitProficiency.hide();
             }
             
             this.$unitProficiencyValue.html(this.model.getValue());

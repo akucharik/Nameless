@@ -401,7 +401,7 @@ td {
     display: table;
     margin: 0 auto;
     text-align: left;
-    width: 500px;
+    width: 600px;
 }
 
 .edit-character-top {
@@ -411,7 +411,7 @@ td {
 .edit-character-name {
     font-size: 140%;
     margin-top: 1.0em;
-    width: 19.5em;
+    width: 100%;
 }
 
 .edit-character-gender {
@@ -478,7 +478,7 @@ td {
     display: inline-block;
     padding: 0 0.1em;
     text-align: right;
-    width: 0.7em;
+    width: 1.0em;
 }
 
 /*
@@ -497,30 +497,23 @@ td {
 }
 
 .unit-proficiencies,
-.unit-proficiencies > li,
-.skills,
-.skills > li {
-    /*display: inline-block;*/
+.skills {
+    
 }
 
-.unit-proficiencies > li,
-.skills > li {
-    color: #999;
-    position: relative;
-}
-
-.unit-proficiency,
 .skill {
-    /*background-color: rgba(0,0,0,0.4);*/
-    color: #666;
-    /*margin: 5px 0;*/
-    padding: 2px 0;
-    text-align: right;
+    color: #999;
+    display: flex;
+    flex-direction: row;
+    margin: 0.5em 0;
 }
 
 .unit-proficiency-name,
 .skill-name {
-    float: left;
+    display: inline-block;
+    line-height: 30px;
+    vertical-align: middle;
+    width: 6em;
 }
 
 .edit-character-skills > .selected > .skill,
@@ -531,16 +524,51 @@ td {
     color: #fff;
 }
 
+.unit-proficiency-ratio,
+.skill-ratio {
+    line-height: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
 .unit-proficiency-ratio > span,
 .skill-ratio > span {
     display: inline-block;
-    padding: 0 0.1em;
+    text-align: right;
     width: 1.7em;
+}
+
+/* Skill progress bar */
+.skill-progress-bar {
+    background-color: black;
+    flex: 1;
+    margin-left: 10px;
+    position: relative;
+}
+
+.skill-progress-bar-value,
+.skill-progress-bar-max-value {
+    height: 30px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: width 0.5s ease-out;
+}
+
+.skill-progress-bar-value {
+    background-color: white;
+    z-index: 2;
+}
+
+.skill-progress-bar-max-value {
+    background-color: gray;
+    z-index: 1;
 }
 
 /* Scrolling selector */
 .scrolling-selector {
     margin: 1.0em 0;
+    white-space: nowrap;
 }
 
 .scrolling-selector-action,
@@ -699,7 +727,7 @@ td {
     }
     
     to {
-        left: 100%;
+        left: -100%;
     }
 }
 

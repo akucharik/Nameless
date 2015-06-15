@@ -60,13 +60,13 @@ define([
             
             // create unit views
             this.model.get('unitProficiencies').forEach(function (unitProficiency) {
-                var unitProficiencyView = new EditCharacterUnitProficiencyView({
+                var skillView = new EditCharacterSkillView({
                     model: unitProficiency,
                     tagName: 'li',
-                    template: '#editCharacterUnitProficiencyTemplate'
+                    template: '#editCharacterSkillTemplate'
                 });
 
-                this.$units.append(unitProficiencyView.render().el);
+                this.$units.append(skillView.render().el);
             }, this);
             
             return this;

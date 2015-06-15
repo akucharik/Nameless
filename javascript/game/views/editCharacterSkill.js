@@ -18,9 +18,11 @@ define([
             this.options = options;
             this.template = _.template($(this.options.template).html());
             this.$el.html(this.template(this.model.toJSON()));
-            this.$skillProficency = this.$('.skillProficency');
+            this.$skillRatio = this.$('.skillRatio');
             this.$skillValue = this.$('.skillValue');
             this.$skillMaxValue = this.$('.skillMaxValue');
+            this.$skillProgressBarValue = this.$('.skillProgressBarValue');
+            this.$skillProgressBarMaxValue = this.$('.skillProgressBarMaxValue');
             
             this.listenTo(this.model, 'change', this.render);
 		},
@@ -28,15 +30,20 @@ define([
         render: function () {
             if (this.model.get('enabled') === true) {
                 this.$el.addClass('selected')
-                this.$skillProficency.show();
+                this.$skillRatio.css('visibility', 'visible');
+                this.$skillValue.html(this.model.getValue());
+                this.$skillMaxValue.html(this.model.get('maxValue'));
+                this.$skillProgressBarValue.width(this.model.getValue() + '%');
+                this.$skillProgressBarMaxValue.width(this.model.get('maxValue') + '%');
             } 
             else {
                 this.$el.removeClass('selected');
-                this.$skillProficency.hide();
+                this.$skillRatio.css('visibility', 'hidden');
+                //this.$skillValue.html(0);
+                //this.$skillMaxValue.html(0);
+                this.$skillProgressBarValue.width(0 + '%');
+                this.$skillProgressBarMaxValue.width(0 + '%');    
             }
-            
-            this.$skillValue.html(this.model.getValue());
-            this.$skillMaxValue.html(this.model.get('maxValue'));
             
             return this;
         }

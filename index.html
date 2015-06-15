@@ -5,6 +5,7 @@
 	<link type="text/css" media="screen" rel="stylesheet" href="css/game.css">
 </head>
 <body>
+    
 	<div id="gameContainer">
         <div id="homeContainer" class="home-container">
             <!--
@@ -109,10 +110,14 @@
     </script>
     
     <script id="editCharacterSkillTemplate" type="text/template">
-        <div class="skill clear-fix">
+        <div class="skill">
             <span class="skill-name"><%= name %></span>
-            <span class="skillProficency skill-ratio">
+            <span class="skillRatio skill-ratio">
                 <span class="skillValue"><% print(this.model.getValue()) %></span>/<span class="skillMaxValue"><%= maxValue %></span>%
+            </span>
+            <span class="skill-progress-bar">
+                <span class="skillProgressBarValue skill-progress-bar-value" style="width: <% print(this.model.getValue()) %>%;"></span>
+                <span class="skillProgressBarMaxValue skill-progress-bar-max-value" style="width: <%= maxValue %>%;"></span>
             </span>
         </div>
     </script>
