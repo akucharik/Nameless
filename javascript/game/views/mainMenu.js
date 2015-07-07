@@ -2,55 +2,54 @@ define([
     // libraries
 	'backbone',
     'jquery',
+    'marionette',
     // game
     'game/constants'
 ], function(
     // libraries
     Backbone,
     $,
+    Marionette,
     // game
     constants
 ) {
 
-	var MainMenuView = Backbone.View.extend({
-		
-		initialize: function (options) {
-            this.options = options;
-            this.template = _.template($(this.options.template).html());
-		},
+	var MainMenuView = Marionette.ItemView.extend({
         
-        render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
-            this.$continueGame = this.$el.find('#continueGame');
-            this.$editCharacter = this.$el.find('#editCharacter');
-            this.model.get('savedGames').length > 0 ? this.$continueGame.show() : this.$continueGame.hide();
-            this.model.get('savedCharacters').length > 0 ? this.$editCharacter.show() : this.$editCharacter.hide();
-            
-            return this;
+        ui: {
+            characters: '#characters',
+            continueGame: '#continueGame',
+            newCharacter: '#newCharacter',
+            newGame: '#newGame'
         },
         
         events: {
-            'click #continueGame': 'continueGame',
-            'click #newGame': 'newGame',
-            'click #characters': 'onCharactersClick',
-            'click #newCharacter': 'newCharacter'
+            'click @ui.continueGame': 'continueGame',
+            'click @ui.newGame': 'newGame',
+            'click @ui.characters': 'characters',
+            'click @ui.newCharacter': 'newCharacter'
+        },
+        
+        onRender: function () {
+            this.model.get('savedGames').length > 0 ? this.ui.continueGame.show() : this.ui.continueGame.hide();
+            this.model.get('savedCharacters').length > 0 ? this.ui.newCharacter.show() : this.ui.newCharacter.hide();
+        },
+        
+        characters: function () {
+            this.model.set('state', constants.home.state.CHARACTERS);
         },
         
         continueGame: function () {
             this.model.set('state', constants.home.state.GAMES);
         },
         
-        newGame: function () {
-            this.model.set('state', constants.home.state.PLAY);
-        },
-        
-        onCharactersClick: function () {
-            this.model.set('state', constants.home.state.CHARACTERS);
-        },
-        
         newCharacter: function () {
             this.model.set('editCharacterSource', constants.editCharacter.source.MAIN_MENU);
             this.model.set('state', constants.home.state.EDIT_CHARACTER);
+        },
+        
+        newGame: function () {
+            this.model.set('state', constants.home.state.PLAY);
         }
         
 	});

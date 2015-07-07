@@ -3,6 +3,7 @@ define([
     'backbone',
     'jquery',
     'marionette',
+    'underscore',
     // controllers
     'controllers/savedCharacters',
     // models
@@ -17,6 +18,7 @@ define([
     Backbone,
     $,
     Marionette,
+    _,
     // controllers
     SavedCharactersController,
     // models
@@ -76,7 +78,7 @@ define([
                 regions: {
                     main: '#main'
                 },
-                template: appLayoutTemplate
+                template: _.template(appLayoutTemplate)
             }).render();
             
             // TODO: remove exposed objects after development is complete

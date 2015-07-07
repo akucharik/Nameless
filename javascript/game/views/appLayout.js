@@ -3,6 +3,7 @@ define([
 	'backbone',
     'jquery',
     'marionette',
+    'underscore',
     //game
     'game/constants',
     // models
@@ -12,12 +13,14 @@ define([
     'views/editCharacter',
     'views/mainMenu',
     // templates
-    'text!templates/editCharacter.html'
+    'text!templates/editCharacter.html',
+    'text!templates/mainMenu.html'
 ], function(
     // libraries
     Backbone,
     $,
     Marionette,
+    _,
     //game
     constants,
     // models
@@ -27,7 +30,8 @@ define([
     EditCharacterView,
     MainMenuView,
     // templates
-    editCharacterTemplate
+    editCharacterTemplate,
+    mainMenuTemplate
 ) {
 
     'use strict';
@@ -77,7 +81,7 @@ define([
                         new MainMenuView({
                             className: 'main-menu-view',
                             model: this.model,
-                            template: '#mainMenuTemplate'
+                            template: _.template(mainMenuTemplate)
                         })
                     );
                     break;
