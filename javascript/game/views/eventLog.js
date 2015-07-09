@@ -4,14 +4,18 @@ define([
     'jquery',
     'underscore',
     // views
-    'views/eventLogItem'
+    'views/eventLogItem',
+    // templates
+    'text!templates/eventLogItem.html'
 ], function(
     // libraries
     Backbone,
     $,
     _,
     // views
-    EventLogItemView
+    EventLogItemView,
+    // templates
+    eventLogItemTemplate
 ) {
 
 	var EventLogView = Backbone.View.extend({
@@ -25,8 +29,8 @@ define([
             var eventLogItemView = new EventLogItemView({
                 model: this.collection.at(this.collection.length - 1),
                 tagName: 'p',
-                template: '#eventLogItemTemplate'
-            });
+                template: _.template(eventLogItemTemplate)
+            }).render();
             
             this.el.appendChild(eventLogItemView.el);
             
