@@ -353,6 +353,7 @@ td {
     font-size: 16px;
     font-weight: 300;
     margin: 0.5em 0;
+    opacity: 0;
     text-shadow: 0 1px 2px black;
 }
 
@@ -366,6 +367,17 @@ td {
     color: #fff;
     font-size: 85%;
     padding: 2px 6px;
+}
+
+.log-item-animate-in {
+    -webkit-animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-name: event-log-item-animate-in;
+    -webkit-animation-timing-function: ease-out;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-name: event-log-item-animate-in;
+    animation-timing-function: ease-out;
 }
 
 /* Main Menu */
@@ -749,6 +761,28 @@ td {
     
     to {
         left: 100%;
+    }
+}
+
+
+/* Event log item */
+@-webkit-keyframes event-log-item-animate-in {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes event-log-item-animate-in {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
     }
 }
 

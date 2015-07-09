@@ -1,10 +1,16 @@
 define([
+    // libraries
 	'backbone',
     'jquery',
+    'underscore',
+    // views
     'views/eventLogItem'
 ], function(
+    // libraries
     Backbone,
     $,
+    _,
+    // views
     EventLogItemView
 ) {
 
@@ -20,9 +26,7 @@ define([
                 model: this.collection.at(this.collection.length - 1),
                 tagName: 'p',
                 template: '#eventLogItemTemplate'
-            })
-            
-            eventLogItemView.$el.fadeTo(0, 0);
+            });
             
             this.el.appendChild(eventLogItemView.el);
             
@@ -31,14 +35,13 @@ define([
                     scrollTop: this.el.scrollHeight - this.el.clientHeight
                 }, {
                     duration: 200,
-                    easing: 'swing',
-                    complete: function () { 
-                        eventLogItemView.$el.fadeTo(300, 1); 
-                    }
-                });
+                    easing: 'swing'
+                }).promise().done(
+                    _.bind(this.animateLogItem, this, eventLogItemView.$el)
+                );
             }
             else {
-                eventLogItemView.$el.fadeTo(300, 1);
+                this.animateLogItem(eventLogItemView.$el);
             }
             
             return this;
@@ -46,6 +49,10 @@ define([
         
         add: function (item) {
             this.collection.add(item);
+        },
+        
+        animateLogItem: function ($el) {
+            $el.addClass('log-item-animate-in');
         },
         
         clear: function () {
