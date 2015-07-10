@@ -1,11 +1,23 @@
 define([
+    // libraries
 	'backbone',
+    // models
     'models/logItem',
-    'views/eventLog'
+    // views
+    'views/eventLog',
+    'views/eventLogItem',
+    // templates
+    'text!templates/eventLogItem.html'
 ], function(
+    // libraries
     Backbone,
+    // models
     LogItemModel,
-    EventLogView
+    // views
+    EventLogView,
+    EventLogItemView,
+    // templates
+    eventLogItemTemplate
 ) {
     
     //'use strict';
@@ -15,9 +27,15 @@ define([
     });
     
     var eventLogView = new EventLogView({
+        childView: EventLogItemView,
+        childViewOptions: {
+            tagName: 'p',
+            template: _.template(eventLogItemTemplate)
+        },
         collection: eventLog,
-        el: '#eventLog'
-    });
+        el: '#eventLog',
+        template: false
+    }).render();
     
     return eventLogView;
 });

@@ -2,6 +2,8 @@ define([
     // libraries
 	'backbone',
     'jquery',
+    'jqueryUIEffects',
+    'marionette',
     'underscore',
     // views
     'views/eventLogItem',
@@ -11,6 +13,8 @@ define([
     // libraries
     Backbone,
     $,
+    jqueryUIEffects,
+    Marionette,
     _,
     // views
     EventLogItemView,
@@ -18,49 +22,30 @@ define([
     eventLogItemTemplate
 ) {
 
-	var EventLogView = Backbone.View.extend({
-		
-		initialize: function () {
-            this.listenTo(this.collection, 'add', this.render);
-            this.listenTo(this.collection, 'reset', this.clear);
-		},
+	var EventLogView = Marionette.CollectionView.extend({
         
-        render: function () {
-            var eventLogItemView = new EventLogItemView({
-                model: this.collection.at(this.collection.length - 1),
-                tagName: 'p',
-                template: _.template(eventLogItemTemplate)
-            }).render();
-            
-            this.el.appendChild(eventLogItemView.el);
-            
+        onAddChild: function (childView) {
             if (this.el.scrollHeight > this.el.clientHeight) {
                 this.$el.animate({
                     scrollTop: this.el.scrollHeight - this.el.clientHeight
                 }, {
                     duration: 200,
-                    easing: 'swing'
+                    easing: 'easeOutQuad'
                 }).promise().done(
-                    _.bind(this.animateLogItem, this, eventLogItemView.$el)
+                    _.bind(this.animateChildView, this, childView)
                 );
             }
             else {
-                this.animateLogItem(eventLogItemView.$el);
+                this.animateChildView(childView);
             }
-            
-            return this;
         },
         
-        add: function (item) {
-            this.collection.add(item);
+        add: function (model) {
+            this.collection.add(model);
         },
         
-        animateLogItem: function ($el) {
-            $el.addClass('log-item-animate-in');
-        },
-        
-        clear: function () {
-            this.el.innerHTML = '';
+        animateChildView: function (childView) {
+            childView.$el.addClass('log-item-animate-in');
         }
         
 	});
