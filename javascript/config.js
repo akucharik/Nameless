@@ -8,6 +8,7 @@ requirejs.config({
         localStorage: 'backbone.localStorage-min', // v1.1.16
         marionette: 'backbone.marionette.min', // v2.4.1
         jquery: 'jquery.min', // v2.1.1
+        jqueryUIEffects: 'jquery-ui.effects.min', // v1.11.4
         phaser: 'phaser.min', // v2.2.2
         underscore: 'underscore-min', // v1.8.1
         // game
