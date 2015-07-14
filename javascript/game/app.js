@@ -3,6 +3,7 @@ define([
     'backbone',
     'jquery',
     'marionette',
+    'radio',
     'underscore',
     // controllers
     'controllers/savedCharacters',
@@ -18,6 +19,7 @@ define([
     Backbone,
     $,
     Marionette,
+    Radio,
     _,
     // controllers
     SavedCharactersController,
@@ -36,6 +38,7 @@ define([
 
         initialize: function (options) {
         
+            // model
             var homeModel = new HomeModel();
             
             homeModel.set('savedCharactersController', new SavedCharactersController({
@@ -72,6 +75,32 @@ define([
 //                console.log(localStorage);
             }
             
+            
+            // channel
+            this.appChannel = Radio.channel('app');
+    
+            // events
+            this.eventTest = function () {
+                console.log('channel tested');
+            };
+            
+            // initialize events
+            this.appChannel.on('event:test', this.eventTest);
+            
+            // requests
+            this.getModel = function () {
+                console.log('got the model');
+            };
+                
+            // initialize requests
+            this.appChannel.reply('getModel', this.getModel);
+            
+            
+            
+            
+            
+            
+            // layout
             this.layout = new AppLayoutView({
                 el: '#app',
                 model: homeModel,

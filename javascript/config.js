@@ -7,6 +7,7 @@ requirejs.config({
         controller: 'backbone.controller',
         localStorage: 'backbone.localStorage-min', // v1.1.16
         marionette: 'backbone.marionette.min', // v2.4.1
+        radio: 'backbone.radio.min', // v1.0.0
         jquery: 'jquery.min', // v2.1.1
         jqueryUIEffects: 'jquery-ui.effects.min', // v1.11.4
         phaser: 'phaser.min', // v2.2.2
