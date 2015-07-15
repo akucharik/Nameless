@@ -3,6 +3,7 @@ define([
 	'backbone',
     'jquery',
     'marionette',
+    'radio',
     // game
     'game/constants'
 ], function(
@@ -10,11 +11,17 @@ define([
     Backbone,
     $,
     Marionette,
+    Radio,
     // game
     constants
 ) {
 
 	var MainMenuView = Marionette.ItemView.extend({
+        
+        initialize: function () {
+            this.appChannel = Radio.channel(constants.channel.app);
+            this.appModel = this.appChannel.request('getModel');
+        },
         
         ui: {
             characters: '#characters',
@@ -31,25 +38,25 @@ define([
         },
         
         onRender: function () {
-            this.model.get('savedGames').length > 0 ? this.ui.continueGame.show() : this.ui.continueGame.hide();
-            this.model.get('savedCharacters').length > 0 ? this.ui.newCharacter.show() : this.ui.newCharacter.hide();
+            this.appModel.get('savedGames').length > 0 ? this.ui.continueGame.show() : this.ui.continueGame.hide();
+            this.appModel.get('savedCharacters').length > 0 ? this.ui.newCharacter.show() : this.ui.newCharacter.hide();
         },
         
         characters: function () {
-            this.model.set('state', constants.home.state.CHARACTERS);
+            this.appModel.set('state', constants.home.state.CHARACTERS);
         },
         
         continueGame: function () {
-            this.model.set('state', constants.home.state.GAMES);
+            this.appModel.set('state', constants.home.state.GAMES);
         },
         
         newCharacter: function () {
-            this.model.set('editCharacterSource', constants.editCharacter.source.MAIN_MENU);
-            this.model.set('state', constants.home.state.EDIT_CHARACTER);
+            this.appModel.set('editCharacterSource', constants.editCharacter.source.MAIN_MENU);
+            this.appModel.set('state', constants.home.state.EDIT_CHARACTER);
         },
         
         newGame: function () {
-            this.model.set('state', constants.home.state.PLAY);
+            this.appModel.set('state', constants.home.state.PLAY);
         }
         
 	});

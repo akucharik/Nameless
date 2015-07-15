@@ -78,7 +78,6 @@ define([
                 case constants.home.state.MAIN_MENU:
                     this.showChildView('main', 
                         new MainMenuView({
-                            model: this.model,
                             template: _.template(mainMenuTemplate)
                         })
                     );

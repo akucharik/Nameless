@@ -43,15 +43,15 @@ define([
         initialize: function (options) {
         
             // model
-            var appModel = new AppModel();
+            this.appModel = new AppModel();
             
-            appModel.set('savedCharactersController', new SavedCharactersController({
-                collection: appModel.get('savedCharacters')
+            this.appModel.set('savedCharactersController', new SavedCharactersController({
+                collection: this.appModel.get('savedCharacters')
             }));
 
             // initialize starting game data
             if (!localStorage.Characters) {
-                appModel.get('savedCharacters').add([
+                this.appModel.get('savedCharacters').add([
                     new CharacterModel({ name: 'Test'}),
                     new CharacterModel({ name: 'Aaron', attributes: [{ key: 'strength', value: 8 }, { key: 'intelligence', value: 7 }, { key: 'charisma', value: 9 }]}),
                     new CharacterModel({ name: 'Chris', attributes: [{ key: 'strength', value: 8 }, { key: 'intelligence', value: 9 }, { key: 'charisma', value: 7 }]}),
@@ -74,8 +74,8 @@ define([
             }
             else {
 //                console.log('about to fetch');
-                appModel.get('savedCharacters').fetch();
-//                console.log('Characters after load: ', appModel.get('savedCharacters'));
+                this.appModel.get('savedCharacters').fetch();
+//                console.log('Characters after load: ', this.appModel.get('savedCharacters'));
 //                console.log(localStorage);
             }
             
@@ -83,21 +83,21 @@ define([
             // channel
             this.appChannel = Radio.channel(constants.channel.app);
     
-            // events
+            // channel events
             this.eventTest = function () {
-                console.log('channel tested');
+                console.log('channel event tested');
             };
             
-            // initialize events
+            // initialize channel events
             this.appChannel.on('event:test', this.eventTest);
             
-            // requests
+            // channel requests
             this.getModel = function () {
-                console.log('got the model');
+                return this.appModel;
             };
                 
-            // initialize requests
-            this.appChannel.reply('getModel', this.getModel);
+            // initialize channel requests
+            this.appChannel.reply('getModel', this.getModel, this);
             
             
             
@@ -107,7 +107,7 @@ define([
             // layout
             this.layout = new AppLayoutView({
                 el: '#app',
-                model: appModel,
+                model: this.appModel,
                 regions: {
                     main: '#main'
                 },
@@ -115,7 +115,7 @@ define([
             }).render();
             
             // TODO: remove exposed objects after development is complete
-            window.appModel = appModel;
+            window.appModel = this.appModel;
         }
     });
        
