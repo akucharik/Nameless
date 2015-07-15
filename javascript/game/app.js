@@ -1,7 +1,5 @@
 define([
     // libraries
-    'backbone',
-    'jquery',
     'marionette',
     'radio',
     'underscore',
@@ -18,8 +16,6 @@ define([
     'text!templates/appLayout.html'
 ], function(
     // libraries
-    Backbone,
-    $,
     Marionette,
     Radio,
     _,

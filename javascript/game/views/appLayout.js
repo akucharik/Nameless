@@ -1,7 +1,5 @@
 define([
     // libraries
-	'backbone',
-    'jquery',
     'marionette',
     'underscore',
     //game
@@ -17,8 +15,6 @@ define([
     'text!templates/mainMenu.html'
 ], function(
     // libraries
-    Backbone,
-    $,
     Marionette,
     _,
     //game

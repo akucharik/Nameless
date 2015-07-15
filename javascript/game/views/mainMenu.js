@@ -1,15 +1,11 @@
 define([
     // libraries
-	'backbone',
-    'jquery',
     'marionette',
     'radio',
     // game
     'game/constants'
 ], function(
     // libraries
-    Backbone,
-    $,
     Marionette,
     Radio,
     // game
