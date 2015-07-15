@@ -18,7 +18,7 @@ define([
     CharacterModel
 ) {
     
-	var HomeModel = Backbone.Model.extend({
+	var Model = Backbone.Model.extend({
 		defaults: {
             // States
             playState: constants.play.state.DEAD,
@@ -36,5 +36,5 @@ define([
 
 	});
 	
-	return HomeModel;
+	return Model;
 });

@@ -5,11 +5,13 @@ define([
     'marionette',
     'radio',
     'underscore',
+    // game
+    'game/constants',
     // controllers
     'controllers/savedCharacters',
     // models
+    'models/app',
     'models/character',
-    'models/home',
     // views
     'views/appLayout',
     // templates
@@ -21,11 +23,13 @@ define([
     Marionette,
     Radio,
     _,
+    // game
+    constants,
     // controllers
     SavedCharactersController,
     // models
+    AppModel,
     CharacterModel,
-    HomeModel,
     // views
     AppLayoutView,
     // templates
@@ -39,15 +43,15 @@ define([
         initialize: function (options) {
         
             // model
-            var homeModel = new HomeModel();
+            var appModel = new AppModel();
             
-            homeModel.set('savedCharactersController', new SavedCharactersController({
-                collection: homeModel.get('savedCharacters')
+            appModel.set('savedCharactersController', new SavedCharactersController({
+                collection: appModel.get('savedCharacters')
             }));
 
             // initialize starting game data
             if (!localStorage.Characters) {
-                homeModel.get('savedCharacters').add([
+                appModel.get('savedCharacters').add([
                     new CharacterModel({ name: 'Test'}),
                     new CharacterModel({ name: 'Aaron', attributes: [{ key: 'strength', value: 8 }, { key: 'intelligence', value: 7 }, { key: 'charisma', value: 9 }]}),
                     new CharacterModel({ name: 'Chris', attributes: [{ key: 'strength', value: 8 }, { key: 'intelligence', value: 9 }, { key: 'charisma', value: 7 }]}),
@@ -70,8 +74,8 @@ define([
             }
             else {
 //                console.log('about to fetch');
-                homeModel.get('savedCharacters').fetch();
-//                console.log('Characters after load: ', homeModel.get('savedCharacters'));
+                appModel.get('savedCharacters').fetch();
+//                console.log('Characters after load: ', appModel.get('savedCharacters'));
 //                console.log(localStorage);
             }
             
@@ -103,7 +107,7 @@ define([
             // layout
             this.layout = new AppLayoutView({
                 el: '#app',
-                model: homeModel,
+                model: appModel,
                 regions: {
                     main: '#main'
                 },
@@ -111,7 +115,7 @@ define([
             }).render();
             
             // TODO: remove exposed objects after development is complete
-            window.homeModel = homeModel;
+            window.appModel = appModel;
         }
     });
        
