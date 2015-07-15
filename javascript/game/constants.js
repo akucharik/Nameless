@@ -9,6 +9,10 @@ define(function() {
             WIDTH: 720
         },
         
+        channel: {
+            app: 'app'
+        },
+        
         character: {
             gender: {
                 MALE: 'Male',

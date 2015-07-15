@@ -77,7 +77,7 @@ define([
             
             
             // channel
-            this.appChannel = Radio.channel('app');
+            this.appChannel = Radio.channel(constants.channel.app);
     
             // events
             this.eventTest = function () {
