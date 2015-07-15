@@ -46,7 +46,6 @@ define([
                 case constants.home.state.CHARACTERS:
                     this.showChildView('main', 
                         new CharactersView({
-                            className: 'characters-view',
                             gameContainer: '#gameContainer',
                             listContainer: '#characterList',
                             model: this.model,
@@ -79,7 +78,6 @@ define([
                 case constants.home.state.MAIN_MENU:
                     this.showChildView('main', 
                         new MainMenuView({
-                            className: 'main-menu-view',
                             model: this.model,
                             template: _.template(mainMenuTemplate)
                         })
