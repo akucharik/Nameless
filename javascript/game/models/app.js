@@ -22,7 +22,7 @@ define([
 		defaults: {
             // States
             playState: constants.play.state.DEAD,
-            state: constants.home.state.MAIN_MENU,
+            state: constants.app.state.MAIN,
             
             // Create/Edit character
             editCharacterSource: null,

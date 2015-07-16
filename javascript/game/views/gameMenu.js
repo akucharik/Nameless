@@ -51,7 +51,7 @@ define([
         },
         
         onQuit: function () {
-            this.model.set('state', constants.home.state.MAIN_MENU);
+            this.model.set('state', constants.app.state.MAIN);
             this.remove();
             
             return this;

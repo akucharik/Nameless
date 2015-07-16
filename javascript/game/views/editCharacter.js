@@ -128,11 +128,11 @@ define([
         },
         
         cancelCharacterClass: function () {
-            if (this.model.get('source') === constants.editCharacter.source.MAIN_MENU && !this.model.get('isDirty')) {
-                this.model.get('gameModel').set('state', constants.home.state.MAIN_MENU);
+            if (this.model.get('source') === constants.editCharacter.source.MAIN && !this.model.get('isDirty')) {
+                this.model.get('gameModel').set('state', constants.app.state.MAIN);
             }
             else if (this.model.get('source') === constants.editCharacter.source.CHARACTERS && !this.model.get('isDirty')) {
-                this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
+                this.model.get('gameModel').set('state', constants.app.state.CHARACTERS);
             }
             else {
                 this.model.get('character').set('characterClass', this.model.get('character').previousAttributes().characterClass);
@@ -141,11 +141,11 @@ define([
         },
         
         cancelCharacterDetail: function () {
-            if (this.model.get('source') === constants.editCharacter.source.MAIN_MENU) {
-                this.model.get('gameModel').set('state', constants.home.state.MAIN_MENU);
+            if (this.model.get('source') === constants.editCharacter.source.MAIN) {
+                this.model.get('gameModel').set('state', constants.app.state.MAIN);
             }
             else {
-                this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
+                this.model.get('gameModel').set('state', constants.app.state.CHARACTERS);
             }
         },
         
@@ -156,7 +156,7 @@ define([
         save: function () {
             this.model.get('character').set('name', this.$name.val());
             this.model.get('savedCharacters').add(this.model.get('character'));
-            this.model.get('gameModel').set('state', constants.home.state.CHARACTERS);
+            this.model.get('gameModel').set('state', constants.app.state.CHARACTERS);
         }
         
 	});

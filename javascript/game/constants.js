@@ -30,7 +30,7 @@ define(function() {
                 EDIT: 1
             },
             source: {
-                MAIN_MENU: 0,
+                MAIN: 0,
                 CHARACTERS: 1
             },
             state: {
@@ -104,13 +104,13 @@ define(function() {
             }
         },
         
-        home: {
+        app: {
             state: {
-                MAIN_MENU: 0,
-                CHARACTERS: 1,
-                EDIT_CHARACTER: 2,
-                GAMES: 3,
-                PLAY: 4
+                MAIN: 0,
+                CHARACTER: 1,
+                CHARACTERS: 2,
+                GAME: 3,
+                GAMES: 4
             }
         },
         

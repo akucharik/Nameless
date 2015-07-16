@@ -67,7 +67,7 @@ define([
         },
         
         onGameStateChange: function () {
-            if (this.model.get('state') !== constants.home.state.PLAY) { 
+            if (this.model.get('state') !== constants.app.state.GAME) { 
                 this.remove();
             }
             

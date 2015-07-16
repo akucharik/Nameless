@@ -39,7 +39,7 @@ define([
 
         onRender: function () {
             switch (this.model.get('state')) {
-                case constants.home.state.CHARACTERS:
+                case constants.app.state.CHARACTERS:
                     this.showChildView('main', 
                         new CharactersView({
                             gameContainer: '#gameContainer',
@@ -52,7 +52,7 @@ define([
                     );
                     break;
 
-                case constants.home.state.EDIT_CHARACTER:
+                case constants.app.state.CHARACTER:
                     this.showChildView('main', 
                         new EditCharacterView({
                             actionsId: 'editCharacterManagerActions',
@@ -67,11 +67,11 @@ define([
                     );
                     break;
 
-                case constants.home.state.GAMES:
+                case constants.app.state.GAMES:
                     alert('Render games');
                     break;
 
-                case constants.home.state.MAIN_MENU:
+                case constants.app.state.MAIN:
                     this.showChildView('main', 
                         new MainMenuView({
                             template: _.template(mainMenuTemplate)
@@ -79,7 +79,7 @@ define([
                     );
                     break;
 
-                case constants.home.state.PLAY:
+                case constants.app.state.GAME:
                     alert('Render play');
                     break;
             }

@@ -39,12 +39,12 @@ define([
         },
         
         onMainMenuClick: function () {
-            this.model.set('state', constants.home.state.MAIN_MENU);
+            this.model.set('state', constants.app.state.MAIN);
         },
         
         onNewCharacterClick: function () {
             this.model.set('editCharacterSource', constants.editCharacter.source.CHARACTERS);
-            this.model.set('state', constants.home.state.EDIT_CHARACTER);
+            this.model.set('state', constants.app.state.CHARACTER);
         },
         
         remove: function () {

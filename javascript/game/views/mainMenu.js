@@ -39,20 +39,20 @@ define([
         },
         
         characters: function () {
-            this.appModel.set('state', constants.home.state.CHARACTERS);
+            this.appModel.set('state', constants.app.state.CHARACTERS);
         },
         
         continueGame: function () {
-            this.appModel.set('state', constants.home.state.GAMES);
+            this.appModel.set('state', constants.app.state.GAMES);
         },
         
         newCharacter: function () {
-            this.appModel.set('editCharacterSource', constants.editCharacter.source.MAIN_MENU);
-            this.appModel.set('state', constants.home.state.EDIT_CHARACTER);
+            this.appModel.set('editCharacterSource', constants.editCharacter.source.MAIN);
+            this.appModel.set('state', constants.app.state.CHARACTER);
         },
         
         newGame: function () {
-            this.appModel.set('state', constants.home.state.PLAY);
+            this.appModel.set('state', constants.app.state.GAME);
         }
         
 	});
