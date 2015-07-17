@@ -76,25 +76,71 @@ define([
             }
             
             
+            
+            
+            
             // channel
             this.appChannel = Radio.channel(constants.channel.app);
-    
+            
             // channel events
-            this.eventTest = function () {
+            this.appChannel.on('event:test', function () {
                 console.log('channel event tested');
-            };
-            
-            // initialize channel events
-            this.appChannel.on('event:test', this.eventTest);
-            
-            // channel requests
-            this.getModel = function () {
-                return this.appModel;
-            };
+            });
                 
-            // initialize channel requests
-            this.appChannel.reply('getModel', this.getModel, this);
+            // channel requests
+            //this.appChannel.reply('getModel', function () {
+            //    return this.appModel;
+            //}, this);
             
+            this.getCharacters = function () {
+                return this.appModel.get('savedCharacters');
+            };
+            
+            this.getGames = function () {
+                return this.appModel.get('savedGames');
+            };
+            
+            this.setStateToCharacters = function () {
+                console.log('go to characters');
+                this.appModel.set('state', constants.app.state.CHARACTERS);
+            };
+            
+            this.setStateToEditCharacter = function () {
+                console.log('go to edit character');
+                this.appModel.set('state', constants.app.state.EDIT_CHARACTER);
+            };
+            
+            this.setStateToNewCharacter = function () {
+                console.log('go to new character');
+                this.appModel.set('state', constants.app.state.NEW_CHARACTER);
+            };
+            
+            this.setStateToGame = function () {
+                console.log('go to game');
+                this.appModel.set('state', constants.app.state.GAME);
+            };
+            
+            this.setStateToGames = function () {
+                console.log('go to games');
+                this.appModel.set('state', constants.app.state.GAMES);
+            };
+            
+            this.setStateToMain = function () {
+                console.log('go to main');
+                this.appModel.set('state', constants.app.state.MAIN);
+            };
+            
+            // initialize channel requests
+            this.appChannel.reply({
+                'get:characters': this.getCharacters,
+                'get:games': this.getGames,
+                'set:state:characters': this.setStateToCharacters,
+                'set:state:editCharacter': this.setStateToEditCharacter,
+                'set:state:newCharacter': this.setStateToNewCharacter,
+                'set:state:game': this.setStateToGame,
+                'set:state:games': this.setStateToGames,
+                'set:state:main': this.setStateToMain
+            }, this);
             
             
             

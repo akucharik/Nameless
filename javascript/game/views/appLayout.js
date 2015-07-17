@@ -51,8 +51,8 @@ define([
                         })
                     );
                     break;
-
-                case constants.app.state.CHARACTER:
+                    
+                case constants.app.state.EDIT_CHARACTER:
                     this.showChildView('main', 
                         new EditCharacterView({
                             actionsId: 'editCharacterManagerActions',
@@ -60,7 +60,22 @@ define([
                             model: new EditCharacterModel({
                                 gameModel: this.model,
                                 savedCharacters: this.model.get('savedCharacters'),
-                                source: this.model.get('editCharacterSource')
+                                source: constants.editCharacter.source.CHARACTERS
+                            }),
+                            template: editCharacterTemplate
+                        })
+                    );
+                    break;
+
+                case constants.app.state.NEW_CHARACTER:
+                    this.showChildView('main', 
+                        new EditCharacterView({
+                            actionsId: 'editCharacterManagerActions',
+                            contentId: 'editCharacterManagerContent',
+                            model: new EditCharacterModel({
+                                gameModel: this.model,
+                                savedCharacters: this.model.get('savedCharacters'),
+                                source: constants.editCharacter.source.MAIN
                             }),
                             template: editCharacterTemplate
                         })

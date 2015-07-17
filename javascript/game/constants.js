@@ -106,11 +106,12 @@ define(function() {
         
         app: {
             state: {
-                MAIN: 0,
-                CHARACTER: 1,
-                CHARACTERS: 2,
+                CHARACTERS: 0,
+                EDIT_CHARACTER: 1,
+                NEW_CHARACTER: 2,
                 GAME: 3,
-                GAMES: 4
+                GAMES: 4,
+                MAIN: 5,
             }
         },
         

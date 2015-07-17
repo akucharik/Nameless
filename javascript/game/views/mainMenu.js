@@ -16,7 +16,8 @@ define([
         
         initialize: function () {
             this.appChannel = Radio.channel(constants.channel.app);
-            this.appModel = this.appChannel.request('getModel');
+            this.appCharacters = this.appChannel.request('get:characters');
+            this.appGames = this.appChannel.request('get:games');
         },
         
         ui: {
@@ -34,25 +35,24 @@ define([
         },
         
         onRender: function () {
-            this.appModel.get('savedGames').length > 0 ? this.ui.continueGame.show() : this.ui.continueGame.hide();
-            this.appModel.get('savedCharacters').length > 0 ? this.ui.newCharacter.show() : this.ui.newCharacter.hide();
+            this.appCharacters.length > 0 ? this.ui.newCharacter.show() : this.ui.newCharacter.hide();
+            this.appGames.length > 0 ? this.ui.continueGame.show() : this.ui.continueGame.hide();
         },
         
         characters: function () {
-            this.appModel.set('state', constants.app.state.CHARACTERS);
+            this.appChannel.request('set:state:characters');
         },
         
         continueGame: function () {
-            this.appModel.set('state', constants.app.state.GAMES);
+            this.appChannel.request('set:state:games');
         },
         
         newCharacter: function () {
-            this.appModel.set('editCharacterSource', constants.editCharacter.source.MAIN);
-            this.appModel.set('state', constants.app.state.CHARACTER);
+            this.appChannel.request('set:state:newCharacter');
         },
         
         newGame: function () {
-            this.appModel.set('state', constants.app.state.GAME);
+            this.appChannel.request('set:state:game');
         }
         
 	});
